@@ -1,0 +1,9 @@
+{
+    "adjectives": [
+        "Grand", "Petit", "Beau", "Fort", "Doux", "Vif", "Sage", "Bon", "Frais", "Chaud",
+        "Rapide", "Lent", "Brillant", "Sombre", "Calme", "Joyeux", "Triste", "Fier", "Riche", "Pauvre",
+        "Jeune", "Vieux", "Nouveau", "Ancien", "Long", "Court", "Large", "Étroit", "Épais", "Mince",
+        "Haut", "Bas", "Rond", "Carré", "Droit", "Courbe", "Plein", "Vide", "Lourd", "Léger",
+        "Dur", "Mou", "Lisse", "Rugueux", "Chaud", "Froid", "Sec", "Humide", "Propre", "Sale"
+    ]
+}

@@ -1,11 +1,141 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import PasswordGenerator from '../components/PasswordGenerator.astro';
+import MemorablePasswordGenerator from '../components/MemorablePasswordGenerator.astro';
+import PasswordInfo from '../components/PasswordInfo.astro';
+import MemorizationTips from '../components/MemorizationTips.astro';
+import PasswordManagerGuide from '../components/PasswordManagerGuide.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title='Générateur de Mots de Passe'>
+  <main>
+    <div class='main-title'>
+      <h1>
+        Créez des phrases inoubliables, simples à retenir et ultra-sécurisées !
+      </h1>
+      <h3>
+        Générez en quelques clics des mots de passe fluides et sécurisés, basés
+        sur de vraies phrases faciles à mémoriser.
+      </h3>
+    </div>
+    <div class='generators-container'>
+      <div id='classicGenerator' class='generator-section'>
+        <PasswordGenerator client:load />
+      </div>
+      <div id='memorableGenerator' class='generator-section active'>
+        <MemorablePasswordGenerator client:load />
+      </div>
+    </div>
+    <div class='info-container'>
+      <PasswordInfo />
+      <div class='article-separator'></div>
+      <MemorizationTips />
+      <div class='article-separator'></div>
+      <PasswordManagerGuide />
+    </div>
+  </main>
 </Layout>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  .main-title {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  .main-title h1 {
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    font-size: 2.5rem;
+  }
+
+  .main-title h3 {
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+
+  .generators-container {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .info-container {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .generator-section {
+    display: none;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .generator-section.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .article-separator {
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+    margin: 2rem 0;
+  }
+
+  .dark-mode .article-separator {
+    border-bottom-color: #444;
+  }
+</style>
+
+<script>
+  // Gestion du toggle des générateurs
+  function handleToggle(event) {
+    const button = event.currentTarget;
+    const type = button.dataset.type;
+
+    // Sélectionner tous les éléments nécessaires
+    const buttons = document.querySelectorAll('.toggle-button');
+    const classicSection = document.getElementById('classicGenerator');
+    const memorableSection = document.getElementById('memorableGenerator');
+
+    // Mettre à jour les boutons
+    buttons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    // Mettre à jour les sections
+    if (type === 'classic') {
+      classicSection.classList.add('active');
+      memorableSection.classList.remove('active');
+    } else {
+      memorableSection.classList.add('active');
+      classicSection.classList.remove('active');
+    }
+  }
+
+  // Fonction d'initialisation
+  function init() {
+    // Initialisation des boutons de toggle
+    const buttons = document.querySelectorAll('.toggle-button');
+    buttons.forEach(button => {
+      button.addEventListener('click', handleToggle);
+    });
+  }
+
+  // Exécuter l'initialisation au chargement de la page
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Réinitialiser lors de la navigation Astro
+  document.addEventListener('astro:page-load', init);
+  document.addEventListener('astro:after-swap', init);
+</script>

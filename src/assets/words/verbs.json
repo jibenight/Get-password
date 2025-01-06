@@ -1,0 +1,9 @@
+{
+    "verbs": [
+        "Court", "Saute", "Vole", "Nage", "Danse", "Chante", "Rêve", "Brille", "Sourit", "Joue",
+        "Marche", "Parle", "Mange", "Boit", "Dort", "Lit", "Écrit", "Dessine", "Peint", "Regarde",
+        "Écoute", "Pense", "Travaille", "Étudie", "Apprend", "Enseigne", "Aide", "Donne", "Prend", "Fait",
+        "Ouvre", "Ferme", "Monte", "Descend", "Entre", "Sort", "Commence", "Finit", "Attend", "Cherche",
+        "Trouve", "Perd", "Gagne", "Aime", "Déteste", "Crée", "Construit", "Détruit", "Change", "Reste"
+    ]
+}

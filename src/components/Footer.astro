@@ -1,0 +1,103 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer>
+  <div class='footer-content'>
+    <div class='footer-section'>
+      <h3>SecurePass</h3>
+      <p>Générateur de mots de passe sécurisés et mémorisables</p>
+    </div>
+
+    <div class='footer-section'>
+      <h3>Liens Utiles</h3>
+      <ul>
+        <li><a href='/'>Accueil</a></li>
+        <li><a href='/mentions-legales'>Mentions Légales</a></li>
+      </ul>
+    </div>
+
+    <div class='footer-section'>
+      <h3>Sécurité</h3>
+      <ul>
+        <li>Génération locale</li>
+        <li>Aucune donnée stockée</li>
+        <li>Open Source</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class='footer-bottom'>
+    <p>&copy; {currentYear} SecurePass. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: #2c3e50;
+    color: white;
+    padding: 3rem 1rem 1rem;
+    margin-top: 4rem;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-section h3 {
+    color: #4caf50;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .footer-section p {
+    color: #ecf0f1;
+    line-height: 1.6;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-section ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-section ul li a:hover {
+    color: #4caf50;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #34495e;
+  }
+
+  .footer-bottom p {
+    color: #bdc3c7;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .footer-section {
+      margin-bottom: 2rem;
+    }
+  }
+</style>

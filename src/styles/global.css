@@ -1,0 +1,66 @@
+/* Reset et base */
+:root {
+    --accent: 124, 58, 237;
+    --accent-gradient: linear-gradient(
+        45deg,
+        rgb(var(--accent)),
+        #4caf50 30%,
+        white 60%
+    );
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: system-ui, sans-serif;
+    background: #f6f6f6;
+    background-size: 224px;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.generator-section {
+    opacity: 0;
+    display: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.generator-section.active {
+    opacity: 1;
+    display: block;
+}
+
+code {
+    font-family:
+        Menlo,
+        Monaco,
+        Lucida Console,
+        Liberation Mono,
+        DejaVu Sans Mono,
+        Bitstream Vera Sans Mono,
+        Courier New,
+        monospace;
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+}
