@@ -63,8 +63,25 @@ const { title } = Astro.props;
     const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
 
     function applyTheme(theme) {
-      document.documentElement.classList.toggle("dark-mode", theme === "dark");
+      const htmlElement = document.documentElement;
+      const toggleThemeButton = document.querySelector(".dark-mode-toggle");
+
+      htmlElement.classList.toggle("dark-mode", theme === "dark");
       localStorage.setItem("theme", theme);
+
+      // Mise à jour des icônes
+      if (toggleThemeButton) {
+        const moonIcon = toggleThemeButton.querySelector(".moon-icon");
+        const sunIcon = toggleThemeButton.querySelector(".sun-icon");
+
+        if (theme === "dark") {
+          moonIcon.style.display = "none";
+          sunIcon.style.display = "inline";
+        } else {
+          moonIcon.style.display = "inline";
+          sunIcon.style.display = "none";
+        }
+      }
     }
 
     // Initialisation du thème
@@ -90,12 +107,13 @@ const { title } = Astro.props;
   });
 </script>
 
+
   <style is:global>
    :root {
   /* Couleurs principales */
   --color-bg-primary: #f9f9f9;
   --color-bg-secondary: #ffffff;
-  --color-bg-dark: #2c2c2c;
+  --color-bg-dark: #007aff;
   --color-text-primary: #333333;
   --color-text-secondary: #666666;
   --color-accent: #007aff;
