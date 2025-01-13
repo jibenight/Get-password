@@ -56,90 +56,245 @@ const { title } = Astro.props;
 			setTheme(currentTheme === 'light' ? 'dark' : 'light');
 		};
 	</script>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function applyTheme(theme) {
+      document.documentElement.classList.toggle("dark-mode", theme === "dark");
+      localStorage.setItem("theme", theme);
+    }
+
+    // Initialisation du thème
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    } else {
+      applyTheme(prefersDarkMode.matches ? "dark" : "light");
+    }
+
+    // Écoute des changements de préférence système
+    prefersDarkMode.addEventListener("change", (e) => {
+      applyTheme(e.matches ? "dark" : "light");
+    });
+
+    // Gestion du bouton de bascule
+    const toggleThemeButton = document.querySelector(".dark-mode-toggle");
+    if (toggleThemeButton) {
+      toggleThemeButton.addEventListener("click", () => {
+        const currentTheme = document.documentElement.classList.contains("dark-mode") ? "dark" : "light";
+        applyTheme(currentTheme === "dark" ? "light" : "dark");
+      });
+    }
+  });
+</script>
+
+  <style is:global>
+   :root {
+  /* Couleurs principales */
+  --color-bg-primary: #f9f9f9;
+  --color-bg-secondary: #ffffff;
+  --color-bg-dark: #2c2c2c;
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+  --color-accent: #007aff;
+  --color-accent-hover: #005bb5;
+  --color-border-color: #e0e0e0;
+
+  /* Ombres */
+  --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+:root.dark-mode {
+  --color-bg-primary: #121212;
+  --color-bg-secondary: #1e1e1e;
+  --color-bg-dark: #000000;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #b0b0b0;
+  --color-accent: #007aff;
+  --color-accent-hover: #005bb5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
+  background-color: var(--color-bg-dark);
+  box-shadow: var(--shadow-soft);
+  color: var(--color-text-primary);
+}
+
+footer {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-secondary);
+  padding: 2rem;
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+p {
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+button {
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card {
+  background-color: var(--color-bg-secondary);
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  padding: 1.5rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+input,
+select {
+  border: 1px solid var(--color-border-color);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  width: 100%;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+input:focus,
+select:focus {
+  border-color: var(--color-accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+}
+
+.checkbox-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.checkbox-options input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-accent);
+  border-radius: 4px;
+  background-color: var(--color-bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.checkbox-options input[type="checkbox"]:checked {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.checkbox-options input[type="checkbox"]:checked::before {
+  content: '✔';
+  color: white;
+  font-size: 0.9rem;
+}
+
+.checkbox-options label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.dark-mode header,
+.dark-mode footer,
+.dark-mode body {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-primary);
+}
+
+.dark-mode button {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.dark-mode button:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.dark-mode .card {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.dark-mode input,
+.dark-mode select {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-color);
+}
+
+.dark-mode input:focus,
+.dark-mode select:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+}
+  </style>
 </html>
 
-<style is:global>
-  /* Styles de base pour le mode clair */
-  :root {
-    --bg-primary: #f6f6f6;
-    --bg-secondary: #ffffff;
-    --text-primary: #333;
-    --text-secondary: #666;
-    --border-color: #e0e0e0;
-    --accent-color: #4caf50;
-    --accent-color-hover: #45a049;
-  }
-
-  /* Styles pour le mode sombre */
-  :root.dark-mode {
-    --bg-primary: #121212;
-    --bg-secondary: #1e1e1e;
-    --text-primary: #ffffff;
-    --text-secondary: #b0b0b0;
-    --border-color: #444;
-    --accent-color: #81c784;
-    --accent-color-hover: #66bb6a;
-  }
-
-  /* Transition en douceur */
-  html {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-  }
-
-  /* Styles génériques adaptés au mode sombre */
-  .dark-mode main {
-    background-color: var(--bg-secondary);
-  }
-
-  .dark-mode .container {
-    background-color: var(--bg-secondary);
-    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
-  }
-
-  .dark-mode input,
-  .dark-mode select,
-  .dark-mode button {
-    background-color: #333;
-    color: #fff;
-    border-color: #555;
-  }
-
-  .dark-mode input:focus,
-  .dark-mode select:focus,
-  .dark-mode button:focus {
-    outline: 2px solid var(--accent-color);
-  }
-
-  .dark-mode .generate-button {
-    background-color: var(--accent-color);
-    color: var(--text-primary);
-  }
-
-  .dark-mode .generate-button:hover {
-    background-color: var(--accent-color-hover);
-  }
-
-  .dark-mode .strength-bars .bar {
-    background-color: #444;
-  }
-
-  .dark-mode .strength-bars .bar.weak {
-    background-color: #ff4444;
-  }
-  .dark-mode .strength-bars .bar.medium {
-    background-color: #ffbb33;
-  }
-  .dark-mode .strength-bars .bar.strong {
-    background-color: #00c851;
-  }
-  .dark-mode .strength-bars .bar.very-strong {
-    background-color: #007e33;
-  }
-</style>

@@ -1,66 +1,147 @@
-/* Reset et base */
 :root {
-    --accent: 124, 58, 237;
-    --accent-gradient: linear-gradient(
-        45deg,
-        rgb(var(--accent)),
-        #4caf50 30%,
-        white 60%
-    );
+  /* Couleurs principales */
+  --color-bg-primary: #f9f9f9;
+  --color-bg-secondary: #ffffff;
+  --color-bg-dark: #2c2c2c;
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+  --color-accent: #007aff;
+  --color-accent-hover: #005bb5;
+
+  /* Ombres */
+  --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-family: system-ui, sans-serif;
-    background: #f6f6f6;
-    background-size: 224px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 
 main {
-    flex: 1;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
-.generator-section {
-    opacity: 0;
-    display: none;
-    transition: opacity 0.3s ease-in-out;
+header {
+  background-color: var(--color-bg-dark);
+  box-shadow: var(--shadow-soft);
+  color: var(--color-text-primary);
 }
 
-.generator-section.active {
-    opacity: 1;
-    display: block;
+footer {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-secondary);
+  padding: 2rem;
+  text-align: center;
 }
 
-code {
-    font-family:
-        Menlo,
-        Monaco,
-        Lucida Console,
-        Liberation Mono,
-        DejaVu Sans Mono,
-        Bitstream Vera Sans Mono,
-        Courier New,
-        monospace;
+button {
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-@media (max-width: 768px) {
-    main {
-        padding: 1rem;
-    }
+button:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+p {
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.card {
+  background-color: var(--color-bg-secondary);
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  padding: 1.5rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+input {
+  border: 1px solid var(--color-text-secondary);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+input:focus {
+  border-color: var(--color-accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+}
+
+/* Mode sombre */
+:root.dark-mode {
+  --color-bg-primary: #121212;
+  --color-bg-secondary: #1e1e1e;
+  --color-bg-dark: #000000;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #b0b0b0;
+  --color-accent: #007aff;
+  --color-accent-hover: #005bb5;
+}
+
+.dark-mode body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+.dark-mode header,
+.dark-mode footer {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-secondary);
+}
+
+.dark-mode button {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+dark-mode button:hover {
+  background-color: var(--color-accent-hover);
 }
