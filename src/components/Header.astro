@@ -2,11 +2,15 @@
 const currentPath = Astro.url.pathname;
 import moon from '../assets/images/moon.svg';
 import sun from '../assets/images/sun.svg';
+import logo from '../assets/images/logo.webp';
 ---
 
 <header>
   <nav>
-    <a href='/' class='logo'>🔐</a>
+    <div>
+      <a href='/' class='logo'><img src={logo.src} alt='' width='40px' /></a>
+    </div>
+
     <div class='nav-links'>
       <button class='toggle-button classic' data-type='classic'
         >Mode Classique</button
