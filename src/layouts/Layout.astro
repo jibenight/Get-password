@@ -11,308 +11,321 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang='fr' class=''>
-	<head>
-		<meta charset='UTF-8' />
-		<meta
-			name='description'
-			content='Générateur de mots de passe sécurisés et mémorisables'
-		/>
-		<meta name='viewport' content='width=device-width' />
-		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-		<meta name='generator' content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<Header />
-		<slot />
-		<Footer />
-	</body>
+  <head>
+    <meta charset='UTF-8' />
+    <meta
+      name='description'
+      content='Générateur de mots de passe sécurisés et mémorisables'
+    />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+  </body>
 
-	<script is:inline>
-		// Script de gestion du mode sombre
-		const savedTheme = localStorage.getItem('theme');
-		const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+  <script is:inline>
+    // Script de gestion du mode sombre
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
 
-		function setTheme(theme) {
-			document.documentElement.classList.toggle('dark-mode', theme === 'dark');
-			localStorage.setItem('theme', theme);
-		}
-
-		// Initialisation du thème
-		if (savedTheme) {
-			setTheme(savedTheme);
-		} else {
-			setTheme(prefersDarkMode.matches ? 'dark' : 'light');
-		}
-
-		// Écouter les changements de préférence système
-		prefersDarkMode.addListener((e) => {
-			setTheme(e.matches ? 'dark' : 'light');
-		});
-
-		// Fonction globale pour basculer le thème
-		window.toggleTheme = () => {
-			const currentTheme = document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light';
-			setTheme(currentTheme === 'light' ? 'dark' : 'light');
-		};
-	</script>
-
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const savedTheme = localStorage.getItem("theme");
-    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
-
-    function applyTheme(theme) {
-      const htmlElement = document.documentElement;
-      const toggleThemeButton = document.querySelector(".dark-mode-toggle");
-
-      htmlElement.classList.toggle("dark-mode", theme === "dark");
-      localStorage.setItem("theme", theme);
-
-      // Mise à jour des icônes
-      if (toggleThemeButton) {
-        const moonIcon = toggleThemeButton.querySelector(".moon-icon");
-        const sunIcon = toggleThemeButton.querySelector(".sun-icon");
-
-        if (theme === "dark") {
-          moonIcon.style.display = "none";
-          sunIcon.style.display = "inline";
-        } else {
-          moonIcon.style.display = "inline";
-          sunIcon.style.display = "none";
-        }
-      }
+    function setTheme(theme) {
+      document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+      localStorage.setItem('theme', theme);
     }
 
     // Initialisation du thème
     if (savedTheme) {
-      applyTheme(savedTheme);
+      setTheme(savedTheme);
     } else {
-      applyTheme(prefersDarkMode.matches ? "dark" : "light");
+      setTheme(prefersDarkMode.matches ? 'dark' : 'light');
     }
 
-    // Écoute des changements de préférence système
-    prefersDarkMode.addEventListener("change", (e) => {
-      applyTheme(e.matches ? "dark" : "light");
+    // Écouter les changements de préférence système
+    prefersDarkMode.addListener(e => {
+      setTheme(e.matches ? 'dark' : 'light');
     });
 
-    // Gestion du bouton de bascule
-    const toggleThemeButton = document.querySelector(".dark-mode-toggle");
-    if (toggleThemeButton) {
-      toggleThemeButton.addEventListener("click", () => {
-        const currentTheme = document.documentElement.classList.contains("dark-mode") ? "dark" : "light";
-        applyTheme(currentTheme === "dark" ? "light" : "dark");
-      });
-    }
-  });
-</script>
+    // Fonction globale pour basculer le thème
+    window.toggleTheme = () => {
+      const currentTheme = document.documentElement.classList.contains(
+        'dark-mode'
+      )
+        ? 'dark'
+        : 'light';
+      setTheme(currentTheme === 'light' ? 'dark' : 'light');
+    };
+  </script>
 
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+
+      function applyTheme(theme) {
+        const htmlElement = document.documentElement;
+        const toggleThemeButton = document.querySelector('.dark-mode-toggle');
+
+        htmlElement.classList.toggle('dark-mode', theme === 'dark');
+        localStorage.setItem('theme', theme);
+
+        // Mise à jour des icônes
+        if (toggleThemeButton) {
+          const moonIcon = toggleThemeButton.querySelector('.moon-icon');
+          const sunIcon = toggleThemeButton.querySelector('.sun-icon');
+
+          if (theme === 'dark') {
+            moonIcon.style.display = 'none';
+            sunIcon.style.display = 'inline';
+          } else {
+            moonIcon.style.display = 'inline';
+            sunIcon.style.display = 'none';
+          }
+        }
+      }
+
+      // Initialisation du thème
+      if (savedTheme) {
+        applyTheme(savedTheme);
+      } else {
+        applyTheme(prefersDarkMode.matches ? 'dark' : 'light');
+      }
+
+      // Écoute des changements de préférence système
+      prefersDarkMode.addEventListener('change', e => {
+        applyTheme(e.matches ? 'dark' : 'light');
+      });
+
+      // Gestion du bouton de bascule
+      const toggleThemeButton = document.querySelector('.dark-mode-toggle');
+      if (toggleThemeButton) {
+        toggleThemeButton.addEventListener('click', () => {
+          const currentTheme = document.documentElement.classList.contains(
+            'dark-mode'
+          )
+            ? 'dark'
+            : 'light';
+          applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+      }
+    });
+  </script>
 
   <style is:global>
-   :root {
-  /* Couleurs principales */
-  --color-bg-primary: #f9f9f9;
-  --color-bg-secondary: #ffffff;
-  --color-bg-dark: #007aff;
-  --color-text-primary: #333333;
-  --color-text-secondary: #666666;
-  --color-accent: #007aff;
-  --color-accent-hover: #005bb5;
-  --color-border-color: #e0e0e0;
+    :root {
+      /* Couleurs principales */
+      --color-bg-primary: #f9f9f9;
+      --color-bg-secondary: #ffffff;
+      --color-bg-dark: #007aff;
+      --color-text-primary: #333333;
+      --color-text-secondary: #666666;
+      --color-accent: #007aff;
+      --color-accent-hover: #005bb5;
+      --color-border-color: #e0e0e0;
+      --color-bg-navbar: rgba(237, 237, 237, 0.9);
 
-  /* Ombres */
-  --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
+      /* Ombres */
+      --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
 
-:root.dark-mode {
-  --color-bg-primary: #121212;
-  --color-bg-secondary: #1e1e1e;
-  --color-bg-dark: #000000;
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #b0b0b0;
-  --color-accent: #007aff;
-  --color-accent-hover: #005bb5;
-}
+    :root.dark-mode {
+      --color-bg-primary: #121212;
+      --color-bg-secondary: #1e1e1e;
+      --color-bg-dark: #000000;
+      --color-text-primary: #ffffff;
+      --color-text-secondary: #b0b0b0;
+      --color-accent: #007aff;
+      --color-accent-hover: #005bb5;
+      --color-bg-navbar: rgba(50, 50, 50, 0.9);
+    }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-html {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
+    html {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: var(--color-bg-primary);
+      color: var(--color-text-primary);
+      transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+    }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--color-bg-primary);
+      color: var(--color-text-primary);
+    }
 
-main {
-  flex: 1;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
 
-header {
-  background-color: var(--color-bg-dark);
-  box-shadow: var(--shadow-soft);
-  color: var(--color-text-primary);
-}
+    /* header {
+      background-color: var(--color-bg-dark);
+      box-shadow: var(--shadow-soft);
+      color: var(--color-text-primary);
+    } */
 
-footer {
-  background-color: var(--color-bg-dark);
-  color: var(--color-text-secondary);
-  padding: 2rem;
-  text-align: center;
-}
+    footer {
+      background-color: var(--color-bg-dark);
+      color: var(--color-text-secondary);
+      padding: 2rem;
+      text-align: center;
+    }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 600;
-  color: var(--color-text-primary);
-  margin-bottom: 1rem;
-}
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 1rem;
+    }
 
-p {
-  line-height: 1.6;
-  color: var(--color-text-secondary);
-}
+    p {
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+    }
 
-button {
-  background-color: var(--color-accent);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  box-shadow: var(--shadow-soft);
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
+    button {
+      background-color: var(--color-accent);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: var(--shadow-soft);
+      cursor: pointer;
+      transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
+    }
 
-button:hover {
-  background-color: var(--color-accent-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
-}
+    button:hover {
+      background-color: var(--color-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
 
-.card {
-  background-color: var(--color-bg-secondary);
-  border-radius: 12px;
-  box-shadow: var(--shadow-soft);
-  padding: 1.5rem;
-  transition: box-shadow 0.3s ease;
-}
+    .card {
+      background-color: var(--color-bg-secondary);
+      border-radius: 12px;
+      box-shadow: var(--shadow-soft);
+      padding: 1.5rem;
+      transition: box-shadow 0.3s ease;
+    }
 
-.card:hover {
-  box-shadow: var(--shadow-hover);
-}
+    .card:hover {
+      box-shadow: var(--shadow-hover);
+    }
 
-input,
-select {
-  border: 1px solid var(--color-border-color);
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  width: 100%;
-  background-color: var(--color-bg-secondary);
-  color: var(--color-text-primary);
-}
+    input,
+    select {
+      border: 1px solid var(--color-border-color);
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      width: 100%;
+      background-color: var(--color-bg-secondary);
+      color: var(--color-text-primary);
+    }
 
-input:focus,
-select:focus {
-  border-color: var(--color-accent);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
-}
+    input:focus,
+    select:focus {
+      border-color: var(--color-accent);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+    }
 
-.checkbox-options {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
+    .checkbox-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
 
-.checkbox-options input[type="checkbox"] {
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--color-accent);
-  border-radius: 4px;
-  background-color: var(--color-bg-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
+    .checkbox-options input[type='checkbox'] {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--color-accent);
+      border-radius: 4px;
+      background-color: var(--color-bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+    }
 
-.checkbox-options input[type="checkbox"]:checked {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
-}
+    .checkbox-options input[type='checkbox']:checked {
+      background-color: var(--color-accent);
+      border-color: var(--color-accent);
+    }
 
-.checkbox-options input[type="checkbox"]:checked::before {
-  content: '✔';
-  color: white;
-  font-size: 0.9rem;
-}
+    .checkbox-options input[type='checkbox']:checked::before {
+      content: '✔';
+      color: white;
+      font-size: 0.9rem;
+    }
 
-.checkbox-options label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--color-text-primary);
-  cursor: pointer;
-}
+    .checkbox-options label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-text-primary);
+      cursor: pointer;
+    }
 
-.dark-mode header,
-.dark-mode footer,
-.dark-mode body {
-  background-color: var(--color-bg-dark);
-  color: var(--color-text-primary);
-}
+    .dark-mode footer,
+    .dark-mode body {
+      background-color: var(--color-bg-dark);
+      color: var(--color-text-primary);
+    }
 
-.dark-mode button {
-  background-color: var(--color-accent);
-  color: white;
-}
+    .dark-mode button {
+      background-color: var(--color-accent);
+      color: white;
+    }
 
-.dark-mode button:hover {
-  background-color: var(--color-accent-hover);
-}
+    .dark-mode button:hover {
+      background-color: var(--color-accent-hover);
+    }
 
-.dark-mode .card {
-  background-color: var(--color-bg-secondary);
-  color: var(--color-text-primary);
-}
+    .dark-mode .card {
+      background-color: var(--color-bg-secondary);
+      color: var(--color-text-primary);
+    }
 
-.dark-mode input,
-.dark-mode select {
-  background-color: var(--color-bg-secondary);
-  color: var(--color-text-primary);
-  border-color: var(--color-border-color);
-}
+    .dark-mode input,
+    .dark-mode select {
+      background-color: var(--color-bg-secondary);
+      color: var(--color-text-primary);
+      border-color: var(--color-border-color);
+    }
 
-.dark-mode input:focus,
-.dark-mode select:focus {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
-}
+    .dark-mode input:focus,
+    .dark-mode select:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+    }
   </style>
 </html>
-

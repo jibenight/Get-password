@@ -1,153 +1,119 @@
 ---
 const currentPath = Astro.url.pathname;
+import moon from '../assets/images/moon.svg';
+import sun from '../assets/images/sun.svg';
 ---
 
 <header>
   <nav>
-    <div class='logo'>
-      <a href='/'>
-        <span class='logo-text'>🔐 Get-password</span>
-      </a>
-    </div>
-    <div class='nav-toggle'>
-      <button class='toggle-button classic' data-type='classic'>
-        Mode Classique
-      </button>
-      <button class='toggle-button memorable active' data-type='memorable'>
-        Mode Mémorable
-      </button>
-    </div>
-    <div class='nav-theme'>
-      <button
-        class='toggle-button dark-mode-toggle'
-        onclick='toggleDarkMode()'
-        aria-label='Basculer le mode sombre'
+    <a href='/' class='logo'>🔐</a>
+    <div class='nav-links'>
+      <button class='toggle-button classic' data-type='classic'
+        >Mode Classique</button
       >
-        <span class='moon-icon'>🌙</span>
-        <span class='sun-icon'>☀️</span>
-      </button>
+      <button class='toggle-button memorable' data-type='memorable'
+        >Mode Mémorisable</button
+      >
+    </div>
+    <div
+      class='dark-mode-toggle'
+      onclick='toggleDarkMode()'
+      aria-label='Basculer le mode sombre'
+    >
+      <span class='moon-icon'>
+        <img src={moon.src} alt='' />
+      </span>
+      <span class='sun-icon'>
+        <img src={sun.src} alt='' />
+      </span>
     </div>
   </nav>
 </header>
 
 <style>
   header {
-  background: var(--color-bg-dark); /* Variable pour s'adapter au mode sombre/clair */
-  border-bottom: 1px solid var(--color-border-color);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: var(--shadow-soft);
-  transition: background-color 0.3s, box-shadow 0.3s;
-}
+    background: none;
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+  }
 
-nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo a {
-  text-decoration: none;
-  color: var(--color-text-primary); /* Adapté au thème actif */
-  font-weight: bold;
-  font-size: 1.2rem;
-  transition: color 0.3s;
-}
-
-.logo a:hover {
-  color: var(--color-text-secondary); /* Transition vers la couleur secondaire */
-}
-
-.nav-toggle {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.toggle-button {
-  padding: 0.6rem 1.2rem;
-  background-color: var(--color-bg-dark); /* Variable pour s'adapter */
-  color: var(--color-text-secondary); /* Texte secondaire */
-  border: 1px solid var(--color-border-color);
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
-
-.toggle-button:hover {
-  background-color: var(--color-accent-hover);
-  color: var(--color-text-primary); /* Texte plus visible au survol */
-}
-
-.toggle-button.active {
-  background-color: var(--color-accent);
-  color: #ffffff; /* Texte toujours clair sur un fond d'accent */
-  border-color: var(--color-accent-hover);
-}
-
-.dark-mode-toggle {
-  background: none;
-  border: none;
-  color: var(--color-text-secondary);
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.dark-mode-toggle:hover {
-  color: var(--color-accent-hover);
-}
-
-.dark-mode-toggle .moon-icon,
-.dark-mode-toggle .sun-icon {
-  font-size: 1.2rem;
-}
-
-.dark-mode-toggle .moon-icon {
-  display: inline;
-}
-
-.dark-mode-toggle .sun-icon {
-  display: none;
-}
-
-@media (max-width: 1024px) {
   nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
+    background-color: var(--color-bg-navbar);
+    max-width: 800px;
+    border-radius: 50px;
+    margin: 0 auto;
+    padding: 0.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .nav-toggle {
-    order: 3;
-    width: 100%;
-    justify-content: center;
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    text-decoration: none;
   }
 
-  .nav-theme {
-    order: 2;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-toggle {
-    flex-direction: column;
-    width: 100%;
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
   }
 
-  .toggle-button {
-    width: 100%;
-    margin-bottom: 0.5rem;
+  .nav-links button {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid var(--color-border-color);
+    background: transparent;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
-}
 
+  .nav-links button:hover {
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
+  }
+
+  .dark-mode-toggle {
+    cursor: pointer;
+  }
+
+  .dark-mode-toggle nav {
+    background-color: var(--color-bg-navbar);
+  }
+
+  .dark-mode-toggle .moon-icon img,
+  .dark-mode-toggle .sun-icon img {
+    width: 30px;
+  }
+
+  .dark-mode-toggle .moon-icon {
+    display: inline;
+  }
+
+  .dark-mode-toggle .sun-icon {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-links {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
 </style>
-
