@@ -7,68 +7,133 @@ import logo from '../assets/images/logo.webp';
 
 <header>
   <nav>
-    <div>
-      <a href='/' class='logo'><img src={logo.src} alt='' width='40px' /></a>
-    </div>
+    <div class="menu-container">
+   
+        <a href='/' class='logo'>
+        <img src={logo.src} alt='Logo' width='40px' />
+      </a>
+    
+      
+  
+        <button class="hamburger" aria-label="Ouvrir le menu">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
 
-    <div class='nav-links'>
-      <button class='toggle-button classic' data-type='classic'
-        >Mode Classique</button
-      >
-      <button class='toggle-button memorable' data-type='memorable'
-        >Mode Mémorisable</button
-      >
+      
+      
     </div>
-    <div
-      class='dark-mode-toggle'
-      onclick='toggleDarkMode()'
-      aria-label='Basculer le mode sombre'
-    >
-      <span class='moon-icon'>
-        <img src={moon.src} alt='' />
-      </span>
-      <span class='sun-icon'>
-        <img src={sun.src} alt='' />
-      </span>
+    <div class='nav-links' id="navLinks">
+      <button class='toggle-button classic' data-type='classic'>Mode Classique</button>
+      <button class='toggle-button memorable' data-type='memorable'>Mode Mémorisable</button>
+      <div
+        class='dark-mode-toggle'
+        aria-label='Basculer le mode sombre'
+      >
+        <span class='moon-icon'>
+          <img src={moon.src} alt='Moon' />
+        </span>
+        <span class='sun-icon'>
+          <img src={sun.src} alt='Sun' />
+        </span>
+      </div>
+    </div>
+    <div>
+      
     </div>
   </nav>
 </header>
 
 <style>
   header {
-    background: none;
     position: sticky;
     top: 20px;
+    background: none;
     z-index: 1000;
   }
 
   nav {
     background-color: var(--color-bg-navbar);
     max-width: 800px;
-    border-radius: 50px;
     margin: 0 auto;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1rem;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    border-radius: 10px;
+    border-radius: 50px;
   }
 
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--color-text-primary);
-    text-transform: uppercase;
-    text-decoration: none;
+  .menu-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
+
+  .logo img {
+    max-height: 50px;
+  }
+
+  .hamburger {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.hamburger .line {
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-text-primary);
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger .line:nth-child(1) {
+  top: 10px;
+}
+
+.hamburger .line:nth-child(2) {
+  top: 18px;
+}
+
+.hamburger .line:nth-child(3) {
+  top: 26px;
+}
+
+.hamburger.open .line:nth-child(1) {
+  transform: rotate(45deg);
+  top: 18px;
+}
+
+.hamburger.open .line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open .line:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 18px;
+}
+
 
   .nav-links {
     display: flex;
-    gap: 2rem;
     align-items: center;
+    gap: 1.5rem;
+    justify-content: flex-end;
+    flex: 1;
   }
 
   .nav-links button {
-    padding: 0.6rem 1.2rem;
+    padding: 0.5rem 1rem;
     font-size: 1rem;
     font-weight: 500;
     border-radius: 8px;
@@ -76,9 +141,7 @@ import logo from '../assets/images/logo.webp';
     background: transparent;
     color: var(--color-text-primary);
     cursor: pointer;
-    transition:
-      background-color 0.3s ease,
-      color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   .nav-links button:hover {
@@ -88,11 +151,9 @@ import logo from '../assets/images/logo.webp';
   }
 
   .dark-mode-toggle {
+    display: flex;
+    align-items: center;
     cursor: pointer;
-  }
-
-  .dark-mode-toggle nav {
-    background-color: var(--color-bg-navbar);
   }
 
   .dark-mode-toggle .moon-icon img,
@@ -100,24 +161,56 @@ import logo from '../assets/images/logo.webp';
     width: 30px;
   }
 
-  .dark-mode-toggle .moon-icon {
-    display: inline;
-  }
-
-  .dark-mode-toggle .sun-icon {
-    display: none;
-  }
-
-  @media (max-width: 768px) {
-    nav {
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
+  @media (min-width: 769px) {
+    .menu-container {
+      width: auto;
+      margin-right: auto;
+  
     }
 
     .nav-links {
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    header{
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+   .hamburger{
+    display: flex;
+    box-shadow: none;
+   }
+
+    .nav-links {
+      display: none;
       flex-direction: column;
+      align-items: center;
       gap: 1rem;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .nav-links.open {
+      display: flex;
     }
   }
 </style>
+
+<script>
+ document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+  }
+});
+</script>
