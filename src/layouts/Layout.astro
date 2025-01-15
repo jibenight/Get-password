@@ -120,11 +120,10 @@ const { title } = Astro.props;
       /* Couleurs principales */
       --color-bg-primary: #f9f9f9;
       --color-bg-secondary: #ffffff;
-      --color-bg-dark: #007aff;
       --color-text-primary: #333333;
       --color-text-secondary: #666666;
-      --color-accent: #007aff;
-      --color-accent-hover: #005bb5;
+      --color-accent: #728adc;
+      --color-accent-hover: #bdd5ff;
       --color-border-color: #e0e0e0;
       --color-bg-navbar: rgba(237, 237, 237, 0.9);
 
@@ -139,8 +138,8 @@ const { title } = Astro.props;
       --color-bg-dark: #000000;
       --color-text-primary: #ffffff;
       --color-text-secondary: #b0b0b0;
-      --color-accent: #007aff;
-      --color-accent-hover: #005bb5;
+      --color-accent: #728adc;
+      --color-accent-hover: #bdd5ff;
       --color-bg-navbar: rgba(50, 50, 50, 0.9);
     }
 
@@ -149,9 +148,16 @@ const { title } = Astro.props;
       padding: 0;
       box-sizing: border-box;
     }
-
+/* Enregistrer notre famille de polices personnalisée et indiquer au navigateur où la trouver. */
+    @font-face {
+      font-family: 'Varela';
+      src: url('/fonts/VarelaRound-Regular.ttf');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
     html {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-family: 'Varela', Arial, sans-serif;
       background: var(--color-bg-primary);
       color: var(--color-text-primary);
       transition:
@@ -175,12 +181,6 @@ const { title } = Astro.props;
       margin: 0 auto;
       padding: 2rem;
     }
-
-    /* header {
-      background-color: var(--color-bg-dark);
-      box-shadow: var(--shadow-soft);
-      color: var(--color-text-primary);
-    } */
 
     footer {
       background-color: var(--color-bg-dark);
@@ -207,7 +207,6 @@ const { title } = Astro.props;
 
     button {
       background-color: var(--color-accent);
-      color: white;
       border: none;
       padding: 10px 20px;
       border-radius: 8px;
@@ -304,10 +303,6 @@ const { title } = Astro.props;
     .dark-mode button {
       background-color: var(--color-accent);
       color: white;
-    }
-
-    .dark-mode button:hover {
-      background-color: var(--color-accent-hover);
     }
 
     .dark-mode .card {

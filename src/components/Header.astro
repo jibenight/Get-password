@@ -52,8 +52,7 @@ import logo from '../assets/images/logo.webp';
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    border-radius: 10px;
-    border-radius: 50px;
+    border-radius: 12px;
   }
 
   .menu-container {
@@ -114,81 +113,78 @@ import logo from '../assets/images/logo.webp';
   top: 18px;
 }
 
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.nav-links button {
+  font-family: 'Varela', Arial, sans-serif;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-links button:hover {
+  background: var(--color-accent);
+  color: white;
+}
+
+.dark-mode-toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dark-mode-toggle .moon-icon img,
+.dark-mode-toggle .sun-icon img {
+  width: 30px;
+}
+
+@media (min-width: 769px) {
+  .menu-container {
+    width: auto;
+    margin-right: auto;
+  }
 
   .nav-links {
     display: flex;
-    align-items: center;
+    flex-direction: row;
     gap: 1.5rem;
-    justify-content: flex-end;
-    flex: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  header{
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
-  .nav-links button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 8px;
-    border: 1px solid var(--color-border-color);
-    background: transparent;
-    color: var(--color-text-primary);
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  .hamburger{
+  display: flex;
+  box-shadow: none;
   }
 
-  .nav-links button:hover {
-    background: var(--color-accent);
-    color: white;
-    border-color: var(--color-accent);
-  }
-
-  .dark-mode-toggle {
-    display: flex;
+  .nav-links {
+    display: none;
+    flex-direction: column;
     align-items: center;
-    cursor: pointer;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1rem;
   }
 
-  .dark-mode-toggle .moon-icon img,
-  .dark-mode-toggle .sun-icon img {
-    width: 30px;
-  }
-
-  @media (min-width: 769px) {
-    .menu-container {
-      width: auto;
-      margin-right: auto;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-direction: row;
-      gap: 1.5rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    header{
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-
-   .hamburger{
+  .nav-links.open {
     display: flex;
-    box-shadow: none;
-   }
-
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      width: 100%;
-      margin-top: 1rem;
-    }
-
-    .nav-links.open {
-      display: flex;
-    }
   }
+}
 </style>
 
 <script>
