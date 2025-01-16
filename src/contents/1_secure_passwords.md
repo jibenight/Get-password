@@ -1,8 +1,7 @@
 ---
 title: 'La sécurité en ligne : Pourquoi et comment créer des mots de passe robustes'
-description: "Dans un monde de plus en plus connecté, la sécurité en ligne est devenue une priorité absolue. Les cyberattaques se multiplient, et les conséquences d'une faille de sécurité peuvent être catastrophiques, aussi bien pour les particuliers que pour les entreprises. Une des pierres angulaires de cette sécurité est le mot de passe. Pourtant, beaucoup de personnes continuent d'utiliser des mots de passe faibles ou répétés sur plusieurs comptes, exposant leurs données à des risques considérables.
-
-Dans cet article, nous allons explorer pourquoi les mots de passe robustes sont cruciaux, comment en créer, et quelles sont les bonnes pratiques pour les gérer efficacement."
+description: "Dans un monde de plus en plus connecté, la sécurité en ligne est devenue une priorité absolue. Les cyberattaques se multiplient, et les conséquences d'une faille de sécurité peuvent être catastrophiques, aussi bien pour les particuliers que pour les entreprises. Une des pierres angulaires de cette sécurité est le mot de passe. Pourtant, beaucoup de personnes continuent d'utiliser des mots de passe faibles ou répétés sur plusieurs comptes, exposant leurs données à des risques considérables."
+description2: 'Dans cet article, nous allons explorer pourquoi les mots de passe robustes sont cruciaux, comment en créer, et quelles sont les bonnes pratiques pour les gérer efficacement.'
 layout: '../layouts/MarkdownLayout.astro'
 ---
 

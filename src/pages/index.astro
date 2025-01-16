@@ -7,6 +7,8 @@ import MemorablePasswordGenerator from '../components/MemorablePasswordGenerator
 // import PasswordManagerGuide from '../components/PasswordManagerGuide.astro';
 
 import { Content as PasswordInfo } from '../contents/1_secure_passwords.md';
+import { Content as MemorizationTips } from '../contents/2_memorization_tips.md';
+import { Content as PasswordManagerGuide } from '../contents/3_password_manager_guide.md';
 ---
 
 <Layout title='Générateur de Mots de Passe'>
@@ -28,13 +30,11 @@ import { Content as PasswordInfo } from '../contents/1_secure_passwords.md';
         sur de vraies phrases faciles à mémoriser.
       </h3>
     </div>
-    <article>
-      <PasswordInfo />
-      <!-- <div class='article-separator'></div>
-      <MemorizationTips />
-      <div class='article-separator'></div>
-      <PasswordManagerGuide /> -->
-    </article>
+    <PasswordInfo />
+
+    <MemorizationTips />
+
+    <PasswordManagerGuide />
   </main>
 </Layout>
 
