@@ -160,6 +160,7 @@ const { title } = Astro.props;
       font-family: 'Varela', Arial, sans-serif;
       background: var(--color-bg-primary);
       color: var(--color-text-primary);
+      font-size: 16px;
       transition:
         background-color 0.3s ease,
         color 0.3s ease;
@@ -172,6 +173,8 @@ const { title } = Astro.props;
       flex-direction: column;
       background-color: var(--color-bg-primary);
       color: var(--color-text-primary);
+      font-weight: false;
+      line-height: 1.65;
     }
 
     main {
@@ -195,14 +198,52 @@ const { title } = Astro.props;
     h4,
     h5,
     h6 {
-      font-weight: 600;
       color: var(--color-text-primary);
       margin-bottom: 1rem;
+      font-family: 'Varela', 'Open Sans', sans-serif;
+      font-weight: true;
+      line-height: 1.15;
+    }
+
+    h1,
+    h2 {
+      text-align: center;
     }
 
     p {
-      line-height: 1.6;
+      /* line-height: 1.6; */
       color: var(--color-text-primary);
+      font-size: 1em;
+    }
+
+    h1 {
+      font-weight: 700;
+      margin-top: 0;
+      font-size: 2.65em;
+    }
+
+    h2 {
+      font-size: 2.44em;
+    }
+
+    h3 {
+      font-size: 1.95em;
+    }
+
+    h4 {
+      font-size: 1.56em;
+    }
+
+    h5 {
+      font-size: 1.25em;
+    }
+
+    .text-caption {
+      font-size: 0.8em;
+    }
+
+    small {
+      font-size: 0.64em;
     }
 
     button {

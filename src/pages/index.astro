@@ -1,11 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import localImage from '../assets/images/woman-computer.webp';
 import PasswordGenerator from '../components/PasswordGenerator.astro';
 import MemorablePasswordGenerator from '../components/MemorablePasswordGenerator.astro';
-// import PasswordInfo from '../components/PasswordInfo.astro';
-// import MemorizationTips from '../components/MemorizationTips.astro';
-// import PasswordManagerGuide from '../components/PasswordManagerGuide.astro';
-
 import { Content as PasswordInfo } from '../contents/1_secure_passwords.md';
 import { Content as MemorizationTips } from '../contents/2_memorization_tips.md';
 import { Content as PasswordManagerGuide } from '../contents/3_password_manager_guide.md';
@@ -25,15 +23,14 @@ import { Content as PasswordManagerGuide } from '../contents/3_password_manager_
       <h1>
         Créez des phrases inoubliables, simples à retenir et ultra-sécurisées !
       </h1>
-      <h3>
+      <h4>
         Générez en quelques clics des mots de passe fluides et sécurisés, basés
         sur de vraies phrases faciles à mémoriser.
-      </h3>
+      </h4>
     </div>
+    <Image src={localImage} alt='jeune femme blonde devant un ordinateur.' />
     <PasswordInfo />
-
     <MemorizationTips />
-
     <PasswordManagerGuide />
   </main>
 </Layout>
@@ -52,7 +49,15 @@ import { Content as PasswordManagerGuide } from '../contents/3_password_manager_
     text-align: center;
   }
 
-  .main-title h1 {
+  img {
+    margin: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    object-fit: cover;
+  }
+
+  /* .main-title h1 {
     margin-bottom: 1.5rem;
     line-height: 1.2;
     font-size: 2.5rem;
@@ -61,7 +66,7 @@ import { Content as PasswordManagerGuide } from '../contents/3_password_manager_
   .main-title h3 {
     margin-bottom: 1rem;
     line-height: 1.4;
-  }
+  } */
 
   .generators-container {
     width: 100%;
