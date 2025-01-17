@@ -1,14 +1,13 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import localImage from '../assets/images/woman-computer.webp';
-import PasswordGenerator from '../components/PasswordGenerator.astro';
-import MemorablePasswordGenerator from '../components/MemorablePasswordGenerator.astro';
-import { Content as PasswordInfo } from '../contents/1_secure_passwords.md';
-import { Content as MemorizationTips } from '../contents/2_memorization_tips.md';
-import { Content as PasswordManagerGuide } from '../contents/3_password_manager_guide.md';
+import localImage from '../../assets/images/woman-computer.webp';
+import PasswordGenerator from '../../components/PasswordGenerator.astro';
+import MemorablePasswordGenerator from '../../components/MemorablePasswordGenerator.astro';
+import { Content as PasswordInfo } from '../../contents/1_secure_passwords.md';
+import { Content as MemorizationTips } from '../../contents/2_memorization_tips.md';
+import { Content as PasswordManagerGuide } from '../../contents/3_password_manager_guide.md';
 ---
-
 <Layout title='Générateur de Mots de Passe'>
   <main>
     <div class='generators-container'>

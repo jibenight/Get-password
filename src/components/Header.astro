@@ -3,6 +3,10 @@ const currentPath = Astro.url.pathname;
 import moon from '../assets/images/moon.svg';
 import sun from '../assets/images/sun.svg';
 import logo from '../assets/images/logo.webp';
+
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <header>
@@ -18,8 +22,8 @@ import logo from '../assets/images/logo.webp';
       </button>
     </div>
     <div class='nav-links' id="navLinks">
-      <button class='toggle-button classic' data-type='classic'>Mode Classique</button>
-      <button class='toggle-button memorable' data-type='memorable'>Mode Mémorisable</button>
+      <button class='toggle-button classic' data-type='classic'> {t('nav.regular')}</button>
+      <button class='toggle-button memorable' data-type='memorable'>{t('nav.memory')}</button>
       <div
         class='dark-mode-toggle'
         aria-label='Basculer le mode sombre'

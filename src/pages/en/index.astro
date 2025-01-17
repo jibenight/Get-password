@@ -1,0 +1,163 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import localImage from '../../assets/images/woman-computer.webp';
+import PasswordGenerator from '../../components/PasswordGenerator.astro';
+import MemorablePasswordGenerator from '../../components/MemorablePasswordGenerator.astro';
+import { Content as PasswordInfo } from '../../contents/1_secure_passwords.md';
+import { Content as MemorizationTips } from '../../contents/2_memorization_tips.md';
+import { Content as PasswordManagerGuide } from '../../contents/3_password_manager_guide.md';
+---
+<Layout title='Générateur de Mots de Passe'>
+  <main>
+    <div class='generators-container'>
+      <div id='classicGenerator' class='generator-section'>
+        <PasswordGenerator client:load />
+      </div>
+      <div id='memorableGenerator' class='generator-section active'>
+        <MemorablePasswordGenerator client:load />
+      </div>
+    </div>
+    <div class='main-title'>
+      <h1>
+        Créez des phrases inoubliables, simples à retenir et ultra-sécurisées !
+      </h1>
+      <h4>
+        Générez en quelques clics des mots de passe fluides et sécurisés, basés
+        sur de vraies phrases faciles à mémoriser.
+      </h4>
+    </div>
+    <!-- <Image src={localImage} alt='jeune femme blonde devant un ordinateur.' /> -->
+    <PasswordInfo />
+    <MemorizationTips />
+    <PasswordManagerGuide />
+  </main>
+</Layout>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+  .main-title {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  img {
+    margin: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    object-fit: cover;
+  }
+
+  /* .main-title h1 {
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    font-size: 2.5rem;
+  }
+
+  .main-title h3 {
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  } */
+
+  .generators-container {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .info-container {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .generator-section {
+    display: none;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .generator-section.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .article-separator {
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+    margin: 2rem 0;
+  }
+
+  .dark-mode .article-separator {
+    border-bottom-color: #444;
+  }
+</style>
+
+<script>
+  // Gestion du toggle des générateurs
+  const handleToggle = (event) => {
+    const button = event.currentTarget;
+    const type = button.dataset.type;
+
+    // Sélectionner tous les éléments nécessaires
+    const buttons = document.querySelectorAll('.toggle-button');
+    const classicSection = document.getElementById('classicGenerator');
+    const memorableSection = document.getElementById('memorableGenerator');
+
+    if (!classicSection || !memorableSection) {
+      console.error("Les sections 'classicGenerator' ou 'memorableGenerator' sont introuvables dans le DOM.");
+      return;
+    }
+
+    // Mettre à jour les boutons
+    buttons.forEach((btn) => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    // Mettre à jour les sections
+    if (type === 'classic') {
+      classicSection.classList.add('active');
+      memorableSection.classList.remove('active');
+    } else if (type === 'memorable') {
+      memorableSection.classList.add('active');
+      classicSection.classList.remove('active');
+    } else {
+      console.error(`Type de générateur non reconnu : ${type}`);
+    }
+  };
+
+  // Fonction d'initialisation
+  const init = () => {
+    // Initialisation des boutons de toggle
+    const buttons = document.querySelectorAll('.toggle-button');
+
+    if (!buttons.length) {
+      console.warn("Aucun bouton avec la classe '.toggle-button' n'a été trouvé.");
+      return;
+    }
+
+    buttons.forEach((button) => {
+      button.removeEventListener('click', handleToggle); // Empêcher les doublons d'événements
+      button.addEventListener('click', handleToggle);
+    });
+  };
+
+  // Exécuter l'initialisation au chargement de la page
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Réinitialiser lors de la navigation Astro
+  document.addEventListener('astro:page-load', init);
+  document.addEventListener('astro:after-swap', init);
+</script>
+
+
