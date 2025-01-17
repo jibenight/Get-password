@@ -8,6 +8,7 @@ import { Content as PasswordInfo } from '../../contents/1_secure_passwords.md';
 import { Content as MemorizationTips } from '../../contents/2_memorization_tips.md';
 import { Content as PasswordManagerGuide } from '../../contents/3_password_manager_guide.md';
 ---
+
 <Layout title='Générateur de Mots de Passe'>
   <main>
     <div class='generators-container'>
@@ -36,6 +37,7 @@ import { Content as PasswordManagerGuide } from '../../contents/3_password_manag
 
 <style>
   main {
+    max-width: 1024px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,38 +45,24 @@ import { Content as PasswordManagerGuide } from '../../contents/3_password_manag
     padding: 1.5rem;
   }
   .main-title {
-    width: 100%;
-    max-width: 800px;
     text-align: center;
   }
 
   img {
-    margin: auto;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
   }
-
-  /* .main-title h1 {
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-    font-size: 2.5rem;
-  }
-
-  .main-title h3 {
-    margin-bottom: 1rem;
-    line-height: 1.4;
-  } */
 
   .generators-container {
     width: 100%;
-    max-width: 800px;
   }
 
   .info-container {
     width: 100%;
-    max-width: 800px;
   }
 
   .generator-section {
@@ -102,7 +90,7 @@ import { Content as PasswordManagerGuide } from '../../contents/3_password_manag
 
 <script>
   // Gestion du toggle des générateurs
-  const handleToggle = (event) => {
+  const handleToggle = event => {
     const button = event.currentTarget;
     const type = button.dataset.type;
 
@@ -112,12 +100,14 @@ import { Content as PasswordManagerGuide } from '../../contents/3_password_manag
     const memorableSection = document.getElementById('memorableGenerator');
 
     if (!classicSection || !memorableSection) {
-      console.error("Les sections 'classicGenerator' ou 'memorableGenerator' sont introuvables dans le DOM.");
+      console.error(
+        "Les sections 'classicGenerator' ou 'memorableGenerator' sont introuvables dans le DOM."
+      );
       return;
     }
 
     // Mettre à jour les boutons
-    buttons.forEach((btn) => btn.classList.remove('active'));
+    buttons.forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
 
     // Mettre à jour les sections
@@ -138,11 +128,13 @@ import { Content as PasswordManagerGuide } from '../../contents/3_password_manag
     const buttons = document.querySelectorAll('.toggle-button');
 
     if (!buttons.length) {
-      console.warn("Aucun bouton avec la classe '.toggle-button' n'a été trouvé.");
+      console.warn(
+        "Aucun bouton avec la classe '.toggle-button' n'a été trouvé."
+      );
       return;
     }
 
-    buttons.forEach((button) => {
+    buttons.forEach(button => {
       button.removeEventListener('click', handleToggle); // Empêcher les doublons d'événements
       button.addEventListener('click', handleToggle);
     });
@@ -159,5 +151,3 @@ import { Content as PasswordManagerGuide } from '../../contents/3_password_manag
   document.addEventListener('astro:page-load', init);
   document.addEventListener('astro:after-swap', init);
 </script>
-
-

@@ -11,23 +11,24 @@ const t = useTranslations(lang);
 
 <header>
   <nav>
-    <div class="menu-container">
+    <div class='menu-container'>
       <a href='/' class='logo'>
         <img src={logo.src} alt='Logo' width='40px' />
       </a>
-      <button class="hamburger" aria-label="Ouvrir le menu">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
+      <button class='hamburger' aria-label='Ouvrir le menu'>
+        <span class='line'></span>
+        <span class='line'></span>
+        <span class='line'></span>
       </button>
     </div>
-    <div class='nav-links' id="navLinks">
-      <button class='toggle-button classic' data-type='classic'> {t('nav.regular')}</button>
-      <button class='toggle-button memorable' data-type='memorable'>{t('nav.memory')}</button>
-      <div
-        class='dark-mode-toggle'
-        aria-label='Basculer le mode sombre'
+    <div class='nav-links' id='navLinks'>
+      <button class='toggle-button classic' data-type='classic'>
+        {t('nav.regular')}</button
       >
+      <button class='toggle-button memorable' data-type='memorable'
+        >{t('nav.memory')}</button
+      >
+      <div class='dark-mode-toggle' aria-label='Basculer le mode sombre'>
         <span class='moon-icon'>
           <img src={moon.src} alt='Moon' />
         </span>
@@ -49,7 +50,7 @@ const t = useTranslations(lang);
 
   nav {
     background-color: var(--color-bg-navbar);
-    max-width: 800px;
+    max-width: 1024px;
     margin: 0 auto;
     padding: 0.5rem 1rem;
     display: flex;
@@ -70,137 +71,139 @@ const t = useTranslations(lang);
   }
 
   .hamburger {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  position: relative;
-}
-
-.hamburger .line {
-  position: absolute;
-  width: 25px;
-  height: 3px;
-  background-color: var(--color-text-primary);
-  border-radius: 4px;
-  transition: all 0.3s ease-in-out;
-  margin-top: 3px;
-}
-
-.hamburger .line:nth-child(1) {
-  top: 10px;
-}
-
-.hamburger .line:nth-child(2) {
-  top: 18px;
-}
-
-.hamburger .line:nth-child(3) {
-  top: 26px;
-}
-
-.hamburger.open .line:nth-child(1) {
-  transform: rotate(45deg);
-  top: 18px;
-}
-
-.hamburger.open .line:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.open .line:nth-child(3) {
-  transform: rotate(-45deg);
-  top: 18px;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  justify-content: flex-end;
-  flex: 1;
-}
-
-.nav-links button {
-  font-family: 'Varela', Arial, sans-serif;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 8px;
-  color: var(--color-text-primary);
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.nav-links button:hover {
-  background: var(--color-accent);
-  color: white;
-}
-
-.dark-mode-toggle {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.dark-mode-toggle .moon-icon img,
-.dark-mode-toggle .sun-icon img {
-  width: 30px;
-}
-
-@media (min-width: 769px) {
-  .menu-container {
-    width: auto;
-    margin-right: auto;
-  }
-
-  .nav-links {
-    display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  header{
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-
-  .hamburger{
-  display: flex;
-  box-shadow: none;
-  }
-
-  .nav-links {
     display: none;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 1rem;
-    width: 100%;
-    margin-top: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    position: relative;
   }
 
-  .nav-links.open {
-    display: flex;
+  .hamburger .line {
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text-primary);
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+    margin-top: 3px;
   }
-}
+
+  .hamburger .line:nth-child(1) {
+    top: 10px;
+  }
+
+  .hamburger .line:nth-child(2) {
+    top: 18px;
+  }
+
+  .hamburger .line:nth-child(3) {
+    top: 26px;
+  }
+
+  .hamburger.open .line:nth-child(1) {
+    transform: rotate(45deg);
+    top: 18px;
+  }
+
+  .hamburger.open .line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.open .line:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 18px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    justify-content: flex-end;
+    flex: 1;
+  }
+
+  .nav-links button {
+    font-family: 'Varela', Arial, sans-serif;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .nav-links button:hover {
+    background: var(--color-accent);
+    color: white;
+  }
+
+  .dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .dark-mode-toggle .moon-icon img,
+  .dark-mode-toggle .sun-icon img {
+    width: 30px;
+  }
+
+  @media (min-width: 769px) {
+    .menu-container {
+      width: auto;
+      margin-right: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    header {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .hamburger {
+      display: flex;
+      box-shadow: none;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .nav-links.open {
+      display: flex;
+    }
+  }
 </style>
 
 <script>
- document.addEventListener('DOMContentLoaded', () => {
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
 
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navLinks.classList.toggle('open');
-    });
-  }
-});
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open');
+      });
+    }
+  });
 </script>

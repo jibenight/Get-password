@@ -8,6 +8,7 @@ import { Content as PasswordInfo } from '../../contents/1_secure_passwords.md';
 import { Content as MemorizationTips } from '../../contents/2_memorization_tips.md';
 import { Content as PasswordManagerGuide } from '../../contents/3_password_manager_guide.md';
 ---
+
 <Layout title='Générateur de Mots de Passe'>
   <main>
     <div class='generators-container'>
@@ -27,7 +28,7 @@ import { Content as PasswordManagerGuide } from '../../contents/3_password_manag
         sur de vraies phrases faciles à mémoriser.
       </h4>
     </div>
-    <!-- <Image src={localImage} alt='jeune femme blonde devant un ordinateur.' /> -->
+    <Image src={localImage} alt='jeune femme blonde devant un ordinateur.' />
     <PasswordInfo />
     <MemorizationTips />
     <PasswordManagerGuide />
@@ -36,6 +37,7 @@ import { Content as PasswordManagerGuide } from '../../contents/3_password_manag
 
 <style>
   main {
+    max-width: 1024px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,38 +45,24 @@ import { Content as PasswordManagerGuide } from '../../contents/3_password_manag
     padding: 1.5rem;
   }
   .main-title {
-    width: 100%;
-    max-width: 800px;
     text-align: center;
   }
 
   img {
-    margin: auto;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
   }
-
-  /* .main-title h1 {
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-    font-size: 2.5rem;
-  }
-
-  .main-title h3 {
-    margin-bottom: 1rem;
-    line-height: 1.4;
-  } */
 
   .generators-container {
     width: 100%;
-    max-width: 800px;
   }
 
   .info-container {
     width: 100%;
-    max-width: 800px;
   }
 
   .generator-section {
