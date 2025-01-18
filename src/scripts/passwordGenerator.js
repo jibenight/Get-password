@@ -212,9 +212,6 @@ function initPasswordGenerator() {
         console.error('Erreur de génération de mot de passe');
         continue;
       }
-
-      console.log('Mot de passe généré:', result.password); // Debug
-
       const passwordElement = createPasswordElement(
         result.password,
         result.strength
@@ -222,7 +219,6 @@ function initPasswordGenerator() {
       passwordList.appendChild(passwordElement);
       passwords.push(result);
     }
-
     // Mettre à jour l'indicateur de force avec le premier mot de passe
     if (passwords.length > 0) {
       updateStrengthMeter(passwords[0].password);
@@ -254,9 +250,6 @@ function initPasswordGenerator() {
       element.addEventListener('change', generatePasswords);
     }
   });
-
-  // SUPPRESSION de la génération initiale
-  // generatePasswords(); // Cette ligne est commentée/supprimée
 }
 
 // Export de la fonction d'initialisation
