@@ -1,7 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-
+import '../styles/background-animate.css';
 import { getLangFromUrl } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 
@@ -22,7 +22,7 @@ const { title } = Astro.props;
     />
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    
+
     <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
   </head>
@@ -129,7 +129,7 @@ const { title } = Astro.props;
       --color-accent: #728adc;
       --color-accent-hover: #bdd5ff;
       --color-border-color: #e0e0e0;
-      --color-bg-navbar: rgba(237, 237, 237, 0.9);
+      --color-bg-navbar: rgba(237, 237, 237, 0.7);
 
       /* Ombres */
       --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.1);
