@@ -1,5 +1,5 @@
 // Importation des mots depuis le fichier JSON
-import wordData from '../assets/words/fr/words.json';
+import wordData from '../assets/words/fr/words-compact.json';
 const words = wordData.mots || [];
 
 // Fonction utilitaire pour générer un nombre aléatoire entre deux valeurs
