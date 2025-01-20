@@ -43,6 +43,7 @@ export const ui = {
     'memorable.title': 'Générateur de Phrases de Passe',
     'memorable.count': 'Nombre de phrases',
     'memorable.type': 'Type de phrase',
+    'memorable.number': 'Nombre de mots',
     'memorable.type.simple': 'Simple (Le [adjectif] [nom] [verbe])',
     'memorable.type.descriptive': 'Descriptive (Le [nom] [adjectif] [verbe])',
     'memorable.options.numbers': 'Ajouter des chiffres (ex: 42)',
