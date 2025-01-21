@@ -1,46 +1,162 @@
-// Importation des mots depuis le fichier JSON
-import wordData from '../assets/words/fr/words-compact.json';
-const words = wordData.mots || [];
+/**
+ * Charge dynamiquement les mots pour une langue spécifique.
+ * @param {string} lang - La langue sélectionnée (ex : "fr", "en").
+ * @returns {Promise<Array>} - Une promesse qui retourne les mots en JSON.
+ */
+async function loadWordsForLanguage(lang) {
+  const url = `/words/${lang}/words-compact.json`;
+  console.log(`Chargement du fichier JSON pour : ${url}`);
 
-// Fonction utilitaire pour générer un nombre aléatoire entre deux valeurs
-const getRandomInt = (min, max) => {
-  return Math.floor(Math.random() * (max - min)) + min;
-};
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(
+        `Erreur lors du chargement du fichier des mots pour la langue : ${lang}`
+      );
+    }
+    const data = await response.json();
+    if (!data.words || !Array.isArray(data.words)) {
+      throw new Error(
+        `Format invalide du fichier JSON pour la langue : ${lang}`
+      );
+    }
+    return data.words; // Retourne directement le tableau des mots
+  } catch (error) {
+    console.error(
+      `Impossible de charger les mots pour la langue ${lang}:`,
+      error
+    );
+    return [];
+  }
+}
 
-// Génère un mot de passe composé d'un certain nombre de mots aléatoires
-const generateRandomPassword = (
-  wordCount,
-  includeNumbers = false,
-  includeSymbols = false
-) => {
-  if (!Array.isArray(words) || words.length === 0) {
-    throw new Error('La liste des mots est vide ou invalide.');
+/**
+ * Génère une phrase de passe mémorable.
+ * @param {Array} words - La liste des mots disponibles.
+ * @param {number} count - Nombre de mots à inclure dans la phrase.
+ * @param {boolean} includeNumbers - Inclut des chiffres dans la phrase.
+ * @param {boolean} includeSymbols - Inclut des symboles dans la phrase.
+ * @returns {string} - La phrase de passe générée.
+ */
+function generateMemorablePassword(
+  words,
+  count,
+  includeNumbers,
+  includeSymbols
+) {
+  if (!words || words.length === 0) {
+    console.error('La liste des mots est vide ou invalide.');
+    return 'Erreur : pas de mots disponibles.';
   }
 
-  // Sélectionner des mots aléatoires et capitaliser la première lettre
-  let password = Array.from({ length: wordCount }, () => {
-    const randomIndex = getRandomInt(0, words.length);
-    const word = words[randomIndex];
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  });
+  let password = '';
+  for (let i = 0; i < count; i++) {
+    const randomIndex = Math.floor(Math.random() * words.length);
+    let word = words[randomIndex];
 
-  // Ajouter des nombres si nécessaire
+    // Mettre en majuscule la première lettre de chaque mot
+    word = word.charAt(0).toUpperCase() + word.slice(1);
+
+    password += word;
+  }
+
   if (includeNumbers) {
-    password.push(getRandomInt(0, 100).toString());
+    const randomNumber = Math.floor(Math.random() * 100); // Ajoute un nombre aléatoire à deux chiffres
+    password += randomNumber;
   }
 
-  // Ajouter des symboles si nécessaire
   if (includeSymbols) {
-    const symbols = '!@#$%^&*()_+[]{}|;:,.<>?';
-    const randomSymbol = symbols[getRandomInt(0, symbols.length)];
-    password.push(randomSymbol);
+    const symbols = ['!', '@', '#', '$', '%', '&', '*'];
+    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+    password += randomSymbol;
   }
 
-  return password.join(''); // Retirer les espaces entre les mots
-};
+  return password;
+}
 
-// Fonction pour créer un élément de mot de passe avec design original
-const createPasswordElement = password => {
+/**
+ * Évalue la force du mot de passe.
+ * @param {string} password - Le mot de passe à évaluer.
+ * @returns {number} - Une valeur de 1 à 4 représentant la force.
+ */
+function calculatePasswordStrength(password) {
+  let strength = 0;
+
+  if (password.length >= 16) strength++;
+  if (/[A-Z]/.test(password)) strength++;
+  if (/[0-9]/.test(password)) strength++;
+  if (/[!@#$%^&*]/.test(password)) strength++;
+
+  return Math.min(strength, 4);
+}
+
+/**
+ * Met à jour la barre de force du mot de passe.
+ * @param {string} password - Le mot de passe à évaluer.
+ */
+function updateStrengthMeter(password) {
+  const strengthBars = document.querySelectorAll('.bars');
+  const maxBars = 4; // Limitez le nombre de barres utilisées
+  const strength = calculatePasswordStrength(password);
+  console.log('Force calculée :', strength);
+
+  strengthBars.forEach((bar, index) => {
+    if (index < maxBars) {
+      // Appliquer uniquement sur les 4 premières barres
+      bar.className = 'bars';
+      if (index < strength) {
+        if (strength === 1) bar.classList.add('weak');
+        else if (strength === 2) bar.classList.add('medium');
+        else if (strength === 3) bar.classList.add('strong');
+        else if (strength === 4) bar.classList.add('very-strong');
+      }
+    } else {
+      bar.className = 'bar'; // Réinitialiser les barres supplémentaires
+    }
+  });
+}
+
+/**
+ * Copie un texte dans le presse-papiers.
+ * @param {string} text - Le texte à copier.
+ */
+function copyToClipboard(input) {
+  navigator.clipboard
+    .writeText(input.value)
+    .then(() => {
+      const passwordItem = input.closest('.password-item');
+      passwordItem.classList.add('copied');
+
+      // Retirer la classe après l'animation
+      setTimeout(() => {
+        passwordItem.classList.remove('copied');
+      }, 500);
+
+      // Notification
+      const notification = document.createElement('div');
+      notification.className = 'copy-notification';
+      notification.textContent = 'Mot de passe copié !';
+      document.body.appendChild(notification);
+
+      // Supprimer la notification après 2 secondes
+      setTimeout(() => {
+        notification.classList.add('fade-out');
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 300);
+      }, 2000);
+    })
+    .catch(err => {
+      console.error('Erreur lors de la copie dans le presse-papiers :', err);
+    });
+}
+
+/**
+ * Crée un élément de mot de passe avec le style attendu.
+ * @param {string} password - Le mot de passe généré.
+ * @returns {HTMLElement} - Un élément DOM contenant le mot de passe.
+ */
+function createPasswordElement(password) {
   console.log("Création d'un élément de mot de passe:", password); // Debug
 
   const passwordItem = document.createElement('div');
@@ -49,7 +165,7 @@ const createPasswordElement = password => {
   const input = document.createElement('input');
   input.type = 'text';
   input.className = 'password-input';
-  input.value = password;
+  input.value = password; // Initialiser avec le mot de passe
   input.readOnly = true;
 
   const copyButton = document.createElement('button');
@@ -65,57 +181,80 @@ const createPasswordElement = password => {
   passwordItem.appendChild(copyButton);
 
   return passwordItem;
-};
+}
 
-// Initialisation du générateur de mots de passe mémorables
-export const initMemorablePasswordGenerator = () => {
+/**
+ * Met à jour les labels des inputs avec leurs valeurs actuelles.
+ */
+function updateInputLabels() {
+  const countLabel = document.getElementById('memorableCountValue');
+  const numberWordLabel = document.getElementById('numberWordValue');
+  const countInput = document.getElementById('memorablePasswordCount');
+  const numberWordInput = document.getElementById('numberWordCount');
+
+  if (countLabel && countInput) {
+    countLabel.textContent = countInput.value;
+  }
+
+  if (numberWordLabel && numberWordInput) {
+    numberWordLabel.textContent = numberWordInput.value;
+  }
+}
+
+/**
+ * Initialise le générateur de phrases de passe mémorables.
+ * @param {string} lang - La langue sélectionnée.
+ */
+export async function initMemorablePasswordGenerator(lang) {
+  const words = await loadWordsForLanguage(lang);
+
+  if (!words || words.length === 0) {
+    console.error(
+      'Impossible d’initialiser le générateur à cause d’une liste de mots manquante ou vide.'
+    );
+    return;
+  }
+
+  console.log('Mots chargés pour la langue :', words);
+
   const generateButton = document.getElementById('generateMemorableButton');
   const passwordList = document.getElementById('memorablePasswordList');
-  const wordCountInput = document.getElementById('numberWordCount');
-  const memorableCountInput = document.getElementById('memorablePasswordCount');
-  const includeNumbersInput = document.getElementById('includeNumbers');
-  const includeSymbolsInput = document.getElementById('includeSymbols');
-  const wordCountValue = document.getElementById('numberWordValue');
-  const memorableCountValue = document.getElementById('memorableCountValue');
+  const countInput = document.getElementById('memorablePasswordCount');
+  const numberWordInput = document.getElementById('numberWordCount');
+  const includeNumbersCheckbox = document.getElementById('includeNumbers');
+  const includeSymbolsCheckbox = document.getElementById('includeSymbols');
+  const strengthMeter = document.getElementById('strengthMeters');
 
-  // Mettre à jour la valeur des entrées lors du déplacement de la barre
-  wordCountInput.addEventListener('input', () => {
-    wordCountValue.textContent = wordCountInput.value;
-  });
+  countInput.addEventListener('input', updateInputLabels);
+  numberWordInput.addEventListener('input', updateInputLabels);
 
-  memorableCountInput.addEventListener('input', () => {
-    memorableCountValue.textContent = memorableCountInput.value;
-  });
+  generateButton.addEventListener('click', () => {
+    const count = parseInt(countInput.value, 10);
+    const numberOfWords = parseInt(numberWordInput.value, 10);
+    const includeNumbers = includeNumbersCheckbox.checked;
+    const includeSymbols = includeSymbolsCheckbox.checked;
 
-  const updatePasswords = () => {
-    const wordCount = parseInt(wordCountInput.value, 10);
-    const memorableCount = parseInt(memorableCountInput.value, 10);
-    const includeNumbers = includeNumbersInput.checked;
-    const includeSymbols = includeSymbolsInput.checked;
-
-    // Générer plusieurs mots de passe
     passwordList.innerHTML = '';
-    for (let i = 0; i < memorableCount; i++) {
-      const password = generateRandomPassword(
-        wordCount,
+
+    for (let i = 0; i < count; i++) {
+      const password = generateMemorablePassword(
+        words, // Utiliser directement le tableau des mots
+        numberOfWords,
         includeNumbers,
         includeSymbols
       );
       const passwordElement = createPasswordElement(password);
       passwordList.appendChild(passwordElement);
+
+      if (i === 0) {
+        updateStrengthMeter(password); // Met à jour la barre de force avec le premier mot de passe
+      }
     }
-  };
-
-  generateButton.addEventListener('click', updatePasswords);
-
-  console.log('Générateur de mots de passe initialisé.');
-};
-
-// Fonction pour copier dans le presse-papier
-const copyToClipboard = input => {
-  input.select();
-  input.setSelectionRange(0, 99999); // Pour mobile
-  navigator.clipboard.writeText(input.value).then(() => {
-    alert('Mot de passe copié dans le presse-papier!');
   });
-};
+  updateInputLabels(); // Initialiser les labels avec les valeurs actuelles
+
+  console.log(
+    'Générateur de phrases de passe mémorables initialisé pour la langue :',
+    lang
+  );
+}
