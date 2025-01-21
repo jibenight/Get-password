@@ -77,12 +77,18 @@ function generateMemorablePassword(
 /**
  * Évalue la force du mot de passe.
  * @param {string} password - Le mot de passe à évaluer.
+ * @param {number} wordCount - Nombre de mots dans le mot de passe.
  * @returns {number} - Une valeur de 1 à 4 représentant la force.
  */
-function calculatePasswordStrength(password) {
+function calculatePasswordStrength(password, wordCount) {
   let strength = 0;
 
-  if (password.length >= 16) strength++;
+  // Si un seul mot, force limitée à médium
+  if (wordCount === 1) {
+    return 2; // Medium
+  }
+
+  if (password.length >= 16) strength++; // Longueur supplémentaire
   if (/[A-Z]/.test(password)) strength++;
   if (/[0-9]/.test(password)) strength++;
   if (/[!@#$%^&*]/.test(password)) strength++;
@@ -93,11 +99,12 @@ function calculatePasswordStrength(password) {
 /**
  * Met à jour la barre de force du mot de passe.
  * @param {string} password - Le mot de passe à évaluer.
+ * @param {number} wordCount - Nombre de mots dans le mot de passe.
  */
-function updateStrengthMeter(password) {
+function updateStrengthMeter(password, wordCount) {
   const strengthBars = document.querySelectorAll('.bars');
   const maxBars = 4; // Limitez le nombre de barres utilisées
-  const strength = calculatePasswordStrength(password);
+  const strength = calculatePasswordStrength(password, wordCount);
   console.log('Force calculée :', strength);
 
   strengthBars.forEach((bar, index) => {
@@ -111,7 +118,7 @@ function updateStrengthMeter(password) {
         else if (strength === 4) bar.classList.add('very-strong');
       }
     } else {
-      bar.className = 'bar'; // Réinitialiser les barres supplémentaires
+      bar.className = 'bars'; // Réinitialiser les barres supplémentaires
     }
   });
 }
@@ -247,7 +254,7 @@ export async function initMemorablePasswordGenerator(lang) {
       passwordList.appendChild(passwordElement);
 
       if (i === 0) {
-        updateStrengthMeter(password); // Met à jour la barre de force avec le premier mot de passe
+        updateStrengthMeter(password, numberOfWords); // Met à jour la barre de force avec le premier mot de passe
       }
     }
   });
