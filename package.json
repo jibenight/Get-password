@@ -1,5 +1,5 @@
 {
-  "name": "tasty-trappist",
+  "name": "get-password",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "astro": "^5.1.8"
+  },
+  "dependencies": {
+    "vite": "^6.0.11"
   }
 }
