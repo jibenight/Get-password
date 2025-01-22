@@ -1,7 +1,7 @@
 ---
 title: 'Comment facilement mémoriser une suite de mots'
 description: "La mémorisation de suites de mots est une compétence utile dans de nombreux contextes, que ce soit pour apprendre des langues, se souvenir d'une phrase-clé ou même renforcer la sécurité de ses mots de passe. Pourtant, cela peut sembler difficile, surtout lorsque la suite n'a pas de lien logique. Heureusement, plusieurs techniques éprouvées peuvent vous aider à mémoriser efficacement ces informations."
-layout: '../layouts/MarkdownLayout.astro'
+layout: '../../layouts/MarkdownLayout.astro'
 ---
 
 ### 1. Créez une histoire autour des mots

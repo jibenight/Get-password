@@ -1,24 +1,24 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import '../styles/index.css';
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/index.css';
 
 //image
 import { Image } from 'astro:assets';
-import localImage from '../assets/images/woman-computer.webp';
+import localImage from '../../assets/images/woman-computer.webp';
 
 //password generator
-import PasswordGenerator from '../components/PasswordGenerator.astro';
-import MemorablePasswordGenerator from '../components/MemorablePasswordGenerator.astro';
+import PasswordGenerator from '../../components/PasswordGenerator.astro';
+import MemorablePasswordGenerator from '../../components/MemorablePasswordGenerator.astro';
 
 //translate
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 // content md
-import { Content as PasswordInfo } from '../contents/en/secure_passwords.md';
-import { Content as MemorizationTips } from '../contents/en/memorization_tips.md';
-import { Content as PasswordManagerGuide } from '../contents/en/password_manager_guide.md';
+import { Content as PasswordInfo } from '../../contents/fr/secure_passwords.md';
+import { Content as MemorizationTips } from '../../contents/fr/memorization_tips.md';
+import { Content as PasswordManagerGuide } from '../../contents/fr/password_manager_guide.md';
 ---
 
 <Layout title='Générateur de Mots de Passe'>
@@ -49,5 +49,5 @@ import { Content as PasswordManagerGuide } from '../contents/en/password_manager
 </Layout>
 
 <script>
-  import('../scripts/index.js');
+  import('../../scripts/index.js');
 </script>

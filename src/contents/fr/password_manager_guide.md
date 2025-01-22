@@ -3,7 +3,7 @@ title: 'Pourquoi utiliser un logiciel qui regroupe tous vos mots de passe et que
 description: "Dans un monde où la plupart de nos activités se déroulent en ligne, la sécurité numérique est devenue un enjeu majeur. Qu'il s'agisse de consulter votre compte bancaire, de vous connecter à vos réseaux sociaux ou de gérer vos différents services en ligne, la création et la gestion de mots de passe solides sont indispensables pour protéger vos données personnelles. Pourtant, beaucoup d'utilisateurs continuent d'employer des mots de passe simples et les réutilisent sur plusieurs sites, ce qui augmente les risques de piratage."
 
 description2: "Pour pallier ce problème, l'utilisation d'un logiciel spécialisé dans la gestion et la centralisation de vos mots de passe (souvent appelé « gestionnaire de mots de passe ») se révèle être la solution idéale. Découvrez dans cet article les multiples avantages de recourir à une telle solution, ainsi qu'un aperçu des gestionnaires les plus connus, avec leurs points forts et leurs inconvénients."
-layout: '../layouts/MarkdownLayout.astro'
+layout: '../../layouts/MarkdownLayout.astro'
 ---
 
 ### 1. Sécurité renforcée
