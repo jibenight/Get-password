@@ -1,9 +1,21 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import '../../styles/index.css';
+
+//image
 import { Image } from 'astro:assets';
 import localImage from '../../assets/images/woman-computer.webp';
+
+//password generator
 import PasswordGenerator from '../../components/PasswordGenerator.astro';
 import MemorablePasswordGenerator from '../../components/MemorablePasswordGenerator.astro';
+
+//translate
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// content md
 import { Content as PasswordInfo } from '../../contents/1_secure_passwords.md';
 import { Content as MemorizationTips } from '../../contents/2_memorization_tips.md';
 import { Content as PasswordManagerGuide } from '../../contents/3_password_manager_guide.md';
@@ -19,74 +31,22 @@ import { Content as PasswordManagerGuide } from '../../contents/3_password_manag
         <MemorablePasswordGenerator client:load />
       </div>
     </div>
-    <div class='main-title'>
-      <h1>
-        Créez des phrases inoubliables, simples à retenir et ultra-sécurisées !
-      </h1>
-      <h4>
-        Générez en quelques clics des mots de passe fluides et sécurisés, basés
-        sur de vraies phrases faciles à mémoriser.
-      </h4>
+    <div class='hero-section'>
+      <div class='main-title'>
+        <h1>
+          {t('title.h1')}
+        </h1>
+        <h4>
+          {t('title.h4')}
+        </h4>
+      </div>
+      <Image src={localImage} alt='jeune femme blonde devant un ordinateur.' />
     </div>
-    <Image src={localImage} alt='jeune femme blonde devant un ordinateur.' />
     <PasswordInfo />
     <MemorizationTips />
     <PasswordManagerGuide />
   </main>
 </Layout>
-
-<style>
-  main {
-    max-width: 1024px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    padding: 1.5rem;
-  }
-  .main-title {
-    text-align: center;
-  }
-
-  img {
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
-
-  .generators-container {
-    width: 100%;
-  }
-
-  .info-container {
-    width: 100%;
-  }
-
-  .generator-section {
-    display: none;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .generator-section.active {
-    display: block;
-    opacity: 1;
-  }
-
-  .article-separator {
-    width: 100%;
-    border-bottom: 1px solid #e0e0e0;
-    margin: 2rem 0;
-  }
-
-  .dark-mode .article-separator {
-    border-bottom-color: #444;
-  }
-</style>
 
 <script>
   import('../../scripts/index.js');

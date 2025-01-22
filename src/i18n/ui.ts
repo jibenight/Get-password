@@ -24,6 +24,10 @@ export const ui = {
     'password.options.symbols': 'Symbols (!@#$%^&*)',
     'password.strength': 'Password strength',
     'password.generate': 'Generate',
+    'title.h1':
+      'Create unforgettable passwords, easy to remember and ultra-secure!',
+    'title.h4':
+      'Generate smooth and secure passwords in just a few clicks, based on real words that are easy to remember.',
     'footer.title': 'Get-password',
     'footer.description': 'Secure and memorable password generator',
     'footer.links': 'Useful Links',
