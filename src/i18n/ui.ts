@@ -7,6 +7,7 @@ export const defaultLang = 'en';
 
 export const ui = {
   en: {
+    'title.site': 'Password generator',
     'nav.regular': 'Classic Mode',
     'nav.memory': 'Memorable Mode',
     'memorable.title': 'Easy-to-Remember Word Generator',
@@ -40,6 +41,7 @@ export const ui = {
     'footer.rights': 'All rights reserved.',
   },
   fr: {
+    'title.site': 'Générateur de Mots de Passe',
     'nav.regular': 'Mode Classique',
     'nav.memory': 'Mode Mémorisable',
     'memorable.title': 'Générateur de mots facile à mémoriser',
@@ -72,5 +74,39 @@ export const ui = {
     'footer.no_storage': 'Aucune donnée stockée',
     'footer.open_source': 'Open Source',
     'footer.rights': 'Tous droits réservés.',
+  },
+  es: {
+    'title.site': 'Generador de contraseñas',
+    'nav.regular': 'Modo clásico',
+    'nav.memory': 'Modo memorable',
+    'memorable.title': 'Generador de palabras fáciles de recordar',
+    'memorable.count': 'Número de contraseñas',
+    'memorable.number': 'Número de palabras',
+    'memorable.options.numbers': 'Agregar números (p. ej., 42)',
+    'memorable.options.symbols': 'Agregar símbolos (p. ej., @#)',
+    'memorable.generate': 'Generar contraseñas',
+    'password.title': 'Generador de contraseñas',
+    'password.count': 'Número de contraseñas',
+    'password.length': 'Longitud',
+    'password.options.uppercase': 'Mayúsculas (A-Z)',
+    'password.options.lowercase': 'Minúsculas (a-z)',
+    'password.options.numbers': 'Números (0-9)',
+    'password.options.symbols': 'Símbolos (!@#$%^&*)',
+    'password.strength': 'Fortaleza de la contraseña',
+    'password.generate': 'Generar',
+    'title.h1':
+      '¡Crea contraseñas inolvidables, fáciles de recordar y ultra seguras!',
+    'title.h4':
+      'Genera contraseñas seguras y fluidas en solo unos clics, basadas en palabras reales fáciles de recordar.',
+    'footer.title': 'Get-password',
+    'footer.description': 'Generador de contraseñas seguro y memorable',
+    'footer.links': 'Enlaces útiles',
+    'footer.home': 'Inicio',
+    'footer.legal': 'Avisos legales',
+    'footer.security': 'Seguridad',
+    'footer.local_generation': 'Generación local',
+    'footer.no_storage': 'Sin datos almacenados',
+    'footer.open_source': 'Código abierto',
+    'footer.rights': 'Todos los derechos reservados.',
   },
 } as const;
