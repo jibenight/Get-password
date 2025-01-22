@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/index.css';
+
+//image
+import { Image } from 'astro:assets';
+import localImage from '../assets/images/woman-computer.webp';
+
+//password generator
+import PasswordGenerator from '../components/PasswordGenerator.astro';
+import MemorablePasswordGenerator from '../components/MemorablePasswordGenerator.astro';
+
+//translate
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// content md
+import { Content as PasswordInfo } from '../contents/1_secure_passwords.md';
+import { Content as MemorizationTips } from '../contents/2_memorization_tips.md';
+import { Content as PasswordManagerGuide } from '../contents/3_password_manager_guide.md';
+---
+
+<Layout title='Générateur de Mots de Passe'>
+  <main>
+    <div class='generators-container'>
+      <div id='classicGenerator' class='generator-section'>
+        <PasswordGenerator client:load />
+      </div>
+      <div id='memorableGenerator' class='generator-section active'>
+        <MemorablePasswordGenerator client:load />
+      </div>
+    </div>
+    <div class='hero-section'>
+      <div class='main-title'>
+        <h1>
+          {t('title.h1')}
+        </h1>
+        <h4>
+          {t('title.h4')}
+        </h4>
+      </div>
+      <Image src={localImage} alt='jeune femme blonde devant un ordinateur.' />
+    </div>
+    <PasswordInfo />
+    <MemorizationTips />
+    <PasswordManagerGuide />
+  </main>
+</Layout>
+
+<script>
+  import('../scripts/index.js');
+</script>

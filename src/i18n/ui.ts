@@ -7,13 +7,11 @@ export const defaultLang = 'fr';
 
 export const ui = {
   en: {
-    'nav.regular': 'Classique',
-    'nav.memory': 'Mémorisable',
-    'memorable.title': 'Memorable Passphrase Generator',
-    'memorable.count': 'Number of phrases',
-    'memorable.type': 'Phrase type',
-    'memorable.type.simple': 'Simple (The [adjective] [noun] [verb])',
-    'memorable.type.descriptive': 'Descriptive (The [noun] [adjective] [verb])',
+    'nav.regular': 'Classic Mode',
+    'nav.memory': 'Memorable Mode',
+    'memorable.title': 'Easy-to-Remember Word Generator',
+    'memorable.count': 'Number of passwords',
+    'memorable.number': 'Number of words',
     'memorable.options.numbers': 'Add numbers (e.g., 42)',
     'memorable.options.symbols': 'Add symbols (e.g., @#$)',
     'memorable.generate': 'Generate',
@@ -40,12 +38,9 @@ export const ui = {
   fr: {
     'nav.regular': 'Mode Classique',
     'nav.memory': 'Mode Mémorisable',
-    'memorable.title': 'Générateur de Phrases de Passe',
-    'memorable.count': 'Nombre de phrases',
-    'memorable.type': 'Type de phrase',
+    'memorable.title': 'Générateur de mots facile à mémoriser',
+    'memorable.count': 'Nombre de mots de passe',
     'memorable.number': 'Nombre de mots',
-    'memorable.type.simple': 'Simple (Le [adjectif] [nom] [verbe])',
-    'memorable.type.descriptive': 'Descriptive (Le [nom] [adjectif] [verbe])',
     'memorable.options.numbers': 'Ajouter des chiffres (ex: 42)',
     'memorable.options.symbols': 'Ajouter des symboles (ex: @#$)',
     'memorable.generate': 'Générer',
@@ -58,6 +53,10 @@ export const ui = {
     'password.options.symbols': 'Symboles (!@#$%^&*)',
     'password.strength': 'Force du mot de passe',
     'password.generate': 'Générer',
+    'title.h1':
+      'Créez des mots de passe inoubliables, simples à retenir et ultra-sécurisés !',
+    'title.h4':
+      'Générez en quelques clics des mots de passe fluides et sûrs, basés sur de vrais mots faciles à mémoriser.',
     'footer.title': 'Get-password',
     'footer.description':
       'Générateur de mots de passe sécurisés et mémorisables',
