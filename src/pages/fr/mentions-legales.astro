@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout title='Mentions Légales - Générateur de Mots de Passe'>
@@ -9,17 +9,17 @@ import Layout from '../layouts/Layout.astro';
     <section>
       <h2>1. Informations légales</h2>
       <p>Ce site est édité à titre personnel.</p>
-      <p>Il s'agit d'un projet open-source hébergé sur GitHub.</p>
+      <p>Directeur de la publication et technique : Nguyen Jean</p>
     </section>
 
     <section>
       <h2>2. Hébergement</h2>
       <p>Ce site est hébergé par :</p>
       <p>
-        GitHub Pages<br />
-        88 Colin P Kelly Jr St<br />
-        San Francisco, CA 94107<br />
-        United States
+        o2switch<br />
+        Chemin des Pardiaux<br />
+        63000 Clermont-Ferrand<br />
+        France
       </p>
     </section>
 
@@ -28,7 +28,7 @@ import Layout from '../layouts/Layout.astro';
       <p>
         L'ensemble du contenu de ce site est mis à disposition sous licence MIT.
       </p>
-      <p>Le code source est disponible librement sur GitHub.</p>
+      <p>Le code source est disponible librement sur GitHub : <a href="https://github.com/jibenight/Get-password" target="_blank">https://github.com/jibenight/Get-password</a></p>
       <p>Vous êtes libre de :</p>
       <ul>
         <li>Utiliser le générateur de mots de passe</li>
@@ -64,8 +64,7 @@ import Layout from '../layouts/Layout.astro';
       <h2>6. Contact</h2>
       <p>Pour toute question concernant ce site, vous pouvez :</p>
       <ul>
-        <li>Ouvrir une issue sur GitHub</li>
-        <li>Envoyer un email à : [votre-email]</li>
+        <li>Envoyer un email à : contact@get-password.com</li>
       </ul>
     </section>
 
@@ -86,13 +85,13 @@ import Layout from '../layouts/Layout.astro';
     max-width: 800px;
     margin: 2rem auto;
     padding: 2rem;
-    background: white;
+    background: var(--color-bg-secondary);
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-soft);
   }
 
   h1 {
-    color: #2c3e50;
+    color: var(--color-text-primary);
     text-align: center;
     margin-bottom: 2rem;
     font-size: 2.5rem;
@@ -103,17 +102,17 @@ import Layout from '../layouts/Layout.astro';
   }
 
   h2 {
-    color: #34495e;
+    color: var(--color-text-primary);
     margin-bottom: 1rem;
     font-size: 1.5rem;
-    border-bottom: 2px solid #4caf50;
+    border-bottom: 2px solid var(--color-accent);
     padding-bottom: 0.5rem;
   }
 
   p {
     margin-bottom: 1rem;
     line-height: 1.6;
-    color: #444;
+    color: var(--color-text-secondary);
   }
 
   ul {
@@ -125,7 +124,7 @@ import Layout from '../layouts/Layout.astro';
   li {
     margin-bottom: 0.5rem;
     line-height: 1.6;
-    color: #444;
+    color: var(--color-text-secondary);
   }
 
   .back-link {
@@ -134,14 +133,14 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .back-link a {
-    color: #4caf50;
+    color: var(--color-accent);
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
   }
 
   .back-link a:hover {
-    color: #45a049;
+    color: var(--color-accent-hover);
     text-decoration: underline;
   }
 

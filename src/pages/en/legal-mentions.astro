@@ -1,0 +1,184 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title='Legal Notice - Password Generator'>
+  <main class='legal-container'>
+    <h1>Legal Notice</h1>
+
+    <section>
+      <h2>1. Legal Information</h2>
+      <p>This website is managed on a personal basis.</p>
+      <p>Publication and technical director: Nguyen Jean</p>
+    </section>
+
+    <section>
+      <h2>2. Hosting</h2>
+      <p>This website is hosted by:</p>
+      <p>
+        o2switch<br />
+        Chemin des Pardiaux<br />
+        63000 Clermont-Ferrand<br />
+        France
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Intellectual Property</h2>
+      <p>
+        All the content on this site is available under the MIT license.
+      </p>
+      <p>The source code is freely available on GitHub: <a href="https://github.com/jibenight/Get-password" target="_blank">https://github.com/jibenight/Get-password</a></p>
+      <p>You are free to:</p>
+      <ul>
+        <li>Use the password generator</li>
+        <li>Copy and modify the source code</li>
+        <li>Use it for commercial purposes</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Personal Data Protection</h2>
+      <p>This website does not collect any personal data.</p>
+      <p>
+        Passwords are generated locally in your browser and are never sent to a server.
+      </p>
+      <p>No cookies are used.</p>
+    </section>
+
+    <section>
+      <h2>5. Limitation of Liability</h2>
+      <p>
+        The passwords generated are for indicative purposes only. While we strive to generate secure passwords, we cannot guarantee their absolute level of security.
+      </p>
+      <p>
+        Users are solely responsible for the use of the passwords generated.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Contact</h2>
+      <p>If you have any questions regarding this website, you can:</p>
+      <ul>
+        <li>Send an email to: contact@get-password.com</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Governing Law</h2>
+      <p>This legal notice is subject to French law.</p>
+      <p>In the event of a dispute, only French courts will have jurisdiction.</p>
+    </section>
+
+    <div class='back-link'>
+      <a href='/'>Back to the homepage</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  :root {
+    /* Primary Colors */
+    --color-bg-primary: #f9f9f9;
+    --color-bg-secondary: #ffffff;
+    --color-text-primary: #333333;
+    --color-text-secondary: #666666;
+    --color-accent: #728adc;
+    --color-accent-hover: #bdd5ff;
+    --color-border-color: #e0e0e0;
+    --color-bg-navbar: rgba(237, 237, 237, 0.7);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  :root.dark-mode {
+    --color-bg-primary: #121212;
+    --color-bg-secondary: #1e1e1e;
+    --color-bg-dark: #000000;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #b0b0b0;
+    --color-accent: #728adc;
+    --color-accent-hover: #bdd5ff;
+    --color-bg-navbar: rgba(50, 50, 50, 0.9);
+  }
+
+  .legal-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  h1 {
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .back-link a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

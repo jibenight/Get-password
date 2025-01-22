@@ -1,5 +1,4 @@
 ---
-const currentYear = new Date().getFullYear();
 import logo from '../assets/images/logo.webp';
 
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
@@ -18,7 +17,7 @@ const t = useTranslations(lang);
       <h3>{t('footer.links')}</h3>
       <ul>
         <li><a href='/'>{t('footer.home')}</a></li>
-        <li><a href='/mentions-legales'>{t('footer.legal')}</a></li>
+        <li><a href={t('footer.legal.link')}>{t('footer.legal')}</a></li>
       </ul>
     </div>
 
@@ -27,14 +26,14 @@ const t = useTranslations(lang);
       <ul>
         <li>{t('footer.local_generation')}</li>
         <li>{t('footer.no_storage')}</li>
-        <li>{t('footer.open_source')}</li>
+        <li><a href="https://github.com/jibenight/Get-password">{t('footer.open_source')}</a></li>
       </ul>
     </div>
   </div>
 
   <div class='footer-bottom'>
     <img src={logo.src} alt='' width='80px' />
-    <p>&copy; {currentYear} Get-password. {t('footer.rights')}</p>
+    <p>&copy; 2025 Get-password. {t('footer.rights')}</p>
   </div>
 </footer>
 
