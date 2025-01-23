@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import moon from '../assets/images/moon.svg';
 import sun from '../assets/images/sun.svg';
-import logo from '../assets/images/logo.webp';
+import logo from '../assets/images/logo-60.webp';
 // import LanguagePicker from '../components/LanguagePicker.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
@@ -53,6 +53,11 @@ const t = useTranslations(lang);
     /* padding: 1.5rem; */
   }
 
+  /* header img {
+    width: 60px;
+    height: 60px;
+  } */
+
   nav {
     background-color: var(--color-bg-navbar);
     margin: 0 auto;
@@ -68,10 +73,6 @@ const t = useTranslations(lang);
     display: flex;
     justify-content: space-between;
     width: 100%;
-  }
-
-  .logo img {
-    height: 50px;
   }
 
   .hamburger {
@@ -152,6 +153,7 @@ const t = useTranslations(lang);
     display: flex;
     align-items: center;
     cursor: pointer;
+    margin-top: 8px;
   }
 
   .dark-mode-toggle .moon-icon img,

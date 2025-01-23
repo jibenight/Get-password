@@ -1,6 +1,6 @@
 ---
-import logo from '../assets/images/logo.webp';
-
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo-60.webp';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -36,7 +36,7 @@ const t = useTranslations(lang);
   </div>
 
   <div class='footer-bottom'>
-    <img src={logo.src} alt='' width='80px' />
+    <Image src={logo} alt='logo gray locker' />
     <p>&copy; 2025 Get-password. {t('footer.rights')}</p>
   </div>
 </footer>
@@ -99,6 +99,9 @@ const t = useTranslations(lang);
     margin-top: 1rem;
     font-size: 0.8rem;
     color: var(--color-text-secondary);
+  }
+
+  .footer-bottom img {
   }
 
   @media (max-width: 768px) {

@@ -22,7 +22,7 @@ main {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-img {
+.hero-section img {
   width: 100%;
   border-radius: 0 0 12px 12px;
   height: auto;
@@ -61,4 +61,11 @@ img {
 
 .dark-mode .article-separator {
   border-bottom-color: #444;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
