@@ -2,7 +2,7 @@
 import moon from '../assets/images/moon.svg';
 import sun from '../assets/images/sun.svg';
 import logo from '../assets/images/logo.webp';
-
+// import LanguagePicker from '../components/LanguagePicker.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -27,6 +27,7 @@ const t = useTranslations(lang);
       <button class='toggle-button memorable' data-type='memorable'
         >{t('nav.memory')}</button
       >
+      <!-- <LanguagePicker /> -->
       <div class='dark-mode-toggle' aria-label='Basculer le mode sombre'>
         <span class='moon-icon'>
           <img src={moon.src} alt='Moon' />
@@ -48,7 +49,7 @@ const t = useTranslations(lang);
     width: 100%;
     max-width: 1024px;
     margin: 0 auto;
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
   }
 
   nav {

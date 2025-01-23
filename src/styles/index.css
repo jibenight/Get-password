@@ -4,7 +4,7 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  padding: 1.5rem;
+  /* padding: 1.5rem; */
 }
 .main-title {
   padding: 2rem;
