@@ -230,7 +230,6 @@ export async function initMemorablePasswordGenerator(lang) {
   const numberWordInput = document.getElementById('numberWordCount');
   const includeNumbersCheckbox = document.getElementById('includeNumbers');
   const includeSymbolsCheckbox = document.getElementById('includeSymbols');
-  const strengthMeter = document.getElementById('strengthMeters');
 
   countInput.addEventListener('input', updateInputLabels);
   numberWordInput.addEventListener('input', updateInputLabels);

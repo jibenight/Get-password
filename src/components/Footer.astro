@@ -17,7 +17,7 @@ const t = useTranslations(lang);
       <h3>{t('footer.links')}</h3>
       <ul>
         <li><a href='/'>{t('footer.home')}</a></li>
-        <li><a href={t('footer.legal.link')}>{t('footer.legal')}</a></li>
+        <li><a href={t('footer.href')}>{t('footer.legal')}</a></li>
       </ul>
     </div>
 
@@ -26,7 +26,11 @@ const t = useTranslations(lang);
       <ul>
         <li>{t('footer.local_generation')}</li>
         <li>{t('footer.no_storage')}</li>
-        <li><a href="https://github.com/jibenight/Get-password">{t('footer.open_source')}</a></li>
+        <li>
+          <a href='https://github.com/jibenight/Get-password'
+            >{t('footer.open_source')}</a
+          >
+        </li>
       </ul>
     </div>
   </div>

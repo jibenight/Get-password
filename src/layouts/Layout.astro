@@ -36,19 +36,16 @@ const { title } = Astro.props;
     const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
 
     function setTheme(theme) {
-      document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+      const isDarkMode = theme === 'dark';
+      document.documentElement.classList.toggle('dark-mode', isDarkMode);
       localStorage.setItem('theme', theme);
     }
 
-    // Initialisation du thème
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      setTheme(prefersDarkMode.matches ? 'dark' : 'light');
-    }
+    // Initialisation du thème au chargement
+    setTheme(savedTheme || (prefersDarkMode.matches ? 'dark' : 'light'));
 
-    // Écouter les changements de préférence système
-    prefersDarkMode.addListener(e => {
+    // Écoute les changements de préférences système
+    prefersDarkMode.addEventListener('change', e => {
       setTheme(e.matches ? 'dark' : 'light');
     });
 
@@ -59,7 +56,7 @@ const { title } = Astro.props;
       )
         ? 'dark'
         : 'light';
-      setTheme(currentTheme === 'light' ? 'dark' : 'light');
+      setTheme(currentTheme === 'dark' ? 'light' : 'dark');
     };
   </script>
 
@@ -68,25 +65,21 @@ const { title } = Astro.props;
       const savedTheme = localStorage.getItem('theme');
       const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
 
-      function applyTheme(theme) {
-        const htmlElement = document.documentElement;
-        const toggleThemeButton = document.querySelector('.dark-mode-toggle');
+      const htmlElement = document.documentElement;
+      const toggleThemeButton = document.querySelector('.dark-mode-toggle');
 
+      // Fonction pour appliquer un thème
+      function applyTheme(theme) {
         htmlElement.classList.toggle('dark-mode', theme === 'dark');
         localStorage.setItem('theme', theme);
 
-        // Mise à jour des icônes
-        if (toggleThemeButton) {
-          const moonIcon = toggleThemeButton.querySelector('.moon-icon');
-          const sunIcon = toggleThemeButton.querySelector('.sun-icon');
+        // Mise à jour des icônes du bouton de bascule
+        const moonIcon = toggleThemeButton?.querySelector('.moon-icon');
+        const sunIcon = toggleThemeButton?.querySelector('.sun-icon');
 
-          if (theme === 'dark') {
-            moonIcon.style.display = 'none';
-            sunIcon.style.display = 'inline';
-          } else {
-            moonIcon.style.display = 'inline';
-            sunIcon.style.display = 'none';
-          }
+        if (moonIcon && sunIcon) {
+          moonIcon.style.display = theme === 'dark' ? 'none' : 'inline';
+          sunIcon.style.display = theme === 'dark' ? 'inline' : 'none';
         }
       }
 
@@ -97,18 +90,15 @@ const { title } = Astro.props;
         applyTheme(prefersDarkMode.matches ? 'dark' : 'light');
       }
 
-      // Écoute des changements de préférence système
+      // Écoute des changements dans les préférences système
       prefersDarkMode.addEventListener('change', e => {
         applyTheme(e.matches ? 'dark' : 'light');
       });
 
-      // Gestion du bouton de bascule
-      const toggleThemeButton = document.querySelector('.dark-mode-toggle');
+      // Gestion du clic sur le bouton de bascule
       if (toggleThemeButton) {
         toggleThemeButton.addEventListener('click', () => {
-          const currentTheme = document.documentElement.classList.contains(
-            'dark-mode'
-          )
+          const currentTheme = htmlElement.classList.contains('dark-mode')
             ? 'dark'
             : 'light';
           applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
@@ -177,6 +167,9 @@ const { title } = Astro.props;
       color: var(--color-text-primary);
       font-weight: false;
       line-height: 1.65;
+      transition:
+        background-color 0.3s,
+        color 0.3s;
     }
 
     main {

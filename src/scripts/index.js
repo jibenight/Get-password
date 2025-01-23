@@ -23,7 +23,7 @@ function handleToggle(event) {
 }
 
 // Fonction d'initialisation
-function init() {
+export function init() {
   // Initialisation des boutons de toggle
   const buttons = document.querySelectorAll('.toggle-button');
   buttons.forEach(button => {

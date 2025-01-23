@@ -25,10 +25,10 @@ import { Content as PasswordManagerGuide } from '../../contents/fr/password_mana
   <main>
     <div class='generators-container'>
       <div id='classicGenerator' class='generator-section'>
-        <PasswordGenerator client:load />
+        <PasswordGenerator />
       </div>
       <div id='memorableGenerator' class='generator-section active'>
-        <MemorablePasswordGenerator client:load />
+        <MemorablePasswordGenerator />
       </div>
     </div>
     <div class='hero-section'>
@@ -49,5 +49,6 @@ import { Content as PasswordManagerGuide } from '../../contents/fr/password_mana
 </Layout>
 
 <script>
-  import('../../scripts/index.js');
+  import { init } from '../../scripts/index.js';
+  init();
 </script>
