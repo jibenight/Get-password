@@ -50,13 +50,9 @@ const t = useTranslations(lang);
     width: 100%;
     max-width: 1024px;
     margin: 0 auto;
+    justify-content: center;
     /* padding: 1.5rem; */
   }
-
-  /* header img {
-    width: 60px;
-    height: 60px;
-  } */
 
   nav {
     background-color: var(--color-bg-navbar);
@@ -176,8 +172,8 @@ const t = useTranslations(lang);
 
   @media (max-width: 768px) {
     header {
-      margin-left: 10px;
-      margin-right: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
     }
 
     .hamburger {
@@ -196,6 +192,10 @@ const t = useTranslations(lang);
 
     .nav-links.open {
       display: flex;
+    }
+    header img {
+      width: 40px;
+      height: 40px;
     }
   }
 </style>
