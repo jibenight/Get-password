@@ -15,6 +15,10 @@ main {
   text-align: center;
 }
 
+.main-title p {
+  font-size: 1.56rem;
+}
+
 .hero-section {
   max-width: 1024px;
   background-color: var(--color-bg-secondary);

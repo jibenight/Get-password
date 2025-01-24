@@ -122,6 +122,24 @@ const { title } = Astro.props;
       /* Ombres */
       --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.1);
       --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.2);
+
+      font-size: 16px; /* Base pour écrans normaux */
+
+      @media (max-width: 1200px) {
+        font-size: 15px;
+      }
+
+      @media (max-width: 992px) {
+        font-size: 14px;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 13px;
+      }
+
+      @media (max-width: 576px) {
+        font-size: 12px;
+      }
     }
 
     :root.dark-mode {
@@ -202,37 +220,37 @@ const { title } = Astro.props;
     p {
       /* line-height: 1.6; */
       color: var(--color-text-primary);
-      font-size: 1em;
+      font-size: 1rem;
     }
 
     h1 {
       font-weight: 700;
       margin-top: 0;
-      font-size: 2.65em;
+      font-size: 2.65rem;
     }
 
     h2 {
-      font-size: 2.44em;
+      font-size: 2.44rem;
     }
 
     h3 {
-      font-size: 1.95em;
+      font-size: 1.95rem;
     }
 
     h4 {
-      font-size: 1.56em;
+      font-size: 1.56rem;
     }
 
     h5 {
-      font-size: 1.25em;
+      font-size: 1.25rem;
     }
 
     .text-caption {
-      font-size: 0.8em;
+      font-size: 0.8rem;
     }
 
     small {
-      font-size: 0.64em;
+      font-size: 0.64rem;
     }
 
     button {
