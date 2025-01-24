@@ -4,7 +4,7 @@ const { frontmatter } = Astro.props;
 ---
 
 <article class='info-container'>
-  <h1>{frontmatter.title}</h1>
+  <h2>{frontmatter.title}</h2>
   <p>{frontmatter.description}</p>
   {frontmatter.description2 && <p>{frontmatter.description2}</p>}
   <section>
