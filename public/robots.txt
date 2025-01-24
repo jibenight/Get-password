@@ -1,0 +1,8 @@
+# robots.txt for your Astro website
+
+# Allow all bots to access everything
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://get-passsword.com/sitemap-index.xml
