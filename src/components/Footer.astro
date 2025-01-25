@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import logo from '../assets/images/logo-60.webp';
+import logo from '../assets/images/logo.svg';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -102,6 +102,8 @@ const t = useTranslations(lang);
   }
 
   .footer-bottom img {
+    width: 60px;
+    height: 60px;
   }
 
   @media (max-width: 768px) {
