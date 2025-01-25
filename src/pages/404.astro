@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+//translate
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={t('title.site')}>
+  <main>
+    <div>
+      <h1>404 - Cette page s'est perdue</h1>
+      <p>
+        On dirait que cette page a pris un chemin que nous ne connaissons pas.
+      </p>
+      <p>
+        Pas de panique ! <a href='/'>Revenez à la maison</a> ou explorez le site
+        autrement.
+      </p>
+      <p>Besoin d'aide ? Nous sommes là pour vous.</p>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    height: 80vh;
+  }
+</style>
