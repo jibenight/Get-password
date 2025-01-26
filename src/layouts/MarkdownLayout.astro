@@ -30,7 +30,7 @@ const { frontmatter } = Astro.props;
 
   .info-container h3 {
     margin-top: 2rem;
-    border-bottom: 2px solid #2a2a2a;
+    border-bottom: 5px solid var(--color-accent);
     padding-bottom: 0.5rem;
   }
 
@@ -53,9 +53,9 @@ const { frontmatter } = Astro.props;
     margin-bottom: 0.5rem;
   }
 
-  /* strong {
-    color: var(--color-accent);
-  } */
+  strong {
+    font-size: large;
+  }
 
   /* Styles de mode sombre */
   .dark-mode .info-container {
@@ -64,7 +64,7 @@ const { frontmatter } = Astro.props;
 
   .dark-mode .info-container h3 {
     margin-top: 2rem;
-    border-bottom: 2px solid var(--color-border-color);
+    border-bottom: 5px solid var(--color-accent);
     padding-bottom: 0.5rem;
   }
 </style>
