@@ -9,6 +9,7 @@ export const defaultLang = 'en';
 export const ui = {
   en: {
     'title.site': 'Password generator',
+    'meta.content': 'Secure and Memorable Password Generator',
     'nav.regular': 'Classic Mode',
     'nav.memory': 'Memorable Mode',
     'memorable.title': 'Easy-to-Remember Word Generator',
@@ -30,6 +31,8 @@ export const ui = {
       'Create unforgettable passwords, easy to remember and ultra-secure!',
     'title.h4':
       'Generate smooth and secure passwords in just a few clicks, based on real words that are easy to remember.',
+    'herosection.image':
+      'Focused woman working on a computer, screen displaying programming code and a security symbol, in an office during the evening. Illustration related to cybersecurity, secure password generation, and easy-to-remember passwords.',
     'footer.title': 'Get-password',
     'footer.description': 'Secure and memorable password generator',
     'footer.links': 'Useful Links',
@@ -44,6 +47,7 @@ export const ui = {
   },
   fr: {
     'title.site': 'Générateur de Mots de Passe',
+    'meta.content': 'Générateur de mots de passe sécurisés et mémorisables',
     'nav.regular': 'Mode Classique',
     'nav.memory': 'Mode Mémorisable',
     'memorable.title': 'Générateur de mots facile à mémoriser',
@@ -65,6 +69,8 @@ export const ui = {
       'Créez des mots de passe inoubliables, simples à retenir et ultra-sécurisés !',
     'title.h4':
       'Générez en quelques clics des mots de passe fluides et sûrs, basés sur de vrais mots faciles à mémoriser.',
+    'herosection.image':
+      'Femme concentrée travaillant sur un ordinateur, écran affichant du code de programmation et un symbole de sécurité, dans un bureau en soirée. Illustration liée à la cybersécurité, la création de mots de passe sécurisés et faciles à retenir.',
     'footer.title': 'Get-password',
     'footer.description':
       'Générateur de mots de passe sécurisés et mémorisables',
@@ -80,6 +86,7 @@ export const ui = {
   },
   es: {
     'title.site': 'Generador de contraseñas',
+    'meta.content': 'Generador de Contraseñas Seguras y Memorables',
     'nav.regular': 'Modo clásico',
     'nav.memory': 'Modo memorable',
     'memorable.title': 'Generador de palabras fáciles de recordar',
@@ -101,6 +108,8 @@ export const ui = {
       '¡Crea contraseñas inolvidables, fáciles de recordar y ultra seguras!',
     'title.h4':
       'Genera contraseñas seguras y fluidas en solo unos clics, basadas en palabras reales fáciles de recordar.',
+    'herosection.image':
+      'Mujer concentrada trabajando en un ordenador, pantalla mostrando código de programación y un símbolo de seguridad, en una oficina por la tarde. Ilustración relacionada con la ciberseguridad, la generación de contraseñas seguras y fáciles de recordar.',
     'footer.title': 'Get-password',
     'footer.description': 'Generador de contraseñas seguro y memorable',
     'footer.links': 'Enlaces útiles',
