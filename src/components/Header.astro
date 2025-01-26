@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import moon from '../assets/images/moon.svg';
 import sun from '../assets/images/sun.svg';
 import logo from '../assets/images/logo.svg';
-// import LanguagePicker from '../components/LanguagePicker.astro';
+import LanguagePicker from '../components/LanguagePicker.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -31,7 +31,7 @@ const t = useTranslations(lang);
       <button class='toggle-button memorable' data-type='memorable'
         >{t('nav.memory')}</button
       >
-      <!-- <LanguagePicker /> -->
+      <LanguagePicker />
       <div class='dark-mode-toggle' aria-label='Basculer le mode sombre'>
         <span class='moon-icon'>
           <Image src={moon} alt='Moon icon' />

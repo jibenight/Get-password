@@ -1,13 +1,127 @@
 ---
 import { languages } from '../i18n/ui';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+// Récupère la langue actuelle depuis l'URL
+const currentLang = Astro.request.url.split('/')[1] || 'en'; // 'en' par défaut si aucune langue n'est définie
+const lang = getLangFromUrl(Astro.url);
+console.log('test langues' + lang);
 ---
 
-<ul>
-  {
-    Object.entries(languages).map(([lang, label]) => (
-      <li>
-        <a href={`/${lang}/`}>{label}</a>
-      </li>
-    ))
+<div class='language-picker'>
+  <button id='language-toggle' class='language-toggle' aria-haspopup='listbox'>
+    <svg class='icon' viewBox='0 0 16 16' fill='#ffffff'>
+      <path
+        d='M8,0C3.6,0,0,3.6,0,8s3.6,8,8,8s8-3.6,8-8S12.4,0,8,0z M13.9,7H12c-0.1-1.5-0.4-2.9-0.8-4.1 C12.6,3.8,13.6,5.3,13.9,7z M8,14c-0.6,0-1.8-1.9-2-5H10C9.8,12.1,8.6,14,8,14z M6,7c0.2-3.1,1.3-5,2-5s1.8,1.9,2,5H6z M4.9,2.9 C4.4,4.1,4.1,5.5,4,7H2.1C2.4,5.3,3.4,3.8,4.9,2.9z M2.1,9H4c0.1,1.5,0.4,2.9,0.8,4.1C3.4,12.2,2.4,10.7,2.1,9z M11.1,13.1 c0.5-1.2,0.7-2.6,0.8-4.1h1.9C13.6,10.7,12.6,12.2,11.1,13.1z'
+      ></path>
+    </svg>
+    {lang}
+  </button>
+  <ul id='language-list' class='language-list' role='listbox' hidden>
+    {
+      Object.entries(languages).map(([lang, label]) => (
+        <li
+          class='language-item'
+          data-lang={lang}
+          role='option'
+          aria-selected={lang === currentLang ? 'true' : 'false'}
+        >
+          <svg class='icon' viewBox='0 0 16 16'>
+            <path d='M8,0C3.6,0,0,3.6,0,8s3.6,8,8,8s8-3.6,8-8S12.4,0,8,0z M13.9,7H12c-0.1-1.5-0.4-2.9-0.8-4.1 C12.6,3.8,13.6,5.3,13.9,7z M8,14c-0.6,0-1.8-1.9-2-5H10C9.8,12.1,8.6,14,8,14z M6,7c0.2-3.1,1.3-5,2-5s1.8,1.9,2,5H6z M4.9,2.9 C4.4,4.1,4.1,5.5,4,7H2.1C2.4,5.3,3.4,3.8,4.9,2.9z M2.1,9H4c0.1,1.5,0.4,2.9,0.8,4.1C3.4,12.2,2.4,10.7,2.1,9z M11.1,13.1 c0.5-1.2,0.7-2.6,0.8-4.1h1.9C13.6,10.7,12.6,12.2,11.1,13.1z' />
+          </svg>
+          {label}
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.getElementById('language-toggle');
+    const languageList = document.getElementById('language-list');
+
+    toggleButton.addEventListener('click', () => {
+      const isHidden = languageList.hasAttribute('hidden');
+      if (isHidden) {
+        languageList.removeAttribute('hidden');
+      } else {
+        languageList.setAttribute('hidden', true);
+      }
+    });
+
+    languageList.addEventListener('click', event => {
+      const target = event.target.closest('.language-item');
+      if (target) {
+        const selectedLang = target.getAttribute('data-lang');
+        const currentPath = window.location.pathname.split('/').filter(Boolean);
+
+        // Remplace ou ajoute la langue au chemin
+        if (currentPath[0] && currentPath[0].length === 2) {
+          currentPath[0] = selectedLang;
+        } else {
+          currentPath.unshift(selectedLang);
+        }
+
+        // Redirige vers la nouvelle URL
+        window.location.href = `/${currentPath.join('/')}`;
+      }
+    });
+
+    document.addEventListener('click', event => {
+      if (
+        !languageList.contains(event.target) &&
+        event.target !== toggleButton
+      ) {
+        languageList.setAttribute('hidden', true);
+      }
+    });
+  });
+</script>
+
+<style>
+  .language-picker {
+    position: relative;
   }
-</ul>
+
+  .language-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.5rem 1rem;
+  }
+
+  .language-list {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: #3a6ea5;
+    border-radius: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+    transition:
+      background-color 0.5s ease,
+      transform 0.2s ease;
+  }
+
+  .language-item {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    gap: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .language-item:hover {
+    background-color: var(--color-accent-hover);
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    fill: #ffffff;
+  }
+</style>
