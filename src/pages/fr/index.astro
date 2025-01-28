@@ -3,8 +3,9 @@ import Layout from '../../layouts/Layout.astro';
 import '../../styles/index.css';
 
 //image
-import { Image } from 'astro:assets';
-import localImage from '../../assets/images/woman-computer.webp';
+import ResponsiveImage from '../../components/ResponsiveImage.astro';
+import desktopImage from '../../assets/images/woman-computer.webp';
+import mobileImage from '../../assets/images/woman-computer-mobile.webp';
 
 //password generator
 import PasswordGenerator from '../../components/PasswordGenerator.astro';
@@ -40,7 +41,11 @@ import { Content as PasswordManagerGuide } from '../../contents/fr/password_mana
           {t('title.h4')}
         </p>
       </div>
-      <Image src={localImage} alt='jeune femme blonde devant un ordinateur.' />
+      <ResponsiveImage
+        mobileImgUrl={mobileImage}
+        desktopImgUrl={desktopImage}
+        alt={t('herosection.image')}
+      />
     </div>
     <PasswordInfo />
     <MemorizationTips />
