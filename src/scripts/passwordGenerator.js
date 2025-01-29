@@ -1,8 +1,8 @@
 /***************************************
- * CONSTANTES ET UTILITAIRES
+ * CONSTANTS AND UTILITIES
  ***************************************/
 
-// Catégories de caractères :
+// Character categories:
 const CHARACTERS = {
   uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
   lowercase: 'abcdefghijklmnopqrstuvwxyz',
@@ -11,27 +11,27 @@ const CHARACTERS = {
 };
 
 /**
- * Génère un entier aléatoire dans la fourchette [0, max).
- * Utilise l’API Web Crypto pour plus de sécurité.
+ * Generates a secure random integer in the range [0, max).
+ * Uses the Web Crypto API for enhanced security.
  * @param {number} max
  * @returns {number}
  */
 const getSecureRandomInt = max => {
-  // On crée un tableau d’un seul entier non signé 32 bits
+  // Create an array of a single unsigned 32-bit integer
   const array = new Uint32Array(1);
-  // Remplit le tableau avec des valeurs aléatoires sécurisées
+  // Fill the array with secure random values
   window.crypto.getRandomValues(array);
-  // On ramène la valeur dans la plage [0, max)
+  // Bring the value into the range [0, max)
   return Math.floor((array[0] / (0xffffffff + 1)) * max);
 };
 
 /***************************************
- * CALCUL DE LA FORCE
+ * STRENGTH CALCULATION
  ***************************************/
 
 /**
- * Calcule la force d’un mot de passe selon des critères simples.
- * Retourne un entier entre 0 et 4.
+ * Calculates the strength of a password based on simple criteria.
+ * Returns an integer between 0 and 4.
  * @param {string} password
  * @param {Object} options
  * @returns {number}
@@ -39,32 +39,32 @@ const getSecureRandomInt = max => {
 const calculatePasswordStrength = (password, options) => {
   let strength = 0;
 
-  // Longueur
+  // Length
   if (password.length >= 12) strength++;
 
-  // Majuscules
+  // Uppercase letters
   if (/[A-Z]/.test(password) && options.uppercaseCheckbox.checked) strength++;
 
-  // Minuscules
+  // Lowercase letters
   if (/[a-z]/.test(password) && options.lowercaseCheckbox.checked) strength++;
 
-  // Chiffres
+  // Numbers
   if (/[0-9]/.test(password) && options.numbersCheckbox.checked) strength++;
 
-  // Symboles
+  // Symbols
   if (/[!@#$%^&*]/.test(password) && options.symbolsCheckbox.checked)
     strength++;
 
-  // Force max : 4
+  // Maximum strength: 4
   return Math.min(strength, 4);
 };
 
 /***************************************
- * GÉNÉRATION D’UN MOT DE PASSE
+ * PASSWORD GENERATION
  ***************************************/
 
 /**
- * Génère un seul mot de passe selon les options sélectionnées.
+ * Generates a single password based on the selected options.
  * @param {Object} options
  * @returns {{ password: string, strength: number } | null}
  */
@@ -77,46 +77,46 @@ const generateSinglePassword = options => {
     lengthSlider,
   } = options;
 
-  // Rassemble les catégories sélectionnées
+  // Gather the selected categories
   const activeCategories = [];
   if (uppercaseCheckbox.checked) activeCategories.push(CHARACTERS.uppercase);
   if (lowercaseCheckbox.checked) activeCategories.push(CHARACTERS.lowercase);
   if (numbersCheckbox.checked) activeCategories.push(CHARACTERS.numbers);
   if (symbolsCheckbox.checked) activeCategories.push(CHARACTERS.symbols);
 
-  // S’il n’y a aucune catégorie sélectionnée, on sort
+  // If no category is selected, exit
   if (activeCategories.length === 0) {
     return null;
   }
 
-  // On convertit le slider en nombre
+  // Convert the slider value to a number
   const length = parseInt(lengthSlider.value, 10);
 
-  // Étape 1 : On s’assure de mettre 1 caractère de chaque catégorie cochée
+  // Step 1: Ensure at least one character from each selected category
   let passwordArray = [];
   for (let cat of activeCategories) {
     const randomIndex = getSecureRandomInt(cat.length);
     passwordArray.push(cat[randomIndex]);
   }
 
-  // Étape 2 : On complète le reste des caractères de manière aléatoire
-  const fullCharset = activeCategories.join(''); // concat de toutes les catégories sélectionnées
+  // Step 2: Fill the rest of the characters randomly
+  const fullCharset = activeCategories.join(''); // concatenate all selected categories
   while (passwordArray.length < length) {
     const randomIndex = getSecureRandomInt(fullCharset.length);
     passwordArray.push(fullCharset[randomIndex]);
   }
 
-  // Étape 3 : Mélange du tableau pour éviter que l’ordre soit toujours le même
-  // (1 char maj, puis 1 char min, etc.)
+  // Step 3: Shuffle the array to avoid a fixed order
+  // (e.g., 1 uppercase, then 1 lowercase, etc.)
   for (let i = passwordArray.length - 1; i > 0; i--) {
     const j = getSecureRandomInt(i + 1);
     [passwordArray[i], passwordArray[j]] = [passwordArray[j], passwordArray[i]];
   }
 
-  // On reconstitue le mot de passe
+  // Reconstruct the password
   const password = passwordArray.join('');
 
-  // Calcul de la force
+  // Calculate strength
   const strength = calculatePasswordStrength(password, options);
 
   return { password, strength };
@@ -127,25 +127,25 @@ const generateSinglePassword = options => {
  ***************************************/
 
 /**
- * Copie le contenu d’un input dans le presse-papier
- * et gère l’affichage de la notification.
+ * Copies the content of an input to the clipboard
+ * and handles the display of the notification.
  * @param {HTMLInputElement} input
  * @returns {Promise<void>}
  */
 const copyToClipboard = async input => {
   try {
-    // Copie dans le presse-papier
+    // Copy to clipboard
     await navigator.clipboard.writeText(input.value);
 
-    // Effet visuel pour confirmer la copie
+    // Visual effect to confirm the copy
     const passwordItem = input.closest('.password-item');
     passwordItem.classList.add('copied');
     setTimeout(() => passwordItem.classList.remove('copied'), 500);
 
-    // Affichage notification
+    // Display notification
     const notification = document.createElement('div');
     notification.className = 'copy-notification';
-    notification.textContent = 'Mot de passe copié !';
+    notification.textContent = 'Password copied!';
     document.body.appendChild(notification);
 
     setTimeout(() => {
@@ -155,16 +155,16 @@ const copyToClipboard = async input => {
       }, 300);
     }, 2000);
   } catch (err) {
-    console.error('Erreur lors de la copie :', err);
+    console.error('Error while copying:', err);
   }
 };
 
 /***************************************
- * CRÉATION D’UN ÉLÉMENT MOT DE PASSE
+ * PASSWORD ELEMENT CREATION
  ***************************************/
 
 /**
- * Crée et renvoie le DOM pour un mot de passe et son bouton de copie.
+ * Creates and returns the DOM for a password and its copy button.
  * @param {string} password
  * @returns {HTMLDivElement}
  */
@@ -176,7 +176,7 @@ const createPasswordElement = password => {
   input.type = 'text';
   input.className = 'password-input';
   input.readOnly = true;
-  input.value = password; // affecte directement le mot de passe
+  input.value = password; // directly assign the password
 
   const copyButton = document.createElement('button');
   copyButton.className = 'copy-button';
@@ -195,11 +195,11 @@ const createPasswordElement = password => {
 };
 
 /***************************************
- * MISE À JOUR DE L’INDICATEUR DE FORCE
+ * STRENGTH METER UPDATE
  ***************************************/
 
 /**
- * Met à jour les barres de force en fonction du mot de passe.
+ * Updates the strength bars based on the password.
  * @param {string} password
  * @param {Object} options
  */
@@ -219,26 +219,26 @@ const updateStrengthMeter = (password, options) => {
 };
 
 /***************************************
- * GÉNÉRATION DE N MOTS DE PASSE
+ * GENERATION OF N PASSWORDS
  ***************************************/
 
 /**
- * Génère plusieurs mots de passe selon le "count"
- * et met à jour l’UI (passwordList).
+ * Generates multiple passwords based on the "count"
+ * and updates the UI (passwordList).
  * @param {Object} options
  */
 const generatePasswords = options => {
   const { countSlider, passwordList, strengthBars } = options;
   const count = parseInt(countSlider.value, 10);
 
-  // On vide la liste
+  // Clear the list
   passwordList.innerHTML = '';
 
   const passwordsData = [];
   for (let i = 0; i < count; i++) {
     const result = generateSinglePassword(options);
     if (!result) {
-      console.error('Erreur : aucune catégorie sélectionnée.');
+      console.error('Error: no category selected.');
       continue;
     }
     const passwordElement = createPasswordElement(result.password);
@@ -246,26 +246,26 @@ const generatePasswords = options => {
     passwordsData.push(result);
   }
 
-  // Mettre à jour l’indicateur de force avec le premier mot de passe
+  // Update the strength meter with the first password
   if (passwordsData.length > 0) {
     updateStrengthMeter(passwordsData[0].password, options);
   } else {
-    // S’il n’y a aucun mot de passe généré, on peut remettre les barres à zéro
+    // If no password is generated, reset the bars
     strengthBars.forEach(bar => (bar.className = 'bar'));
   }
 };
 
 /***************************************
- * INITIALISATION
+ * INITIALIZATION
  ***************************************/
 
 /**
- * Initialise le générateur de mot de passe et attache tous les écouteurs d’événements.
+ * Initializes the password generator and attaches all event listeners.
  */
 const initPasswordGenerator = () => {
-  console.log('Initialisation du générateur de mot de passe');
+  console.log('Initializing password generator');
 
-  // Récupération des éléments DOM
+  // Retrieve DOM elements
   const passwordList = document.getElementById('passwordList');
   const lengthSlider = document.getElementById('passwordLength');
   const countSlider = document.getElementById('passwordCount');
@@ -279,11 +279,11 @@ const initPasswordGenerator = () => {
   const strengthBars = document.querySelectorAll('.bar');
 
   if (!passwordList) {
-    console.error('Liste de mots de passe non trouvée');
+    console.error('Password list not found');
     return;
   }
 
-  // Configuration des options à passer partout
+  // Configuration of options to pass everywhere
   const options = {
     uppercaseCheckbox,
     lowercaseCheckbox,
@@ -295,20 +295,20 @@ const initPasswordGenerator = () => {
     passwordList,
   };
 
-  // Mise à jour affichage longueur
+  // Update length display
   lengthSlider?.addEventListener('input', () => {
     lengthValue.textContent = lengthSlider.value;
   });
 
-  // Mise à jour affichage nombre de mots de passe
+  // Update count display
   countSlider?.addEventListener('input', () => {
     countValue.textContent = countSlider.value;
   });
 
-  // Bouton générer
+  // Generate button
   generateButton.addEventListener('click', () => generatePasswords(options));
 
-  // Pour régénérer automatiquement dès qu’on change un paramètre
+  // Regenerate automatically when a parameter is changed
   [
     uppercaseCheckbox,
     lowercaseCheckbox,
@@ -320,5 +320,5 @@ const initPasswordGenerator = () => {
   });
 };
 
-// On exporte la fonction d’init pour qu’elle soit appelée ailleurs
+// Export the init function to be called elsewhere
 export { initPasswordGenerator };
