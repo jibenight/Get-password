@@ -2,7 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
-// import { partytownSnippet } from '@astrojs/partytown';
+import { partytownSnippet } from '@astrojs/partytown';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -24,7 +24,7 @@ const { title } = Astro.props;
     <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
     <!-- Partytown snippet -->
-    <!-- {partytownSnippet({ forward: ['dataLayer.push', 'gtag'] })} -->
+    {partytownSnippet({ forward: ['dataLayer.push', 'gtag'] })}
 
     <!-- Charger le script GA4 -->
     <script type='text/partytown' src='/src/scripts/ga4.js'></script>
