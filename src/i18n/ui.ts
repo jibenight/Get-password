@@ -1,7 +1,8 @@
 export const languages = {
   en: 'English',
   fr: 'Français',
-  es: 'Spanish',
+  es: 'Español',
+  de: 'Deutsch',
 };
 
 export const defaultLang = 'en';
@@ -120,5 +121,39 @@ export const ui = {
     'footer.no_storage': 'Sin datos almacenados',
     'footer.open_source': 'Código abierto',
     'footer.rights': 'Todos los derechos reservados.',
+  },
+  de: {
+    'title.site': 'Passwort-Generator',
+    'nav.regular': 'Klassischer Modus',
+    'nav.memory': 'Merkwürdiger Modus',
+    'memorable.title': 'Einfach zu merkender Passwort-Generator',
+    'memorable.count': 'Anzahl der Passwörter',
+    'memorable.number': 'Anzahl der Wörter',
+    'memorable.options.numbers': 'Zahlen hinzufügen (z. B. 42)',
+    'memorable.options.symbols': 'Symbole hinzufügen (z. B. @#)',
+    'memorable.generate': 'Passwörter generieren',
+    'password.title': 'Passwort-Generator',
+    'password.count': 'Anzahl der Passwörter',
+    'password.length': 'Länge',
+    'password.options.uppercase': 'Großbuchstaben (A-Z)',
+    'password.options.lowercase': 'Kleinbuchstaben (a-z)',
+    'password.options.numbers': 'Zahlen (0-9)',
+    'password.options.symbols': 'Symbole (!@#$%^&*)',
+    'password.strength': 'Passwortstärke',
+    'password.generate': 'Generieren',
+    'title.h1':
+      'Erstelle unvergessliche, leicht zu merkende und ultra-sichere Passwörter!',
+    'title.h4':
+      'Generiere reibungslose und sichere Passwörter in nur wenigen Klicks, basierend auf echten Wörtern, die leicht zu merken sind.',
+    'footer.title': 'Get-password',
+    'footer.description': 'Sicherer und leicht merkbarer Passwort-Generator',
+    'footer.links': 'Nützliche Links',
+    'footer.home': 'Startseite',
+    'footer.legal': 'Impressum',
+    'footer.security': 'Sicherheit',
+    'footer.local_generation': 'Lokale Generierung',
+    'footer.no_storage': 'Keine Daten gespeichert',
+    'footer.open_source': 'Open Source',
+    'footer.rights': 'Alle Rechte vorbehalten.',
   },
 } as const;

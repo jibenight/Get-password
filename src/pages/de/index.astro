@@ -1,0 +1,59 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/index.css';
+
+//image
+import ResponsiveImage from '../../components/ResponsiveImage.astro';
+import desktopImage from '../../assets/images/woman-computer.webp';
+import mobileImage from '../../assets/images/woman-computer-mobile.webp';
+
+//password generator
+import PasswordGenerator from '../../components/PasswordGenerator.astro';
+import MemorablePasswordGenerator from '../../components/MemorablePasswordGenerator.astro';
+
+//translate
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// content md
+import { Content as PasswordInfo } from '../../contents/de/secure_passwords.md';
+import { Content as MemorizationTips } from '../../contents/de/memorization_tips.md';
+import { Content as PasswordManagerGuide } from '../../contents/de/password_manager_guide.md';
+---
+
+<Layout title={t('title.site')}>
+  <main>
+    <div class='generators-container'>
+      <div id='classicGenerator' class='generator-section'>
+        <PasswordGenerator />
+      </div>
+      <div id='memorableGenerator' class='generator-section active'>
+        <MemorablePasswordGenerator />
+      </div>
+    </div>
+    <div class='hero-section'>
+      <div class='main-title'>
+        <h1>
+          {t('title.h1')}
+        </h1>
+        <p>
+          {t('title.h4')}
+        </p>
+      </div>
+      <ResponsiveImage
+        mobileImgUrl={mobileImage}
+        desktopImgUrl={desktopImage}
+        alt={t('herosection.image')}
+      />
+    </div>
+    <PasswordInfo />
+    <MemorizationTips />
+    <PasswordManagerGuide />
+  </main>
+</Layout>
+
+<script>
+  import { init } from '../../scripts/index.js';
+  init();
+</script>
