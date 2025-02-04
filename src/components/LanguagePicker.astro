@@ -4,7 +4,6 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 // Récupère la langue actuelle depuis l'URL
 const currentLang = Astro.request.url.split('/')[1] || 'en'; // 'en' par défaut si aucune langue n'est définie
 const lang = getLangFromUrl(Astro.url);
-console.log('test langues' + lang);
 ---
 
 <div class='language-picker'>
