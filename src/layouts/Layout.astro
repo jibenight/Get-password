@@ -29,6 +29,7 @@ const { title } = Astro.props;
     <Footer />
   </body>
 
+
   <script is:inline>
     // Script de gestion du mode sombre
     const savedTheme = localStorage.getItem('theme');
@@ -104,6 +105,29 @@ const { title } = Astro.props;
         });
       }
     });
+  </script>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener('click', event => {
+        const languageItem = event.target.closest('.language-item');
+        if (languageItem) {
+          event.preventDefault(); // Empêche la navigation immédiate
+          const newLang = languageItem.dataset.lang;
+
+          // Ajoute l'animation de sortie
+          document.body.classList.add('slide-out');
+
+          setTimeout(() => {
+            window.location.href = `/${newLang}`;
+          }, 500); // Correspond à la durée de l'animation
+        }
+      });
+
+      // Assure que la nouvelle page apparaît avec l'animation d'entrée
+      document.body.classList.add('slide-in');
+    });
+
   </script>
 
   <style is:global>
@@ -188,6 +212,31 @@ const { title } = Astro.props;
         background-color 0.3s,
         color 0.3s;
     }
+
+    .slide-out {
+      transform: translateX(100%);
+      opacity: 0;
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    }
+
+    .slide-in {
+      transform: translateX(-100%);
+      opacity: 0;
+      animation: slideIn 0.5s ease-in-out forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+
 
     footer {
       background-color: var(--color-bg-dark);
