@@ -13,7 +13,7 @@ const t = useTranslations(lang);
   <nav>
     <div class='menu-container'>
       <div class='logo'>
-        <a href='/'>
+       <a href={`/${lang === 'en' ? 'en' : lang}/`}>
           <Image src={logo} alt='logo gray locker' />
         </a>
       </div>
@@ -25,13 +25,19 @@ const t = useTranslations(lang);
       </button>
     </div>
     <div class='nav-links' id='navLinks'>
-      <button class='toggle-button classic' data-type='classic'>
-        {t('nav.regular')}</button
-      >
-      <button class='toggle-button memorable' data-type='memorable'
-        >{t('nav.memory')}</button
-      >
-      <LanguagePicker />
+      {Astro.url.pathname === `/${lang}/` || Astro.url.pathname === `/${lang}` ? (
+        <>
+          <button class='toggle-button classic' data-type='classic'>
+            {t('nav.regular')}
+          </button>
+          <button class='toggle-button memorable' data-type='memorable'>
+            {t('nav.memory')}
+          </button>
+          <LanguagePicker />
+        </>
+      ) : null}
+
+      
       <div class='dark-mode-toggle' aria-label='Basculer le mode sombre'>
         <span class='moon-icon'>
           <Image src={moon} alt='Moon icon' />

@@ -263,8 +263,6 @@ const generatePasswords = options => {
  * Initializes the password generator and attaches all event listeners.
  */
 const initPasswordGenerator = () => {
-  console.log('Initializing password generator');
-
   // Retrieve DOM elements
   const passwordList = document.getElementById('passwordList');
   const lengthSlider = document.getElementById('passwordLength');
