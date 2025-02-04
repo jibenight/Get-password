@@ -25,7 +25,7 @@ const t = useTranslations(lang);
       </button>
     </div>
     <div class='nav-links' id='navLinks'>
-      {Astro.url.pathname === `/${lang}/` || Astro.url.pathname === `/${lang}` ? (
+      {Astro.url.pathname === `/${lang}/` || Astro.url.pathname === `/${lang}` || Astro.url.pathname === `/` ? (
         <>
           <button class='toggle-button classic' data-type='classic'>
             {t('nav.regular')}
