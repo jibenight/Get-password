@@ -1,49 +1,65 @@
 ---
 import { Image } from 'astro:assets';
+// Import assets
 import moon from '../assets/images/moon.svg';
 import sun from '../assets/images/sun.svg';
 import logo from '../assets/images/logo.svg';
+
+// Import components and utilities
 import LanguagePicker from '../components/LanguagePicker.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+// Get the language from the URL and load the corresponding translations
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Destructure the pathname from Astro.url and determine if the current page is the homepage
+const { pathname } = Astro.url;
+const isHomepage =
+  pathname === `/${lang}/` || pathname === `/${lang}` || pathname === `/`;
 ---
 
+<!-- Header component containing the navigation -->
 <header>
   <nav>
-    <div class='menu-container'>
-      <div class='logo'>
-       <a href={`/${lang === 'en' ? 'en' : lang}/`}>
-          <Image src={logo} alt='logo gray locker' />
+    <!-- Container for logo and hamburger menu -->
+    <div class="menu-container">
+      <!-- Logo linking to the homepage -->
+      <div class="logo">
+        <a href={`/${lang === 'en' ? 'en' : lang}/`}>
+          <Image src={logo} alt="logo gray locker" />
         </a>
       </div>
 
-      <button class='hamburger' aria-label='Ouvrir le menu'>
-        <span class='line'></span>
-        <span class='line'></span>
-        <span class='line'></span>
+      <!-- Hamburger button for mobile navigation -->
+      <button class="hamburger" aria-label="Open menu">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
       </button>
     </div>
-    <div class='nav-links' id='navLinks'>
-      {Astro.url.pathname === `/${lang}/` || Astro.url.pathname === `/${lang}` || Astro.url.pathname === `/` ? (
+
+    <!-- Navigation links displayed only on the homepage -->
+    <div class="nav-links" id="navLinks">
+      {isHomepage && (
         <>
-          <button class='toggle-button classic' data-type='classic'>
+          <button class="toggle-button classic" data-type="classic">
             {t('nav.regular')}
           </button>
-          <button class='toggle-button memorable' data-type='memorable'>
+          <button class="toggle-button memorable" data-type="memorable">
             {t('nav.memory')}
           </button>
           <LanguagePicker />
         </>
-      ) : null}
+      )}
 
-      
-      <div class='dark-mode-toggle' aria-label='Basculer le mode sombre'>
-        <span class='moon-icon'>
-          <Image src={moon} alt='Moon icon' />
+      <!-- Dark mode toggle button -->
+      <div class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="moon-icon">
+          <Image src={moon} alt="Moon icon" />
         </span>
-        <span class='sun-icon'>
-          <Image src={sun} alt='sun icon' />
+        <span class="sun-icon">
+          <Image src={sun} alt="Sun icon" />
         </span>
       </div>
     </div>
@@ -51,6 +67,7 @@ const t = useTranslations(lang);
 </header>
 
 <style>
+  /* Header styles */
   header {
     position: sticky;
     top: 20px;
@@ -62,17 +79,20 @@ const t = useTranslations(lang);
     justify-content: center;
   }
 
+  /* Logo container styles */
   .logo {
     display: grid;
     place-items: center;
     line-height: 0;
   }
 
+  /* Logo image dimensions */
   .logo img {
     width: 50px;
     height: 50px;
   }
 
+  /* Navigation bar styles */
   nav {
     background-color: var(--color-bg-navbar);
     margin: 0 auto;
@@ -84,6 +104,7 @@ const t = useTranslations(lang);
     border-radius: 12px;
   }
 
+  /* Menu container styles */
   .menu-container {
     display: flex;
     justify-content: space-between;
@@ -91,6 +112,7 @@ const t = useTranslations(lang);
     width: 100%;
   }
 
+  /* Hamburger button styles (hidden on desktop) */
   .hamburger {
     display: none;
     justify-content: center;
@@ -103,6 +125,7 @@ const t = useTranslations(lang);
     position: relative;
   }
 
+  /* Hamburger lines styling */
   .hamburger .line {
     position: absolute;
     width: 25px;
@@ -112,6 +135,7 @@ const t = useTranslations(lang);
     transition: all 0.3s ease-in-out;
   }
 
+  /* Position each line in the hamburger button */
   .hamburger .line:nth-child(1) {
     top: 10px;
   }
@@ -124,6 +148,7 @@ const t = useTranslations(lang);
     top: 26px;
   }
 
+  /* Animate hamburger lines when menu is open */
   .hamburger.open .line:nth-child(1) {
     transform: rotate(45deg);
     top: 18px;
@@ -138,6 +163,7 @@ const t = useTranslations(lang);
     top: 18px;
   }
 
+  /* Navigation links container styles */
   .nav-links {
     display: flex;
     align-items: center;
@@ -146,10 +172,12 @@ const t = useTranslations(lang);
     flex: 1;
   }
 
+  /* Button styles within navigation */
   .nav-links button {
     padding: 0.5rem 1rem;
   }
 
+  /* Dark mode toggle styles */
   .dark-mode-toggle {
     display: flex;
     align-items: center;
@@ -157,11 +185,13 @@ const t = useTranslations(lang);
     margin-top: 8px;
   }
 
+  /* Dark mode icon sizes */
   .dark-mode-toggle .moon-icon img,
   .dark-mode-toggle .sun-icon img {
     width: 30px;
   }
 
+  /* Desktop responsive styles */
   @media (min-width: 769px) {
     .menu-container {
       width: auto;
@@ -175,6 +205,7 @@ const t = useTranslations(lang);
     }
   }
 
+  /* Mobile responsive styles */
   @media (max-width: 768px) {
     header {
       padding-left: 10px;
@@ -198,6 +229,7 @@ const t = useTranslations(lang);
     .nav-links.open {
       display: flex;
     }
+
     .logo img {
       width: 35px;
       height: 35px;
@@ -206,10 +238,12 @@ const t = useTranslations(lang);
 </style>
 
 <script>
+  // Wait for the DOM content to load before attaching event listeners
   document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
+    // Toggle the 'open' class on hamburger and navLinks when the hamburger is clicked
     if (hamburger && navLinks) {
       hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('open');
