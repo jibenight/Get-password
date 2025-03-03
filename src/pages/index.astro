@@ -1,4 +1,6 @@
 ---
+import AdsInFeed from '../components/AdsInFeed.astro';
+
 import Layout from '../layouts/Layout.astro';
 import '../styles/index.css';
 
@@ -32,6 +34,7 @@ import { Content as PasswordManagerGuide } from '../contents/en/password_manager
         <MemorablePasswordGenerator />
       </div>
     </div>
+    <AdsInFeed/>
     <div class='hero-section'>
       <div class='main-title'>
         <h1>
@@ -47,8 +50,11 @@ import { Content as PasswordManagerGuide } from '../contents/en/password_manager
         alt={t('herosection.image')}
       />
     </div>
-    <PasswordInfo />
+    <AdsInFeed/>
     <MemorizationTips />
+    <AdsInFeed/>
+    <PasswordInfo />
+    <AdsInFeed/>
     <PasswordManagerGuide />
   </main>
 </Layout>
