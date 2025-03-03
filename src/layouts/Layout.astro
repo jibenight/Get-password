@@ -25,9 +25,21 @@ const { title } = Astro.props;
   </head>
   <body>
     <Header/>
+      
     <AdsInFeed/>
     <slot/>
     <AdsInFeed/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3402470307945870"
+      crossorigin="anonymous"></script>
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-format="fluid"
+          data-ad-layout-key="-f7+5u+4t-da+6l"
+          data-ad-client="ca-pub-3402470307945870"
+          data-ad-slot="3718160833"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     <Footer/>
   </body>
 
