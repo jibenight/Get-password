@@ -65,4 +65,17 @@ import ContentTabs from '../components/ContentTabs.astro';
 <script>
   import { init } from '../scripts/index.js';
   init();
+
+  // Client-side language redirect fallback (for dev or when edge function doesn't run)
+  (function () {
+    const supported = ['en', 'fr', 'es', 'de'];
+    const path = window.location.pathname;
+    // Only redirect on exact root path
+    if (path !== '/') return;
+    const browserLang = (navigator.languages?.[0] || navigator.language || 'en')
+      .split('-')[0]
+      .toLowerCase();
+    const lang = supported.includes(browserLang) ? browserLang : 'en';
+    window.location.replace('/' + lang + '/');
+  })();
 </script>
