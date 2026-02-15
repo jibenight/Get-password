@@ -39,7 +39,9 @@ const langLabel = languages[lang] || languages['en'];
 <script is:inline>
   function initLanguagePicker() {
     const languagePicker = document.querySelector('.language-picker');
-    if (!languagePicker) return;
+    if (!languagePicker || languagePicker.dataset.initialized) return;
+    languagePicker.dataset.initialized = 'true';
+
     const toggleButton = languagePicker.querySelector('#language-toggle');
     const languageList = languagePicker.querySelector('#language-list');
 

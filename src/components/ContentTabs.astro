@@ -109,6 +109,10 @@ const t = useTranslations(lang);
 
 <script>
   function initContentTabs() {
+    const tabsContainer = document.querySelector('.content-tabs');
+    if (!tabsContainer || tabsContainer.dataset.initialized) return;
+    tabsContainer.dataset.initialized = 'true';
+
     const tabButtons = document.querySelectorAll('.tab-button[role="tab"]');
     const tabPanels = document.querySelectorAll('.tab-panel[role="tabpanel"]');
 
