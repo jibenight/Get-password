@@ -20,18 +20,18 @@ main {
 
 .hero-section {
   max-width: 1024px;
-  background-color: var(--color-bg-secondary);
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-bg-primary);
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
 }
 
 .hero-section img {
   width: 100%;
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 20px 20px;
   height: auto;
   display: block;
   margin: 0 auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .generators-container {
@@ -57,13 +57,13 @@ main {
 }
 
 .article-separator {
-  width: 100%;
-  border-bottom: 1px solid #e0e0e0;
-  margin: 2rem 0;
-}
-
-.dark-mode .article-separator {
-  border-bottom-color: #444;
+  width: 80%;
+  height: 4px;
+  border: none;
+  border-radius: 10px;
+  background: var(--color-bg-primary);
+  box-shadow: var(--shadow-inset);
+  margin: 2rem auto;
 }
 
 @media (max-width: 768px) {

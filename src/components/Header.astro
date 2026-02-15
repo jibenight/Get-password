@@ -23,45 +23,47 @@ const isHomepage =
 <header>
   <nav>
     <!-- Container for logo and hamburger menu -->
-    <div class="menu-container">
+    <div class='menu-container'>
       <!-- Logo linking to the homepage -->
-      <div class="logo">
+      <div class='logo'>
         <a href={`/${lang === 'en' ? 'en' : lang}/`}>
-          <Image src={logo} alt="logo gray locker" />
+          <Image src={logo} alt='logo gray locker' />
         </a>
       </div>
 
       <!-- Hamburger button for mobile navigation -->
-      <button class="hamburger" aria-label="Open menu">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
+      <button class='hamburger' aria-label='Open menu'>
+        <span class='line'></span>
+        <span class='line'></span>
+        <span class='line'></span>
       </button>
     </div>
 
     <!-- Navigation links displayed only on the homepage -->
-    <div class="nav-links" id="navLinks">
-      {isHomepage && (
-        <>
-          <button class="toggle-button classic" data-type="classic">
-            {t('nav.regular')}
-          </button>
-          <button class="toggle-button memorable" data-type="memorable">
-            {t('nav.memory')}
-          </button>
-          <LanguagePicker />
-        </>
-      )}
+    <div class='nav-links' id='navLinks'>
+      {
+        isHomepage && (
+          <>
+            <button class='toggle-button classic' data-type='classic'>
+              {t('nav.regular')}
+            </button>
+            <button class='toggle-button memorable' data-type='memorable'>
+              {t('nav.memory')}
+            </button>
+            <LanguagePicker />
+          </>
+        )
+      }
 
       <!-- Dark mode toggle button -->
-      <div class="dark-mode-toggle" aria-label="Toggle dark mode">
-        <span class="moon-icon">
-          <Image src={moon} alt="Moon icon" />
+      <button class='dark-mode-toggle' aria-label='Toggle dark mode' type='button'>
+        <span class='moon-icon'>
+          <Image src={moon} alt='Moon icon' />
         </span>
-        <span class="sun-icon">
-          <Image src={sun} alt="Sun icon" />
+        <span class='sun-icon'>
+          <Image src={sun} alt='Sun icon' />
         </span>
-      </div>
+      </button>
     </div>
   </nav>
 </header>
@@ -79,32 +81,29 @@ const isHomepage =
     justify-content: center;
   }
 
-  /* Logo container styles */
   .logo {
     display: grid;
     place-items: center;
     line-height: 0;
   }
 
-  /* Logo image dimensions */
   .logo img {
     width: 50px;
     height: 50px;
   }
 
-  /* Navigation bar styles */
   nav {
-    background-color: var(--color-bg-navbar);
+    background-color: var(--color-bg-primary);
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0.5rem 1rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    border-radius: 12px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
   }
 
-  /* Menu container styles */
   .menu-container {
     display: flex;
     justify-content: space-between;
@@ -112,46 +111,49 @@ const isHomepage =
     width: 100%;
   }
 
-  /* Hamburger button styles (hidden on desktop) */
   .hamburger {
     display: none;
     justify-content: center;
     align-items: center;
-    background: none;
+    background: var(--color-bg-primary);
     border: none;
     cursor: pointer;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
     position: relative;
+    transition: all 0.3s ease;
   }
 
-  /* Hamburger lines styling */
+  .hamburger:active {
+    box-shadow: var(--shadow-inset);
+  }
+
   .hamburger .line {
     position: absolute;
-    width: 25px;
-    height: 3px;
+    width: 22px;
+    height: 2.5px;
     background-color: var(--color-text-primary);
     border-radius: 4px;
     transition: all 0.3s ease-in-out;
   }
 
-  /* Position each line in the hamburger button */
   .hamburger .line:nth-child(1) {
-    top: 10px;
+    top: 12px;
   }
 
   .hamburger .line:nth-child(2) {
-    top: 18px;
+    top: 20px;
   }
 
   .hamburger .line:nth-child(3) {
-    top: 26px;
+    top: 28px;
   }
 
-  /* Animate hamburger lines when menu is open */
   .hamburger.open .line:nth-child(1) {
     transform: rotate(45deg);
-    top: 18px;
+    top: 20px;
   }
 
   .hamburger.open .line:nth-child(2) {
@@ -160,38 +162,68 @@ const isHomepage =
 
   .hamburger.open .line:nth-child(3) {
     transform: rotate(-45deg);
-    top: 18px;
+    top: 20px;
   }
 
-  /* Navigation links container styles */
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
     justify-content: flex-end;
     flex: 1;
   }
 
-  /* Button styles within navigation */
   .nav-links button {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
   }
 
-  /* Dark mode toggle styles */
+  .nav-links button:active {
+    box-shadow: var(--shadow-inset);
+  }
+
+  .nav-links .toggle-button {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+  }
+
+  .nav-links .toggle-button.active {
+    background-color: var(--color-accent);
+    color: #ffffff;
+    box-shadow: var(--shadow-inset);
+  }
+
   .dark-mode-toggle {
     display: flex;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
-    margin-top: 8px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--color-bg-primary);
+    border: none;
+    padding: 0;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
   }
 
-  /* Dark mode icon sizes */
+  .dark-mode-toggle:hover {
+    box-shadow: var(--shadow-hover);
+    transform: none;
+  }
+
+  .dark-mode-toggle:active {
+    box-shadow: var(--shadow-inset);
+  }
+
   .dark-mode-toggle .moon-icon img,
   .dark-mode-toggle .sun-icon img {
-    width: 30px;
+    width: 24px;
   }
 
-  /* Desktop responsive styles */
   @media (min-width: 769px) {
     .menu-container {
       width: auto;
@@ -201,11 +233,10 @@ const isHomepage =
     .nav-links {
       display: flex;
       flex-direction: row;
-      gap: 1.5rem;
+      gap: 1rem;
     }
   }
 
-  /* Mobile responsive styles */
   @media (max-width: 768px) {
     header {
       padding-left: 10px;
@@ -214,7 +245,6 @@ const isHomepage =
 
     .hamburger {
       display: flex;
-      box-shadow: none;
     }
 
     .nav-links {
@@ -224,6 +254,7 @@ const isHomepage =
       gap: 1rem;
       width: 100%;
       margin-top: 1rem;
+      padding-bottom: 1rem;
     }
 
     .nav-links.open {

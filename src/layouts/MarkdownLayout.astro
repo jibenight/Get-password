@@ -17,53 +17,38 @@ const { frontmatter } = Astro.props;
     max-width: 1024px;
     margin: 0 auto;
     padding: 1rem;
-    background-color: var(--color-bg-secondary);
+    background-color: transparent;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     line-height: 1.6;
   }
 
-  h2 {
+  .info-container h2 {
     text-align: center;
     margin-bottom: 1.5rem;
   }
 
   .info-container h3 {
     margin-top: 2rem;
-    border-bottom: 5px solid var(--color-accent);
     padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--color-accent);
   }
 
-  h4 {
+  .info-container h4 {
     margin-top: 1.5rem;
   }
 
-  p,
-  ul,
-  ol {
+  .info-container p,
+  .info-container ul,
+  .info-container ol {
     margin-bottom: 1rem;
   }
 
-  ul,
-  ol {
+  .info-container ul,
+  .info-container ol {
     padding-left: 2rem;
   }
 
-  li {
+  .info-container li {
     margin-bottom: 0.5rem;
-  }
-
-  strong {
-  }
-
-  /* Styles de mode sombre */
-  .dark-mode .info-container {
-    background-color: #2a2a2a;
-  }
-
-  .dark-mode .info-container h3 {
-    margin-top: 2rem;
-    border-bottom: 5px solid var(--color-accent);
-    padding-bottom: 0.5rem;
   }
 </style>

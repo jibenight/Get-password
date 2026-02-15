@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import AdsInFeed from '../components/AdsInFeed.astro';
+import { ClientRouter } from 'astro:transitions';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -16,20 +17,19 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang={lang}>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={t('meta.content')} />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset='UTF-8' />
+    <meta name='description' content={t('meta.content')} />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
+    <ClientRouter />
   </head>
   <body>
-    <Header/>
-      
-  
-    <slot/>
+    <Header />
+    <slot />
 
-    <div>
+    <div class="ads-google">
       <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3402470307945870"
       crossorigin="anonymous"></script>
       <ins class="adsbygoogle"
@@ -42,13 +42,11 @@ const { title } = Astro.props;
           (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
     </div>
-    
-    <Footer/>
-  </body>
 
-  <!-- Combined Dark Mode Management Script -->
+    <Footer />
+  </body><!-- Combined Dark Mode Management Script -->
   <script is:inline>
-    (function() {
+    (function () {
       // Retrieve the saved theme from localStorage or fallback to the system preference
       const savedTheme = localStorage.getItem('theme');
       const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
@@ -85,7 +83,9 @@ const { title } = Astro.props;
 
       // Expose a global function to toggle the theme
       window.toggleTheme = () => {
-        const currentTheme = document.documentElement.classList.contains('dark-mode')
+        const currentTheme = document.documentElement.classList.contains(
+          'dark-mode'
+        )
           ? 'dark'
           : 'light';
         applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
@@ -96,7 +96,9 @@ const { title } = Astro.props;
         const toggleButton = document.querySelector('.dark-mode-toggle');
         if (toggleButton) {
           toggleButton.addEventListener('click', () => {
-            const currentTheme = document.documentElement.classList.contains('dark-mode')
+            const currentTheme = document.documentElement.classList.contains(
+              'dark-mode'
+            )
               ? 'dark'
               : 'light';
             applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
@@ -119,18 +121,22 @@ const { title } = Astro.props;
 
   <style is:global>
     :root {
-      --color-bg-primary: #f5f5f5;
-      --color-bg-secondary: #ffffff;
-      --color-text-primary: #1a1a1a;
-      --color-text-secondary: #3d3d3d;
-      --color-accent: #3a6ea5;
-      --color-accent-hover: #2a4e7c;
-      --color-border-color: #e0e0e0;
-      --color-bg-navbar: rgba(237, 237, 237, 0.7);
+      --color-bg-primary: #e0e5ec;
+      --color-bg-secondary: #e0e5ec;
+      --color-text-primary: #2d3436;
+      --color-text-secondary: #636e72;
+      --color-accent: #4a7cc9;
+      --color-accent-hover: #3a6ab5;
+      --color-border-color: transparent;
+      --color-bg-navbar: #e0e5ec;
 
-      /* Shadows */
-      --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.1);
-      --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.2);
+      /* Neumorphic shadows */
+      --shadow-light: -6px -6px 14px rgba(255, 255, 255, 0.7);
+      --shadow-dark: 6px 6px 14px rgba(163, 177, 198, 0.6);
+      --shadow-soft: var(--shadow-light), var(--shadow-dark);
+      --shadow-hover: -8px -8px 16px rgba(255, 255, 255, 0.8), 8px 8px 16px rgba(163, 177, 198, 0.7);
+      --shadow-inset: inset 4px 4px 8px rgba(163, 177, 198, 0.5), inset -4px -4px 8px rgba(255, 255, 255, 0.7);
+      --shadow-inset-active: inset 6px 6px 12px rgba(163, 177, 198, 0.6), inset -6px -6px 12px rgba(255, 255, 255, 0.8);
 
       font-size: 16px;
     }
@@ -143,17 +149,26 @@ const { title } = Astro.props;
     }
 
     :root.dark-mode {
-      --color-bg-primary: #0d0d0d;
-      --color-bg-secondary: #1a1a1a;
-      --color-text-primary: #eaeaea;
-      --color-text-secondary: #bfbfbf;
-      --color-accent: #3a6ea5;
-      --color-accent-hover: #507bb5;
-      --color-bg-navbar: rgba(50, 50, 50, 0.9);
+      --color-bg-primary: #2d2d3d;
+      --color-bg-secondary: #2d2d3d;
+      --color-text-primary: #e0e0e0;
+      --color-text-secondary: #a0a0b0;
+      --color-accent: #5a8fd4;
+      --color-accent-hover: #4a7cc9;
+      --color-bg-navbar: #2d2d3d;
+
+      --shadow-light: -6px -6px 14px rgba(60, 60, 80, 0.5);
+      --shadow-dark: 6px 6px 14px rgba(15, 15, 25, 0.5);
+      --shadow-soft: var(--shadow-light), var(--shadow-dark);
+      --shadow-hover: -8px -8px 16px rgba(60, 60, 80, 0.6), 8px 8px 16px rgba(15, 15, 25, 0.6);
+      --shadow-inset: inset 4px 4px 8px rgba(15, 15, 25, 0.4), inset -4px -4px 8px rgba(60, 60, 80, 0.4);
+      --shadow-inset-active: inset 6px 6px 12px rgba(15, 15, 25, 0.5), inset -6px -6px 12px rgba(60, 60, 80, 0.5);
     }
 
     /* Reset default margins and paddings */
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -181,11 +196,10 @@ const { title } = Astro.props;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      background: url('../assets/images/y-so-white.png') repeat;
+      background: var(--color-bg-primary);
       color: var(--color-text-primary);
       line-height: 1.65;
       transition: background-color 0.3s, color 0.3s;
-      /* Removed invalid 'font-weight' property */
     }
 
     footer {
@@ -195,18 +209,25 @@ const { title } = Astro.props;
       text-align: center;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       color: var(--color-text-primary);
       margin-bottom: 1rem;
       font-family: 'Varela', 'Open Sans', sans-serif;
       line-height: 1.2;
     }
 
-    h1, h2 {
+    h1,
+    h2 {
       text-align: center;
     }
 
-    p, li {
+    p,
+    li {
       color: var(--color-text-primary);
       font-size: 1.15rem;
     }
@@ -247,20 +268,24 @@ const { title } = Astro.props;
       font-size: larger;
       border: none;
       padding: 10px 20px;
-      border-radius: 8px;
+      border-radius: 12px;
       box-shadow: var(--shadow-soft);
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      transition: all 0.3s ease;
     }
 
     button:hover {
-      transform: translateY(-2px);
       box-shadow: var(--shadow-hover);
+      transform: none;
+    }
+
+    button:active {
+      box-shadow: var(--shadow-inset);
     }
 
     .card {
-      background-color: var(--color-bg-secondary);
-      border-radius: 12px;
+      background-color: var(--color-bg-primary);
+      border-radius: 20px;
       box-shadow: var(--shadow-soft);
       padding: 1.5rem;
       transition: box-shadow 0.3s ease;
@@ -270,20 +295,23 @@ const { title } = Astro.props;
       box-shadow: var(--shadow-hover);
     }
 
-    input, select {
-      border: 1px solid var(--color-border-color);
-      border-radius: 6px;
-      padding: 0.5rem 1rem;
+    input,
+    select {
+      border: none;
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
       font-size: 1rem;
       width: 100%;
-      background-color: var(--color-bg-secondary);
+      background-color: var(--color-bg-primary);
       color: var(--color-text-primary);
+      box-shadow: var(--shadow-inset);
+      transition: all 0.3s ease;
     }
 
-    input:focus, select:focus {
-      border-color: var(--color-accent);
+    input:focus,
+    select:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+      box-shadow: var(--shadow-inset-active);
     }
 
     .checkbox-options {
@@ -292,29 +320,30 @@ const { title } = Astro.props;
       gap: 0.75rem;
     }
 
-    .checkbox-options input[type="checkbox"] {
+    .checkbox-options input[type='checkbox'] {
       appearance: none;
-      width: 20px;
-      height: 20px;
-      border: 2px solid var(--color-accent);
-      border-radius: 4px;
-      background-color: var(--color-bg-secondary);
+      width: 22px;
+      height: 22px;
+      border: none;
+      border-radius: 6px;
+      background-color: var(--color-bg-primary);
+      box-shadow: var(--shadow-inset);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
+      transition: all 0.3s ease;
     }
 
-    .checkbox-options input[type="checkbox"]:checked {
+    .checkbox-options input[type='checkbox']:checked {
       background-color: var(--color-accent);
-      border-color: var(--color-accent);
+      box-shadow: var(--shadow-inset-active);
     }
 
-    .checkbox-options input[type="checkbox"]:checked::before {
+    .checkbox-options input[type='checkbox']:checked::before {
       content: '✔';
       color: white;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     .checkbox-options label {
@@ -326,24 +355,8 @@ const { title } = Astro.props;
     }
 
     .dark-mode body {
-      background: url('../assets/images/y-so-dark.png') repeat;
+      background: var(--color-bg-primary);
       color: var(--color-text-primary);
-    }
-
-    .dark-mode .card {
-      background-color: var(--color-bg-secondary);
-      color: var(--color-text-primary);
-    }
-
-    .dark-mode input, .dark-mode select {
-      background-color: var(--color-bg-secondary);
-      color: var(--color-text-primary);
-      border-color: var(--color-border-color);
-    }
-
-    .dark-mode input:focus, .dark-mode select:focus {
-      border-color: var(--color-accent);
-      box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
     }
   </style>
 </html>

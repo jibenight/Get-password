@@ -1,3 +1,5 @@
+import { copyToClipboard, createPasswordElement } from './shared.js';
+
 /***************************************
  * CONSTANTS AND UTILITIES
  ***************************************/
@@ -120,78 +122,6 @@ const generateSinglePassword = options => {
   const strength = calculatePasswordStrength(password, options);
 
   return { password, strength };
-};
-
-/***************************************
- * COPY-PASTE
- ***************************************/
-
-/**
- * Copies the content of an input to the clipboard
- * and handles the display of the notification.
- * @param {HTMLInputElement} input
- * @returns {Promise<void>}
- */
-const copyToClipboard = async input => {
-  try {
-    // Copy to clipboard
-    await navigator.clipboard.writeText(input.value);
-
-    // Visual effect to confirm the copy
-    const passwordItem = input.closest('.password-item');
-    passwordItem.classList.add('copied');
-    setTimeout(() => passwordItem.classList.remove('copied'), 500);
-
-    // Display notification
-    const notification = document.createElement('div');
-    notification.className = 'copy-notification';
-    notification.textContent = 'Password copied!';
-    document.body.appendChild(notification);
-
-    setTimeout(() => {
-      notification.classList.add('fade-out');
-      setTimeout(() => {
-        document.body.removeChild(notification);
-      }, 300);
-    }, 2000);
-  } catch (err) {
-    console.error('Error while copying:', err);
-  }
-};
-
-/***************************************
- * PASSWORD ELEMENT CREATION
- ***************************************/
-
-/**
- * Creates and returns the DOM for a password and its copy button.
- * @param {string} password
- * @returns {HTMLDivElement}
- */
-const createPasswordElement = password => {
-  const passwordItem = document.createElement('div');
-  passwordItem.className = 'password-item';
-
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.className = 'password-input';
-  input.readOnly = true;
-  input.value = password; // directly assign the password
-
-  const copyButton = document.createElement('button');
-  copyButton.className = 'copy-button';
-  copyButton.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 
-               1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
-    </svg>
-  `;
-  copyButton.addEventListener('click', () => copyToClipboard(input));
-
-  passwordItem.appendChild(input);
-  passwordItem.appendChild(copyButton);
-
-  return passwordItem;
 };
 
 /***************************************

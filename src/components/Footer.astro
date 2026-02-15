@@ -16,7 +16,7 @@ const t = useTranslations(lang);
     <div class='footer-section'>
       <h3>{t('footer.links')}</h3>
       <ul>
-        <li><a href='/'>{t('footer.home')}</a></li>
+        <li><a href={`/${lang}/`}>{t('footer.home')}</a></li>
         <li><a href={t('footer.href')}>{t('footer.legal')}</a></li>
       </ul>
     </div>
@@ -43,11 +43,12 @@ const t = useTranslations(lang);
 
 <style>
   footer {
-    background-color: var(--color-bg-navbar);
+    background-color: var(--color-bg-primary);
     color: var(--color-text-primary);
     padding: 2rem 1rem;
-    border-radius: 10px;
+    border-radius: 20px;
     margin-top: 2rem;
+    box-shadow: var(--shadow-soft);
   }
 
   .footer-content {
@@ -96,7 +97,8 @@ const t = useTranslations(lang);
 
   .footer-bottom {
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
     font-size: 0.8rem;
     color: var(--color-text-secondary);
   }

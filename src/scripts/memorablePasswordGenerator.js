@@ -1,3 +1,17 @@
+import { copyToClipboard, createPasswordElement } from './shared.js';
+
+/**
+ * Generates a secure random integer in the range [0, max).
+ * Uses the Web Crypto API for enhanced security.
+ * @param {number} max
+ * @returns {number}
+ */
+const getSecureRandomInt = (max) => {
+  const array = new Uint32Array(1);
+  window.crypto.getRandomValues(array);
+  return Math.floor((array[0] / (0xffffffff + 1)) * max);
+};
+
 /**
  * Dynamically loads words for a specific language.
  * @param {string} lang - The selected language (e.g., "fr", "en").
@@ -42,20 +56,20 @@ function generateMemorablePassword(
 
   let password = '';
   for (let i = 0; i < count; i++) {
-    const randomIndex = Math.floor(Math.random() * words.length);
+    const randomIndex = getSecureRandomInt(words.length);
     let word = words[randomIndex];
     word = word.charAt(0).toUpperCase() + word.slice(1);
     password += word;
   }
 
   if (includeNumbers) {
-    const randomNumber = Math.floor(Math.random() * 100);
+    const randomNumber = getSecureRandomInt(100);
     password += randomNumber;
   }
 
   if (includeSymbols) {
     const symbols = ['!', '@', '#', '$', '%', '&', '*'];
-    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+    const randomSymbol = symbols[getSecureRandomInt(symbols.length)];
     password += randomSymbol;
   }
 
@@ -90,12 +104,12 @@ function calculatePasswordStrength(password, wordCount) {
  * @param {number} wordCount - Number of words in the password.
  */
 function updateStrengthMeter(password, wordCount) {
-  const strengthBars = document.querySelectorAll('.bars');
+  const strengthBars = document.querySelectorAll('#strengthMeters .bar');
   const maxBars = 4;
   const strength = calculatePasswordStrength(password, wordCount);
   strengthBars.forEach((bar, index) => {
     if (index < maxBars) {
-      bar.className = 'bars';
+      bar.className = 'bar';
       if (index < strength) {
         if (strength === 1) bar.classList.add('weak');
         else if (strength === 2) bar.classList.add('medium');
@@ -103,58 +117,9 @@ function updateStrengthMeter(password, wordCount) {
         else if (strength === 4) bar.classList.add('very-strong');
       }
     } else {
-      bar.className = 'bars';
+      bar.className = 'bar';
     }
   });
-}
-
-/**
- * Copies text to the clipboard.
- * @param {string} text - The text to copy.
- */
-function copyToClipboard(input) {
-  navigator.clipboard
-    .writeText(input.value)
-    .then(() => {
-      const passwordItem = input.closest('.password-item');
-      passwordItem.classList.add('copied');
-      setTimeout(() => {
-        passwordItem.classList.remove('copied');
-      }, 500);
-    })
-    .catch(err => {
-      console.error('Erreur lors de la copie dans le presse-papiers :', err);
-    });
-}
-
-/**
- * Creates a password element with the expected style.
- * @param {string} password - The generated password.
- * @returns {HTMLElement} - A DOM element containing the password.
- */
-function createPasswordElement(password) {
-  const passwordItem = document.createElement('div');
-  passwordItem.className = 'password-item';
-
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.className = 'password-input';
-  input.value = password;
-  input.readOnly = true;
-
-  const copyButton = document.createElement('button');
-  copyButton.className = 'copy-button';
-  copyButton.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
-        </svg>
-    `;
-  copyButton.addEventListener('click', () => copyToClipboard(input));
-
-  passwordItem.appendChild(input);
-  passwordItem.appendChild(copyButton);
-
-  return passwordItem;
 }
 
 /**
@@ -195,6 +160,11 @@ export async function initMemorablePasswordGenerator(lang) {
   const numberWordInput = document.getElementById('numberWordCount');
   const includeNumbersCheckbox = document.getElementById('includeNumbers');
   const includeSymbolsCheckbox = document.getElementById('includeSymbols');
+
+  if (!generateButton || !passwordList) {
+    console.error('Memorable password generator elements not found');
+    return;
+  }
 
   countInput.addEventListener('input', updateInputLabels);
   numberWordInput.addEventListener('input', updateInputLabels);

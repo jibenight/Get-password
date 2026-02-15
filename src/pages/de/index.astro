@@ -20,6 +20,9 @@ const t = useTranslations(lang);
 import { Content as PasswordInfo } from '../../contents/de/secure_passwords.md';
 import { Content as MemorizationTips } from '../../contents/de/memorization_tips.md';
 import { Content as PasswordManagerGuide } from '../../contents/de/password_manager_guide.md';
+
+// tabs
+import ContentTabs from '../../components/ContentTabs.astro';
 ---
 
 <Layout title={t('title.site')}>
@@ -47,9 +50,11 @@ import { Content as PasswordManagerGuide } from '../../contents/de/password_mana
         alt={t('herosection.image')}
       />
     </div>
-    <PasswordInfo />
-    <MemorizationTips />
-    <PasswordManagerGuide />
+    <ContentTabs>
+      <PasswordInfo slot="security" />
+      <MemorizationTips slot="memorization" />
+      <PasswordManagerGuide slot="manager" />
+    </ContentTabs>
   </main>
 </Layout>
 
