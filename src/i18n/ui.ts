@@ -122,6 +122,7 @@ export const ui = {
     'footer.links': 'Enlaces útiles',
     'footer.home': 'Inicio',
     'footer.legal': 'Avisos legales',
+    'footer.href': '/es/avisos-legales',
     'footer.security': 'Seguridad',
     'footer.local_generation': 'Generación local',
     'footer.no_storage': 'Sin datos almacenados',

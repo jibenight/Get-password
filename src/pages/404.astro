@@ -1,26 +1,41 @@
 ---
 import Layout from '../layouts/Layout.astro';
-//translate
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 ---
 
-<Layout title={t('title.site')}>
+<Layout title='404'>
   <main>
     <div>
-      <h1>404 - Cette page s'est perdue</h1>
+      <h1>404</h1>
+      <p id="notFoundMessage">Page not found</p>
       <p>
-        On dirait que cette page a pris un chemin que nous ne connaissons pas.
+        <a href='/' id="homeLink">Go back home</a>
       </p>
-      <p>
-        Pas de panique ! <a href='/'>Revenez à la maison</a> ou explorez le site
-        autrement.
-      </p>
-      <p>Besoin d'aide ? Nous sommes là pour vous.</p>
     </div>
   </main>
 </Layout>
+
+<script is:inline>
+  (function() {
+    const messages = {
+      en: { text: 'This page could not be found.', link: 'Go back home' },
+      fr: { text: 'Cette page est introuvable.', link: 'Retour à l\'accueil' },
+      es: { text: 'Esta página no se pudo encontrar.', link: 'Volver al inicio' },
+      de: { text: 'Diese Seite wurde nicht gefunden.', link: 'Zurück zur Startseite' },
+    };
+    const supported = ['en', 'fr', 'es', 'de'];
+    const browserLang = (navigator.languages?.[0] || navigator.language || 'en')
+      .split('-')[0].toLowerCase();
+    const lang = supported.includes(browserLang) ? browserLang : 'en';
+    const msg = messages[lang];
+    const messageEl = document.getElementById('notFoundMessage');
+    const linkEl = document.getElementById('homeLink');
+    if (messageEl) messageEl.textContent = msg.text;
+    if (linkEl) {
+      linkEl.textContent = msg.link;
+      linkEl.href = '/' + lang + '/';
+    }
+  })();
+</script>
 
 <style>
   main {
@@ -28,5 +43,15 @@ const t = useTranslations(lang);
     place-items: center;
     text-align: center;
     height: 80vh;
+  }
+
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 </style>

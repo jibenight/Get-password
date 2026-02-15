@@ -3,18 +3,18 @@ function handleToggle(event) {
   const button = event.currentTarget;
   const type = button.dataset.type;
 
-  // Select all toggle buttons and generator sections
   const buttons = document.querySelectorAll('.toggle-button');
   const classicSection = document.getElementById('classicGenerator');
   const memorableSection = document.getElementById('memorableGenerator');
 
-  // Remove the 'active' class from all buttons and add it to the clicked button
-  buttons.forEach(btn => btn.classList.remove('active'));
+  buttons.forEach(btn => {
+    btn.classList.remove('active');
+    btn.setAttribute('aria-pressed', 'false');
+  });
   button.classList.add('active');
+  button.setAttribute('aria-pressed', 'true');
 
-  // Ensure sections exist before updating classes
   if (classicSection && memorableSection) {
-    // Update generator sections based on the selected type
     if (type === 'classic') {
       classicSection.classList.add('active');
       memorableSection.classList.remove('active');
@@ -31,6 +31,8 @@ function handleToggle(event) {
 export function init() {
   const buttons = document.querySelectorAll('.toggle-button');
   buttons.forEach(button => {
+    // Remove existing listener to prevent duplicates
+    button.removeEventListener('click', handleToggle);
     button.addEventListener('click', handleToggle);
   });
 }
@@ -42,6 +44,6 @@ if (document.readyState === 'loading') {
   init();
 }
 
-// Reinitialize on Astro navigation events to ensure the toggle works after page changes
+// Reinitialize on Astro navigation events
 document.addEventListener('astro:page-load', init);
 document.addEventListener('astro:after-swap', init);

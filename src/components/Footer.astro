@@ -27,7 +27,7 @@ const t = useTranslations(lang);
         <li>{t('footer.local_generation')}</li>
         <li>{t('footer.no_storage')}</li>
         <li>
-          <a href='https://github.com/jibenight/Get-password'
+          <a href='https://github.com/jibenight/Get-password' target='_blank' rel='noopener noreferrer'
             >{t('footer.open_source')}</a
           >
         </li>
@@ -37,7 +37,7 @@ const t = useTranslations(lang);
 
   <div class='footer-bottom'>
     <Image src={logo} alt='logo gray locker' />
-    <p>&copy; 2025 Get-password. {t('footer.rights')}</p>
+    <p>&copy; {new Date().getFullYear()} Get-password. {t('footer.rights')}</p>
   </div>
 </footer>
 

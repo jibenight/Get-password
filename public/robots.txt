@@ -5,4 +5,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://get-passsword.com/sitemap-index.xml
+Sitemap: https://get-password.com/sitemap-index.xml

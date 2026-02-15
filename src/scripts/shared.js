@@ -1,4 +1,16 @@
 /**
+ * Generates a secure random integer in the range [0, max).
+ * Uses the Web Crypto API for enhanced security.
+ * @param {number} max
+ * @returns {number}
+ */
+export const getSecureRandomInt = (max) => {
+  const array = new Uint32Array(1);
+  window.crypto.getRandomValues(array);
+  return Math.floor((array[0] / (0xffffffff + 1)) * max);
+};
+
+/**
  * Copies the content of an input to the clipboard
  * and handles the display of the notification.
  * @param {HTMLInputElement} input
@@ -33,6 +45,8 @@ export async function copyToClipboard(input) {
 
     const notification = document.createElement('div');
     notification.className = 'copy-notification';
+    notification.setAttribute('role', 'alert');
+    notification.setAttribute('aria-live', 'polite');
     notification.textContent = 'Copied!';
     document.body.appendChild(notification);
 

@@ -1,4 +1,4 @@
-import { copyToClipboard, createPasswordElement } from './shared.js';
+import { copyToClipboard, createPasswordElement, getSecureRandomInt } from './shared.js';
 
 /***************************************
  * CONSTANTS AND UTILITIES
@@ -10,21 +10,6 @@ const CHARACTERS = {
   lowercase: 'abcdefghijklmnopqrstuvwxyz',
   numbers: '0123456789',
   symbols: '!@#$%^&*',
-};
-
-/**
- * Generates a secure random integer in the range [0, max).
- * Uses the Web Crypto API for enhanced security.
- * @param {number} max
- * @returns {number}
- */
-const getSecureRandomInt = max => {
-  // Create an array of a single unsigned 32-bit integer
-  const array = new Uint32Array(1);
-  // Fill the array with secure random values
-  window.crypto.getRandomValues(array);
-  // Bring the value into the range [0, max)
-  return Math.floor((array[0] / (0xffffffff + 1)) * max);
 };
 
 /***************************************

@@ -1,24 +1,29 @@
 ---
 /**
- * AdsGoogle.astro
- * Composant Astro pour afficher un bloc publicitaire Google Ads
+ * AdsInFeed.astro
+ * Google Ads in-feed component (script loaded once in Layout.astro)
  */
 ---
 
-<!-- Script async pour Google Ads -->
-<script is:raw={true} async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3402470307945870" crossorigin="anonymous"></script>
+<div class="ads-in-feed">
+  <ins
+    class="adsbygoogle"
+    style="display:block"
+    data-ad-format="fluid"
+    data-ad-layout-key="-f7+5u+4t-da+6l"
+    data-ad-client="ca-pub-3402470307945870"
+    data-ad-slot="3718160833"
+  />
+  <script is:raw={true}>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 
-<!-- Balise publicitaire -->
-<ins 
-  class="adsbygoogle"
-  style="display:block"
-  data-ad-format="fluid"
-  data-ad-layout-key="-f7+5u+4t-da+6l"
-  data-ad-client="ca-pub-3402470307945870"
-  data-ad-slot="3718160833"
-/>
-
-<!-- Initialisation de l'annonce -->
-<script is:raw={true}>
-  (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<style>
+  .ads-in-feed {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    min-height: 100px;
+  }
+</style>

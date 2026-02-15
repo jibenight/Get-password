@@ -5,26 +5,26 @@ const t = useTranslations(lang);
 ---
 
 <div class="content-tabs">
-  <div class="tabs-nav">
-    <button class="tab-button active" data-tab="security">
+  <div class="tabs-nav" role="tablist">
+    <button class="tab-button active" data-tab="security" role="tab" aria-selected="true" aria-controls="panel-security" id="tab-security">
       {t('tab.security')}
     </button>
-    <button class="tab-button" data-tab="memorization">
+    <button class="tab-button" data-tab="memorization" role="tab" aria-selected="false" aria-controls="panel-memorization" id="tab-memorization">
       {t('tab.memorization')}
     </button>
-    <button class="tab-button" data-tab="manager">
+    <button class="tab-button" data-tab="manager" role="tab" aria-selected="false" aria-controls="panel-manager" id="tab-manager">
       {t('tab.manager')}
     </button>
   </div>
 
   <div class="tabs-content">
-    <div class="tab-panel active" data-panel="security">
+    <div class="tab-panel active" data-panel="security" role="tabpanel" id="panel-security" aria-labelledby="tab-security">
       <slot name="security" />
     </div>
-    <div class="tab-panel" data-panel="memorization">
+    <div class="tab-panel" data-panel="memorization" role="tabpanel" id="panel-memorization" aria-labelledby="tab-memorization" hidden>
       <slot name="memorization" />
     </div>
-    <div class="tab-panel" data-panel="manager">
+    <div class="tab-panel" data-panel="manager" role="tabpanel" id="panel-manager" aria-labelledby="tab-manager" hidden>
       <slot name="manager" />
     </div>
   </div>
@@ -109,23 +109,59 @@ const t = useTranslations(lang);
 
 <script>
   function initContentTabs() {
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabPanels = document.querySelectorAll('.tab-panel');
+    const tabButtons = document.querySelectorAll('.tab-button[role="tab"]');
+    const tabPanels = document.querySelectorAll('.tab-panel[role="tabpanel"]');
+
+    function activateTab(button) {
+      const targetTab = button.getAttribute('data-tab');
+
+      tabButtons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+      tabPanels.forEach(panel => {
+        panel.classList.remove('active');
+        panel.setAttribute('hidden', '');
+      });
+
+      button.classList.add('active');
+      button.setAttribute('aria-selected', 'true');
+      const targetPanel = document.querySelector(`.tab-panel[data-panel="${targetTab}"]`);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+        targetPanel.removeAttribute('hidden');
+      }
+    }
 
     tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const targetTab = button.getAttribute('data-tab');
-
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        tabPanels.forEach(panel => panel.classList.remove('active'));
-
-        button.classList.add('active');
-        const targetPanel = document.querySelector(`.tab-panel[data-panel="${targetTab}"]`);
-        if (targetPanel) {
-          targetPanel.classList.add('active');
-        }
-      });
+      button.addEventListener('click', () => activateTab(button));
     });
+
+    // Keyboard navigation for tabs
+    const tabList = document.querySelector('.tabs-nav[role="tablist"]');
+    if (tabList) {
+      tabList.addEventListener('keydown', (e) => {
+        const tabs = Array.from(tabButtons);
+        const currentIndex = tabs.indexOf(document.activeElement);
+        let newIndex;
+
+        if (e.key === 'ArrowRight') {
+          newIndex = (currentIndex + 1) % tabs.length;
+        } else if (e.key === 'ArrowLeft') {
+          newIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        } else if (e.key === 'Home') {
+          newIndex = 0;
+        } else if (e.key === 'End') {
+          newIndex = tabs.length - 1;
+        } else {
+          return;
+        }
+
+        e.preventDefault();
+        tabs[newIndex].focus();
+        activateTab(tabs[newIndex]);
+      });
+    }
   }
 
   if (document.readyState === 'loading') {
