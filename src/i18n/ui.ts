@@ -11,15 +11,15 @@ export const ui = {
   en: {
     'title.site': 'Password generator',
     'meta.content': 'Secure and Memorable Password Generator',
-    'nav.regular': 'Classic Mode',
-    'nav.memory': 'Memorable Mode',
+    'nav.regular': 'Classic password',
+    'nav.memory': 'Memorable password',
     'memorable.title': 'Easy-to-Remember Word Generator',
     'memorable.count': 'Number of passwords',
     'memorable.number': 'Number of words',
     'memorable.options.numbers': 'Add numbers (e.g., 42)',
     'memorable.options.symbols': 'Add symbols (e.g., @#$)',
     'memorable.generate': 'Generate',
-    'password.title': 'Password Generator',
+    'password.title': 'Classic Password Generator',
     'password.count': 'Number of passwords',
     'password.length': 'Length',
     'password.options.uppercase': 'Uppercase (A-Z)',
@@ -32,8 +32,25 @@ export const ui = {
       'Create unforgettable passwords, easy to remember and ultra-secure!',
     'title.h4':
       'Generate smooth and secure passwords in just a few clicks, based on real words that are easy to remember.',
-    'herosection.image':
-      'Focused woman working on a computer, screen displaying programming code and a security symbol, in an office during the evening. Illustration related to cybersecurity, secure password generation, and easy-to-remember passwords.',
+    'hero.why.alt': 'Woman unlocking a safe full of keys, symbolizing a password manager and the importance of a memorable master password',
+    'hero.why.title': 'Why generate a memorable password?',
+    'hero.why.intro':
+      "Today, your online accounts are more valuable than ever. The best way to protect them? A password manager. It creates long, unique, and impossible-to-guess combinations for you. No need to remember 50 complicated passwords: it handles that for you.",
+    'hero.why.but': "But there's one exception.",
+    'hero.why.master': 'The master password.',
+    'hero.why.master.desc':
+      "It's the cornerstone of your entire digital security. If it's too simple, everything collapses. If it's too complex, you risk forgetting it... and locking yourself out.",
+    'hero.why.solution':
+      "That's where our memorable password generator makes all the difference.",
+    'hero.why.creates': 'It creates a master password for you that is:',
+    'hero.why.check1': 'Ultra strong',
+    'hero.why.check2': 'Easy to remember',
+    'hero.why.check3': 'Based on real words',
+    'hero.why.check4': 'Built to last',
+    'hero.why.outro':
+      'No more choosing between security and simplicity. You get both.',
+    'hero.why.cta':
+      'Protect your accounts smartly. Start by creating a truly strong master password.',
     'footer.title': 'Get-password',
     'footer.description': 'Secure and memorable password generator',
     'footer.links': 'Useful Links',
@@ -52,15 +69,15 @@ export const ui = {
   fr: {
     'title.site': 'Générateur de Mots de Passe',
     'meta.content': 'Générateur de mots de passe sécurisés et mémorisables',
-    'nav.regular': 'Mode Classique',
-    'nav.memory': 'Mode Mémorisable',
+    'nav.regular': 'Mot de passe classique',
+    'nav.memory': 'Mot de passe mémorisable',
     'memorable.title': 'Générateur de mots facile à mémoriser',
     'memorable.count': 'Nombre de mots de passe',
     'memorable.number': 'Nombre de mots',
     'memorable.options.numbers': 'Ajouter des chiffres (ex: 42)',
     'memorable.options.symbols': 'Ajouter des symboles (ex: @#$)',
     'memorable.generate': 'Générer',
-    'password.title': 'Générateur de Mots de Passe',
+    'password.title': 'Générateur de Mots de Passe Classique',
     'password.count': 'Nombre de mots de passe',
     'password.length': 'Longueur',
     'password.options.uppercase': 'Majuscules (A-Z)',
@@ -73,8 +90,25 @@ export const ui = {
       'Créez des mots de passe inoubliables, simples à retenir et ultra-sécurisés !',
     'title.h4':
       'Générez en quelques clics des mots de passe fluides et sûrs, basés sur de vrais mots faciles à mémoriser.',
-    'herosection.image':
-      'Femme concentrée travaillant sur un ordinateur, écran affichant du code de programmation et un symbole de sécurité, dans un bureau en soirée. Illustration liée à la cybersécurité, la création de mots de passe sécurisés et faciles à retenir.',
+    'hero.why.alt': 'Femme ouvrant un coffre-fort rempli de clés, symbolisant un gestionnaire de mots de passe et l\'importance d\'un mot de passe maître mémorisable',
+    'hero.why.title': 'Pourquoi générer un mot de passe mémorisable ?',
+    'hero.why.intro':
+      'Aujourd\'hui, vos comptes en ligne sont plus précieux que jamais. Le meilleur moyen de les protéger ? Un gestionnaire de mots de passe. Il crée pour vous des combinaisons longues, uniques et impossibles à deviner. Plus besoin de retenir 50 mots de passe compliqués : il s\'en charge pour vous.',
+    'hero.why.but': 'Mais il y a une exception.',
+    'hero.why.master': 'Le mot de passe maître.',
+    'hero.why.master.desc':
+      'C\'est la clé de voûte de toute votre sécurité numérique. S\'il est trop simple, tout s\'écroule. S\'il est trop compliqué, vous risquez de l\'oublier… et de vous bloquer vous-même.',
+    'hero.why.solution':
+      'C\'est là que notre générateur de mots de passe mémorisables fait toute la différence.',
+    'hero.why.creates': 'Il crée pour vous un mot de passe maître :',
+    'hero.why.check1': 'Ultra robuste',
+    'hero.why.check2': 'Facile à retenir',
+    'hero.why.check3': 'Basé sur de vrais mots',
+    'hero.why.check4': 'Conçu pour durer dans le temps',
+    'hero.why.outro':
+      'Plus besoin de choisir entre sécurité et simplicité. Vous obtenez les deux.',
+    'hero.why.cta':
+      'Protégez vos comptes intelligemment. Commencez par créer un mot de passe maître vraiment solide.',
     'footer.title': 'Get-password',
     'footer.description':
       'Générateur de mots de passe sécurisés et mémorisables',
@@ -94,15 +128,15 @@ export const ui = {
   es: {
     'title.site': 'Generador de contraseñas',
     'meta.content': 'Generador de Contraseñas Seguras y Memorables',
-    'nav.regular': 'Modo clásico',
-    'nav.memory': 'Modo memorable',
+    'nav.regular': 'Contraseña clásica',
+    'nav.memory': 'Contraseña memorable',
     'memorable.title': 'Generador de palabras fáciles de recordar',
     'memorable.count': 'Número de contraseñas',
     'memorable.number': 'Número de palabras',
     'memorable.options.numbers': 'Agregar números (p. ej., 42)',
     'memorable.options.symbols': 'Agregar símbolos (p. ej., @#)',
     'memorable.generate': 'Generar contraseñas',
-    'password.title': 'Generador de contraseñas',
+    'password.title': 'Generador de contraseñas clásico',
     'password.count': 'Número de contraseñas',
     'password.length': 'Longitud',
     'password.options.uppercase': 'Mayúsculas (A-Z)',
@@ -115,8 +149,25 @@ export const ui = {
       '¡Crea contraseñas inolvidables, fáciles de recordar y ultra seguras!',
     'title.h4':
       'Genera contraseñas seguras y fluidas en solo unos clics, basadas en palabras reales fáciles de recordar.',
-    'herosection.image':
-      'Mujer concentrada trabajando en un ordenador, pantalla mostrando código de programación y un símbolo de seguridad, en una oficina por la tarde. Ilustración relacionada con la ciberseguridad, la generación de contraseñas seguras y fáciles de recordar.',
+    'hero.why.alt': 'Mujer abriendo una caja fuerte llena de llaves, simbolizando un gestor de contraseñas y la importancia de una contraseña maestra memorable',
+    'hero.why.title': '¿Por qué generar una contraseña memorable?',
+    'hero.why.intro':
+      'Hoy en día, tus cuentas en línea son más valiosas que nunca. ¿La mejor manera de protegerlas? Un gestor de contraseñas. Crea para ti combinaciones largas, únicas e imposibles de adivinar. Ya no necesitas recordar 50 contraseñas complicadas: él se encarga por ti.',
+    'hero.why.but': 'Pero hay una excepción.',
+    'hero.why.master': 'La contraseña maestra.',
+    'hero.why.master.desc':
+      'Es la piedra angular de toda tu seguridad digital. Si es demasiado simple, todo se derrumba. Si es demasiado compleja, corres el riesgo de olvidarla… y de bloquearte a ti mismo.',
+    'hero.why.solution':
+      'Ahí es donde nuestro generador de contraseñas memorables marca la diferencia.',
+    'hero.why.creates': 'Crea para ti una contraseña maestra:',
+    'hero.why.check1': 'Ultra robusta',
+    'hero.why.check2': 'Fácil de recordar',
+    'hero.why.check3': 'Basada en palabras reales',
+    'hero.why.check4': 'Diseñada para durar',
+    'hero.why.outro':
+      'Ya no tienes que elegir entre seguridad y simplicidad. Obtienes ambas.',
+    'hero.why.cta':
+      'Protege tus cuentas de forma inteligente. Empieza por crear una contraseña maestra realmente sólida.',
     'footer.title': 'Get-password',
     'footer.description': 'Generador de contraseñas seguro y memorable',
     'footer.links': 'Enlaces útiles',
@@ -135,15 +186,15 @@ export const ui = {
   de: {
     'title.site': 'Passwort-Generator',
     'meta.content': 'Sicherer und leicht merkbarer Passwort-Generator',
-    'nav.regular': 'Klassischer Modus',
-    'nav.memory': 'Merkwürdiger Modus',
+    'nav.regular': 'Klassisches Passwort',
+    'nav.memory': 'Merkbares Passwort',
     'memorable.title': 'Einfach zu merkender Passwort-Generator',
     'memorable.count': 'Anzahl der Passwörter',
     'memorable.number': 'Anzahl der Wörter',
     'memorable.options.numbers': 'Zahlen hinzufügen (z. B. 42)',
     'memorable.options.symbols': 'Symbole hinzufügen (z. B. @#)',
     'memorable.generate': 'Passwörter generieren',
-    'password.title': 'Passwort-Generator',
+    'password.title': 'Klassischer Passwort-Generator',
     'password.count': 'Anzahl der Passwörter',
     'password.length': 'Länge',
     'password.options.uppercase': 'Großbuchstaben (A-Z)',
@@ -156,8 +207,25 @@ export const ui = {
       'Erstelle unvergessliche, leicht zu merkende und ultra-sichere Passwörter!',
     'title.h4':
       'Generiere reibungslose und sichere Passwörter in nur wenigen Klicks, basierend auf echten Wörtern, die leicht zu merken sind.',
-    'herosection.image':
-      'Konzentrierte Frau arbeitet am Computer, Bildschirm zeigt Programmiercode und ein Sicherheitssymbol, in einem Büro am Abend. Illustration zum Thema Cybersicherheit, sichere Passworterstellung und leicht zu merkende Passwörter.',
+    'hero.why.alt': 'Frau öffnet einen Tresor voller Schlüssel, symbolisiert einen Passwort-Manager und die Bedeutung eines merkbaren Master-Passworts',
+    'hero.why.title': 'Warum ein merkbares Passwort generieren?',
+    'hero.why.intro':
+      'Heute sind Ihre Online-Konten wertvoller denn je. Der beste Weg, sie zu schützen? Ein Passwort-Manager. Er erstellt für Sie lange, einzigartige und unmöglich zu erratende Kombinationen. Sie müssen sich keine 50 komplizierten Passwörter mehr merken: Er übernimmt das für Sie.',
+    'hero.why.but': 'Aber es gibt eine Ausnahme.',
+    'hero.why.master': 'Das Master-Passwort.',
+    'hero.why.master.desc':
+      'Es ist der Grundstein Ihrer gesamten digitalen Sicherheit. Ist es zu einfach, bricht alles zusammen. Ist es zu komplex, riskieren Sie, es zu vergessen… und sich selbst auszusperren.',
+    'hero.why.solution':
+      'Genau hier macht unser Generator für merkbare Passwörter den Unterschied.',
+    'hero.why.creates': 'Er erstellt für Sie ein Master-Passwort, das:',
+    'hero.why.check1': 'Ultra robust ist',
+    'hero.why.check2': 'Leicht zu merken ist',
+    'hero.why.check3': 'Auf echten Wörtern basiert',
+    'hero.why.check4': 'Für die Dauer gemacht ist',
+    'hero.why.outro':
+      'Kein Kompromiss mehr zwischen Sicherheit und Einfachheit. Sie bekommen beides.',
+    'hero.why.cta':
+      'Schützen Sie Ihre Konten intelligent. Beginnen Sie mit einem wirklich starken Master-Passwort.',
     'footer.title': 'Get-password',
     'footer.description': 'Sicherer und leicht merkbarer Passwort-Generator',
     'footer.links': 'Nützliche Links',

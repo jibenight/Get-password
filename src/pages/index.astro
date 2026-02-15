@@ -1,13 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import AdsInFeed from '../components/AdsInFeed.astro';
 
 import Layout from '../layouts/Layout.astro';
 import '../styles/index.css';
-
-//image
-import ResponsiveImage from '../components/ResponsiveImage.astro';
-import desktopImage from '../assets/images/woman-computer.webp';
-import mobileImage from '../assets/images/woman-computer-mobile.webp';
+import heroImage from '../assets/images/hero-password-manager.webp';
 
 //password generator
 import PasswordGenerator from '../components/PasswordGenerator.astro';
@@ -47,11 +44,24 @@ import ContentTabs from '../components/ContentTabs.astro';
           {t('title.h4')}
         </p>
       </div>
-      <ResponsiveImage
-        mobileImgUrl={mobileImage}
-        desktopImgUrl={desktopImage}
-        alt={t('herosection.image')}
-      />
+      <div class='hero-content'>
+        <Image src={heroImage} alt={t('hero.why.alt')} class='hero-image' loading='lazy' />
+        <h2>{t('hero.why.title')}</h2>
+        <p>{t('hero.why.intro')}</p>
+        <p class='hero-exception'>{t('hero.why.but')}</p>
+        <p class='hero-highlight'>&#x1F449; {t('hero.why.master')}</p>
+        <p>{t('hero.why.master.desc')}</p>
+        <p class='hero-solution'>{t('hero.why.solution')}</p>
+        <p>{t('hero.why.creates')}</p>
+        <ul class='hero-checklist'>
+          <li>&#x2705; {t('hero.why.check1')}</li>
+          <li>&#x2705; {t('hero.why.check2')}</li>
+          <li>&#x2705; {t('hero.why.check3')}</li>
+          <li>&#x2705; {t('hero.why.check4')}</li>
+        </ul>
+        <p class='hero-outro'>{t('hero.why.outro')}</p>
+        <p class='hero-cta'>{t('hero.why.cta')}</p>
+      </div>
     </div>
     <AdsInFeed/>
     <ContentTabs>

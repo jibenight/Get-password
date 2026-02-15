@@ -44,11 +44,15 @@ const isHomepage =
       {
         isHomepage && (
           <>
-            <button class='toggle-button classic' data-type='classic' aria-pressed='false'>
+            <button
+              class='toggle-button'
+              id='modeToggle'
+              data-current='memorable'
+              data-label-classic={t('nav.regular')}
+              data-label-memorable={t('nav.memory')}
+              aria-label={t('nav.regular')}
+            >
               {t('nav.regular')}
-            </button>
-            <button class='toggle-button memorable' data-type='memorable' aria-pressed='true'>
-              {t('nav.memory')}
             </button>
             <LanguagePicker />
           </>
