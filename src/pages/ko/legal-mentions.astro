@@ -1,0 +1,153 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title='법적 고지 - 비밀번호 생성기'>
+  <main class='legal-container'>
+    <h1>법적 고지</h1>
+
+    <section>
+      <h2>1. 법적 정보</h2>
+      <p>본 웹사이트는 개인적으로 운영됩니다.</p>
+      <p>발행 및 기술 책임자: Nguyen Jean</p>
+    </section>
+
+    <section>
+      <h2>2. 호스팅</h2>
+      <p>본 웹사이트의 호스팅 제공업체:</p>
+      <p>
+        Cloudflare, Inc.<br>
+        101 Townsend St, San Francisco, CA 94107<br>
+        USA
+      </p>
+    </section>
+
+    <section>
+      <h2>3. 지적 재산권</h2>
+      <p>
+        본 사이트의 모든 콘텐츠는 MIT 라이선스에 따라 제공됩니다.
+      </p>
+      <p>소스 코드는 GitHub에서 자유롭게 이용할 수 있습니다: <a href="https://github.com/jibenight/Get-password" target="_blank">https://github.com/jibenight/Get-password</a></p>
+      <p>다음을 자유롭게 할 수 있습니다:</p>
+      <ul>
+        <li>비밀번호 생성기 사용</li>
+        <li>소스 코드 복사 및 수정</li>
+        <li>상업적 목적으로 사용</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. 개인정보 보호</h2>
+      <p>본 사이트는 광고 목적으로만 쿠키를 사용합니다. 이러한 쿠키를 통해 귀하의 탐색 활동 및 선호도에 기반한 맞춤형 광고를 표시할 수 있습니다.</p>
+    </section>
+
+    <section>
+      <h2>5. 책임 제한</h2>
+      <p>
+        생성된 비밀번호는 참고용으로만 제공됩니다. 안전한 비밀번호를 생성하기
+        위해 노력하고 있지만, 절대적인 보안 수준을 보장할 수는 없습니다.
+      </p>
+      <p>
+        사용자는 생성된 비밀번호의 사용에 대해 전적으로 책임을 집니다.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. 연락처</h2>
+      <p>본 웹사이트에 대한 질문이 있으시면 다음 방법으로 연락하실 수 있습니다:</p>
+      <ul>
+        <li>이메일 보내기: contact@get-password.com</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. 준거법</h2>
+      <p>본 법적 고지는 프랑스 법률의 적용을 받습니다.</p>
+      <p>분쟁이 발생할 경우, 프랑스 법원만이 관할권을 갖습니다.</p>
+    </section>
+
+    <div class='back-link'>
+      <a href='/ko/'>홈페이지로 돌아가기</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  h1 {
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .back-link a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

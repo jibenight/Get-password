@@ -21,8 +21,29 @@ import Layout from '../layouts/Layout.astro';
       fr: { text: 'Cette page est introuvable.', link: 'Retour à l\'accueil' },
       es: { text: 'Esta página no se pudo encontrar.', link: 'Volver al inicio' },
       de: { text: 'Diese Seite wurde nicht gefunden.', link: 'Zurück zur Startseite' },
+      pt: { text: 'Esta página não foi encontrada.', link: 'Voltar à página inicial' },
+      it: { text: 'Questa pagina non è stata trovata.', link: 'Torna alla home' },
+      nl: { text: 'Deze pagina kon niet worden gevonden.', link: 'Terug naar home' },
+      ru: { text: 'Страница не найдена.', link: 'Вернуться на главную' },
+      ja: { text: 'ページが見つかりませんでした。', link: 'ホームに戻る' },
+      ko: { text: '페이지를 찾을 수 없습니다.', link: '홈으로 돌아가기' },
+      zh: { text: '找不到此页面。', link: '返回首页' },
+      ar: { text: 'لم يتم العثور على هذه الصفحة.', link: 'العودة إلى الصفحة الرئيسية' },
+      tr: { text: 'Bu sayfa bulunamadı.', link: 'Ana sayfaya dön' },
+      pl: { text: 'Nie znaleziono tej strony.', link: 'Wróć do strony głównej' },
+      sv: { text: 'Sidan kunde inte hittas.', link: 'Tillbaka till startsidan' },
+      da: { text: 'Denne side kunne ikke findes.', link: 'Gå tilbage til forsiden' },
+      no: { text: 'Denne siden ble ikke funnet.', link: 'Gå tilbake til forsiden' },
+      fi: { text: 'Sivua ei löytynyt.', link: 'Palaa etusivulle' },
+      cs: { text: 'Tato stránka nebyla nalezena.', link: 'Zpět na úvodní stránku' },
+      ro: { text: 'Această pagină nu a fost găsită.', link: 'Înapoi la pagina principală' },
+      hu: { text: 'Az oldal nem található.', link: 'Vissza a főoldalra' },
+      el: { text: 'Η σελίδα δεν βρέθηκε.', link: 'Επιστροφή στην αρχική' },
+      th: { text: 'ไม่พบหน้านี้', link: 'กลับสู่หน้าหลัก' },
+      vi: { text: 'Không tìm thấy trang này.', link: 'Quay lại trang chủ' },
+      id: { text: 'Halaman ini tidak ditemukan.', link: 'Kembali ke beranda' },
     };
-    const supported = ['en', 'fr', 'es', 'de'];
+    const supported = ['en', 'fr', 'es', 'de', 'pt', 'it', 'nl', 'ru', 'ja', 'ko', 'zh', 'ar', 'tr', 'pl', 'sv', 'da', 'no', 'fi', 'cs', 'ro', 'hu', 'el', 'th', 'vi', 'id'];
     const browserLang = (navigator.languages?.[0] || navigator.language || 'en')
       .split('-')[0].toLowerCase();
     const lang = supported.includes(browserLang) ? browserLang : 'en';

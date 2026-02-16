@@ -1,0 +1,155 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title='Impressum - Passwort-Generator'>
+  <main class='legal-container'>
+    <h1>Impressum</h1>
+
+    <section>
+      <h2>1. Rechtliche Informationen</h2>
+      <p>Diese Website wird privat betrieben.</p>
+      <p>Verantwortlicher für Veröffentlichung und Technik: Nguyen Jean</p>
+    </section>
+
+    <section>
+      <h2>2. Hosting</h2>
+      <p>Diese Website wird gehostet von:</p>
+      <p>
+        Cloudflare, Inc.<br>
+        101 Townsend St, San Francisco, CA 94107<br>
+        USA
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Geistiges Eigentum</h2>
+      <p>
+        Alle Inhalte dieser Website stehen unter der MIT-Lizenz zur Verfügung.
+      </p>
+      <p>Der Quellcode ist frei auf GitHub verfügbar: <a href="https://github.com/jibenight/Get-password" target="_blank">https://github.com/jibenight/Get-password</a></p>
+      <p>Es steht Ihnen frei:</p>
+      <ul>
+        <li>Den Passwort-Generator zu nutzen</li>
+        <li>Den Quellcode zu kopieren und zu ändern</li>
+        <li>Ihn für kommerzielle Zwecke zu verwenden</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Schutz personenbezogener Daten</h2>
+      <p>Die Website verwendet Cookies ausschließlich zu Werbezwecken. Diese Cookies ermöglichen die Anzeige personalisierter Werbung basierend auf Ihrem Surfverhalten und Ihren Präferenzen.</p>
+    </section>
+
+    <section>
+      <h2>5. Haftungsbeschränkung</h2>
+      <p>
+        Die generierten Passwörter dienen nur als Richtwert. Obwohl wir uns
+        bemühen, sichere Passwörter zu generieren, können wir kein absolutes
+        Sicherheitsniveau garantieren.
+      </p>
+      <p>
+        Die Nutzer sind allein verantwortlich für die Verwendung der generierten
+        Passwörter.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Kontakt</h2>
+      <p>Wenn Sie Fragen zu dieser Website haben, können Sie:</p>
+      <ul>
+        <li>Eine E-Mail senden an: contact@get-password.com</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Anwendbares Recht</h2>
+      <p>Dieses Impressum unterliegt dem französischen Recht.</p>
+      <p>Im Falle eines Rechtsstreits sind ausschließlich französische Gerichte zuständig.</p>
+    </section>
+
+    <div class='back-link'>
+      <a href='/de/'>Zurück zur Startseite</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  h1 {
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .back-link a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

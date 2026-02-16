@@ -1,0 +1,155 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title='Правовая информация - Генератор паролей'>
+  <main class='legal-container'>
+    <h1>Правовая информация</h1>
+
+    <section>
+      <h2>1. Юридическая информация</h2>
+      <p>Этот сайт управляется на личной основе.</p>
+      <p>Директор по публикации и технический директор: Nguyen Jean</p>
+    </section>
+
+    <section>
+      <h2>2. Хостинг</h2>
+      <p>Этот сайт размещён на серверах:</p>
+      <p>
+        Cloudflare, Inc.<br>
+        101 Townsend St, San Francisco, CA 94107<br>
+        USA
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Интеллектуальная собственность</h2>
+      <p>
+        Всё содержимое этого сайта доступно по лицензии MIT.
+      </p>
+      <p>Исходный код свободно доступен на GitHub: <a href="https://github.com/jibenight/Get-password" target="_blank">https://github.com/jibenight/Get-password</a></p>
+      <p>Вы можете свободно:</p>
+      <ul>
+        <li>Использовать генератор паролей</li>
+        <li>Копировать и изменять исходный код</li>
+        <li>Использовать его в коммерческих целях</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Защита персональных данных</h2>
+      <p>Сайт использует файлы cookie исключительно в рекламных целях. Эти файлы cookie позволяют показывать персонализированную рекламу на основе вашей активности в интернете и ваших предпочтений.</p>
+    </section>
+
+    <section>
+      <h2>5. Ограничение ответственности</h2>
+      <p>
+        Сгенерированные пароли предоставляются исключительно в ознакомительных
+        целях. Несмотря на то, что мы стремимся генерировать надёжные пароли, мы
+        не можем гарантировать их абсолютный уровень безопасности.
+      </p>
+      <p>
+        Пользователи несут полную ответственность за использование
+        сгенерированных паролей.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Контакт</h2>
+      <p>Если у вас есть вопросы об этом сайте, вы можете:</p>
+      <ul>
+        <li>Отправить электронное письмо на: contact@get-password.com</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Применимое право</h2>
+      <p>Настоящая правовая информация регулируется французским законодательством.</p>
+      <p>В случае спора компетентными являются исключительно французские суды.</p>
+    </section>
+
+    <div class='back-link'>
+      <a href='/ru/'>Вернуться на главную страницу</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  h1 {
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .back-link a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

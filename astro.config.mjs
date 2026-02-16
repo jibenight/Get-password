@@ -23,7 +23,7 @@ export default defineConfig({
     },
   },
   i18n: {
-    locales: ['en', 'fr', 'es', 'de'],
+    locales: ['en', 'fr', 'es', 'de', 'pt', 'it', 'nl', 'ru', 'ja', 'ko', 'zh', 'ar', 'tr', 'pl', 'sv', 'da', 'no', 'fi', 'cs', 'ro', 'hu', 'el', 'th', 'vi', 'id'],
     defaultLocale: 'en',
   },
 });

@@ -1,0 +1,146 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title='Informacje prawne - Generator haseł'>
+  <main class='legal-container'>
+    <h1>Informacje prawne</h1>
+
+    <section>
+      <h2>1. Informacje prawne</h2>
+      <p>Ta strona internetowa jest zarządzana na zasadach prywatnych.</p>
+      <p>Dyrektor publikacji i dyrektor techniczny: Nguyen Jean</p>
+    </section>
+
+    <section>
+      <h2>2. Hosting</h2>
+      <p>Ta strona internetowa jest hostowana przez:</p>
+      <p>
+        Cloudflare, Inc.<br>
+        101 Townsend St, San Francisco, CA 94107<br>
+        USA
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Własność intelektualna</h2>
+      <p>Cała zawartość tej strony jest dostępna na licencji MIT.</p>
+      <p>Kod źródłowy jest swobodnie dostępny na GitHub: <a href="https://github.com/jibenight/Get-password" target="_blank">https://github.com/jibenight/Get-password</a></p>
+      <p>Możesz swobodnie:</p>
+      <ul>
+        <li>Korzystać z generatora haseł</li>
+        <li>Kopiować i modyfikować kod źródłowy</li>
+        <li>Używać go w celach komercyjnych</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Ochrona danych osobowych</h2>
+      <p>Strona wykorzystuje pliki cookie wyłącznie w celach reklamowych. Te pliki cookie pomagają wyświetlać spersonalizowane reklamy na podstawie Twojej aktywności przeglądania i preferencji.</p>
+    </section>
+
+    <section>
+      <h2>5. Ograniczenie odpowiedzialności</h2>
+      <p>Wygenerowane hasła mają charakter wyłącznie orientacyjny. Chociaż dokładamy wszelkich starań, aby generować bezpieczne hasła, nie możemy zagwarantować ich absolutnego poziomu bezpieczeństwa.</p>
+      <p>Użytkownicy ponoszą wyłączną odpowiedzialność za korzystanie z wygenerowanych haseł.</p>
+    </section>
+
+    <section>
+      <h2>6. Kontakt</h2>
+      <p>Jeśli masz jakiekolwiek pytania dotyczące tej strony internetowej, możesz:</p>
+      <ul>
+        <li>Wysłać e-mail na adres: contact@get-password.com</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Prawo właściwe</h2>
+      <p>Niniejsze informacje prawne podlegają prawu francuskiemu.</p>
+      <p>W przypadku sporu właściwe będą wyłącznie sądy francuskie.</p>
+    </section>
+
+    <div class='back-link'>
+      <a href='/pl/'>Powrót do strony głównej</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  h1 {
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .back-link a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

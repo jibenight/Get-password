@@ -1,0 +1,146 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title='Thông báo pháp lý - Trình tạo mật khẩu'>
+  <main class='legal-container'>
+    <h1>Thông báo pháp lý</h1>
+
+    <section>
+      <h2>1. Thông tin pháp lý</h2>
+      <p>Trang web này được quản lý trên cơ sở cá nhân.</p>
+      <p>Giám đốc xuất bản và giám đốc kỹ thuật: Nguyen Jean</p>
+    </section>
+
+    <section>
+      <h2>2. Lưu trữ</h2>
+      <p>Trang web này được lưu trữ bởi:</p>
+      <p>
+        Cloudflare, Inc.<br>
+        101 Townsend St, San Francisco, CA 94107<br>
+        USA
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Sở hữu trí tuệ</h2>
+      <p>Tất cả nội dung trên trang web này được cung cấp theo giấy phép MIT.</p>
+      <p>Mã nguồn được cung cấp miễn phí trên GitHub: <a href="https://github.com/jibenight/Get-password" target="_blank">https://github.com/jibenight/Get-password</a></p>
+      <p>Bạn được tự do:</p>
+      <ul>
+        <li>Sử dụng trình tạo mật khẩu</li>
+        <li>Sao chép và chỉnh sửa mã nguồn</li>
+        <li>Sử dụng cho mục đích thương mại</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Bảo vệ dữ liệu cá nhân</h2>
+      <p>Trang web sử dụng cookie chỉ cho mục đích quảng cáo. Các cookie này giúp hiển thị quảng cáo được cá nhân hóa dựa trên hoạt động duyệt web và sở thích của bạn.</p>
+    </section>
+
+    <section>
+      <h2>5. Giới hạn trách nhiệm</h2>
+      <p>Các mật khẩu được tạo chỉ mang tính chất tham khảo. Mặc dù chúng tôi nỗ lực tạo ra các mật khẩu an toàn, nhưng chúng tôi không thể đảm bảo mức độ bảo mật tuyệt đối của chúng.</p>
+      <p>Người dùng hoàn toàn chịu trách nhiệm về việc sử dụng các mật khẩu được tạo.</p>
+    </section>
+
+    <section>
+      <h2>6. Liên hệ</h2>
+      <p>Nếu bạn có bất kỳ câu hỏi nào về trang web này, bạn có thể:</p>
+      <ul>
+        <li>Gửi email đến: contact@get-password.com</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Luật áp dụng</h2>
+      <p>Thông báo pháp lý này tuân theo luật pháp Pháp.</p>
+      <p>Trong trường hợp có tranh chấp, chỉ các tòa án Pháp mới có thẩm quyền.</p>
+    </section>
+
+    <div class='back-link'>
+      <a href='/vi/'>Quay lại trang chủ</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  h1 {
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .back-link a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

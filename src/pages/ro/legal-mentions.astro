@@ -1,0 +1,146 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title='Mențiuni legale - Generator de parole'>
+  <main class='legal-container'>
+    <h1>Mențiuni legale</h1>
+
+    <section>
+      <h2>1. Informații legale</h2>
+      <p>Acest site web este administrat pe bază personală.</p>
+      <p>Director de publicare și director tehnic: Nguyen Jean</p>
+    </section>
+
+    <section>
+      <h2>2. Găzduire</h2>
+      <p>Acest site web este găzduit de:</p>
+      <p>
+        Cloudflare, Inc.<br>
+        101 Townsend St, San Francisco, CA 94107<br>
+        USA
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Proprietate intelectuală</h2>
+      <p>Tot conținutul de pe acest site este disponibil sub licența MIT.</p>
+      <p>Codul sursă este disponibil gratuit pe GitHub: <a href="https://github.com/jibenight/Get-password" target="_blank">https://github.com/jibenight/Get-password</a></p>
+      <p>Sunteți liber să:</p>
+      <ul>
+        <li>Utilizați generatorul de parole</li>
+        <li>Copiați și modificați codul sursă</li>
+        <li>Îl utilizați în scopuri comerciale</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Protecția datelor personale</h2>
+      <p>Site-ul folosește cookie-uri exclusiv în scopuri publicitare. Aceste cookie-uri ajută la afișarea de reclame personalizate pe baza activității dumneavoastră de navigare și a preferințelor.</p>
+    </section>
+
+    <section>
+      <h2>5. Limitarea responsabilității</h2>
+      <p>Parolele generate au doar un caracter orientativ. Deși ne străduim să generăm parole sigure, nu putem garanta nivelul lor absolut de securitate.</p>
+      <p>Utilizatorii sunt singurii responsabili pentru utilizarea parolelor generate.</p>
+    </section>
+
+    <section>
+      <h2>6. Contact</h2>
+      <p>Dacă aveți întrebări cu privire la acest site web, puteți:</p>
+      <ul>
+        <li>Trimite un e-mail la: contact@get-password.com</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Legea aplicabilă</h2>
+      <p>Aceste mențiuni legale sunt supuse legislației franceze.</p>
+      <p>În cazul unui litigiu, doar instanțele franceze vor avea competență.</p>
+    </section>
+
+    <div class='back-link'>
+      <a href='/ro/'>Înapoi la pagina principală</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  h1 {
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .back-link a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

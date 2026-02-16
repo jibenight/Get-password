@@ -1,27 +1,25 @@
 ---
 import { Image } from 'astro:assets';
-import AdsInFeed from '../components/AdsInFeed.astro';
-
-import Layout from '../layouts/Layout.astro';
-import '../styles/index.css';
-import heroImage from '../assets/images/hero-password-manager.webp';
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/index.css';
+import heroImage from '../../assets/images/hero-password-manager.webp';
 
 //password generator
-import PasswordGenerator from '../components/PasswordGenerator.astro';
-import MemorablePasswordGenerator from '../components/MemorablePasswordGenerator.astro';
+import PasswordGenerator from '../../components/PasswordGenerator.astro';
+import MemorablePasswordGenerator from '../../components/MemorablePasswordGenerator.astro';
 
 //translate
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 // content md
-import { Content as PasswordInfo } from '../contents/en/secure_passwords.md';
-import { Content as MemorizationTips } from '../contents/en/memorization_tips.md';
-import { Content as PasswordManagerGuide } from '../contents/en/password_manager_guide.md';
+import { Content as PasswordInfo } from '../../contents/ro/secure_passwords.md';
+import { Content as MemorizationTips } from '../../contents/ro/memorization_tips.md';
+import { Content as PasswordManagerGuide } from '../../contents/ro/password_manager_guide.md';
 
 // tabs
-import ContentTabs from '../components/ContentTabs.astro';
+import ContentTabs from '../../components/ContentTabs.astro';
 ---
 
 <Layout title={t('title.site')}>
@@ -34,7 +32,6 @@ import ContentTabs from '../components/ContentTabs.astro';
         <MemorablePasswordGenerator />
       </div>
     </div>
-    <AdsInFeed/>
     <div class='hero-section'>
       <div class='main-title'>
         <h1>
@@ -63,7 +60,6 @@ import ContentTabs from '../components/ContentTabs.astro';
         <p class='hero-cta'>{t('hero.why.cta')}</p>
       </div>
     </div>
-    <AdsInFeed/>
     <ContentTabs>
       <PasswordInfo slot="security" />
       <MemorizationTips slot="memorization" />
@@ -73,19 +69,6 @@ import ContentTabs from '../components/ContentTabs.astro';
 </Layout>
 
 <script>
-  import { init } from '../scripts/index.js';
+  import { init } from '../../scripts/index.js';
   init();
-
-  // Client-side language redirect fallback (for dev or when edge function doesn't run)
-  (function () {
-    const supported = ['en', 'fr', 'es', 'de', 'pt', 'it', 'nl', 'ru', 'ja', 'ko', 'zh', 'ar', 'tr', 'pl', 'sv', 'da', 'no', 'fi', 'cs', 'ro', 'hu', 'el', 'th', 'vi', 'id'];
-    const path = window.location.pathname;
-    // Only redirect on exact root path
-    if (path !== '/') return;
-    const browserLang = (navigator.languages?.[0] || navigator.language || 'en')
-      .split('-')[0]
-      .toLowerCase();
-    const lang = supported.includes(browserLang) ? browserLang : 'en';
-    window.location.replace('/' + lang + '/');
-  })();
 </script>

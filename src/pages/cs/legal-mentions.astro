@@ -1,0 +1,146 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title='Právní informace - Generátor hesel'>
+  <main class='legal-container'>
+    <h1>Právní informace</h1>
+
+    <section>
+      <h2>1. Právní údaje</h2>
+      <p>Tyto webové stránky jsou spravovány na osobní bázi.</p>
+      <p>Vydavatel a technický ředitel: Nguyen Jean</p>
+    </section>
+
+    <section>
+      <h2>2. Hosting</h2>
+      <p>Tyto webové stránky jsou hostovány u:</p>
+      <p>
+        Cloudflare, Inc.<br>
+        101 Townsend St, San Francisco, CA 94107<br>
+        USA
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Duševní vlastnictví</h2>
+      <p>Veškerý obsah na těchto stránkách je dostupný pod licencí MIT.</p>
+      <p>Zdrojový kód je volně dostupný na GitHubu: <a href="https://github.com/jibenight/Get-password" target="_blank">https://github.com/jibenight/Get-password</a></p>
+      <p>Můžete svobodně:</p>
+      <ul>
+        <li>Používat generátor hesel</li>
+        <li>Kopírovat a upravovat zdrojový kód</li>
+        <li>Používat jej pro komerční účely</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Ochrana osobních údajů</h2>
+      <p>Stránky používají soubory cookie výhradně pro reklamní účely. Tyto soubory cookie pomáhají zobrazovat personalizované reklamy na základě vaší aktivity při prohlížení a vašich preferencí.</p>
+    </section>
+
+    <section>
+      <h2>5. Omezení odpovědnosti</h2>
+      <p>Vygenerovaná hesla mají pouze orientační charakter. I když se snažíme generovat bezpečná hesla, nemůžeme zaručit jejich absolutní úroveň zabezpečení.</p>
+      <p>Uživatelé jsou výhradně odpovědní za použití vygenerovaných hesel.</p>
+    </section>
+
+    <section>
+      <h2>6. Kontakt</h2>
+      <p>Máte-li jakékoli dotazy ohledně těchto webových stránek, můžete:</p>
+      <ul>
+        <li>Poslat e-mail na: contact@get-password.com</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Rozhodné právo</h2>
+      <p>Tyto právní informace se řídí francouzským právem.</p>
+      <p>V případě sporu budou příslušné pouze francouzské soudy.</p>
+    </section>
+
+    <div class='back-link'>
+      <a href='/cs/'>Zpět na domovskou stránku</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  h1 {
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .back-link a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

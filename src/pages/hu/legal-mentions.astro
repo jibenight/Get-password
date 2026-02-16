@@ -1,0 +1,146 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title='Jogi közlemény - Jelszógenerátor'>
+  <main class='legal-container'>
+    <h1>Jogi közlemény</h1>
+
+    <section>
+      <h2>1. Jogi információk</h2>
+      <p>Ezt a weboldalt személyes alapon kezelik.</p>
+      <p>Kiadási és műszaki igazgató: Nguyen Jean</p>
+    </section>
+
+    <section>
+      <h2>2. Tárhely</h2>
+      <p>Ezt a weboldalt a következő szolgáltató üzemelteti:</p>
+      <p>
+        Cloudflare, Inc.<br>
+        101 Townsend St, San Francisco, CA 94107<br>
+        USA
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Szellemi tulajdon</h2>
+      <p>A weboldalon található összes tartalom az MIT licenc alatt érhető el.</p>
+      <p>A forráskód szabadon elérhető a GitHubon: <a href="https://github.com/jibenight/Get-password" target="_blank">https://github.com/jibenight/Get-password</a></p>
+      <p>Szabadon:</p>
+      <ul>
+        <li>Használhatja a jelszógenerátort</li>
+        <li>Másolhatja és módosíthatja a forráskódot</li>
+        <li>Kereskedelmi célokra használhatja</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Személyes adatok védelme</h2>
+      <p>A webhely kizárólag hirdetési célokra használ sütiket. Ezek a sütik segítenek személyre szabott hirdetések megjelenítésében a böngészési tevékenysége és preferenciái alapján.</p>
+    </section>
+
+    <section>
+      <h2>5. Felelősség korlátozása</h2>
+      <p>A generált jelszavak csak tájékoztató jellegűek. Bár törekszünk biztonságos jelszavak generálására, nem tudjuk garantálni azok abszolút biztonsági szintjét.</p>
+      <p>A felhasználók kizárólagos felelősséget vállalnak a generált jelszavak használatáért.</p>
+    </section>
+
+    <section>
+      <h2>6. Kapcsolat</h2>
+      <p>Ha bármilyen kérdése van ezzel a weboldallal kapcsolatban, a következőket teheti:</p>
+      <ul>
+        <li>E-mail küldése a következő címre: contact@get-password.com</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Alkalmazandó jog</h2>
+      <p>Ez a jogi közlemény a francia jognak van alárendelve.</p>
+      <p>Vita esetén kizárólag a francia bíróságok illetékesek.</p>
+    </section>
+
+    <div class='back-link'>
+      <a href='/hu/'>Vissza a kezdőlapra</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  h1 {
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .back-link a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

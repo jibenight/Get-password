@@ -1,0 +1,146 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title='Juridisk meddelelse - Adgangskodegenerator'>
+  <main class='legal-container'>
+    <h1>Juridisk meddelelse</h1>
+
+    <section>
+      <h2>1. Juridiske oplysninger</h2>
+      <p>Denne hjemmeside drives på personlig basis.</p>
+      <p>Udgivelses- og teknisk ansvarlig: Nguyen Jean</p>
+    </section>
+
+    <section>
+      <h2>2. Hosting</h2>
+      <p>Denne hjemmeside hostes af:</p>
+      <p>
+        Cloudflare, Inc.<br>
+        101 Townsend St, San Francisco, CA 94107<br>
+        USA
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Intellektuel ejendomsret</h2>
+      <p>Alt indhold på denne hjemmeside er tilgængeligt under MIT-licensen.</p>
+      <p>Kildekoden er frit tilgængelig på GitHub: <a href="https://github.com/jibenight/Get-password" target="_blank">https://github.com/jibenight/Get-password</a></p>
+      <p>Du er fri til at:</p>
+      <ul>
+        <li>Bruge adgangskodegeneratoren</li>
+        <li>Kopiere og ændre kildekoden</li>
+        <li>Bruge den til kommercielle formål</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Beskyttelse af personoplysninger</h2>
+      <p>Hjemmesiden bruger cookies udelukkende til reklameformål. Disse cookies hjælper med at vise personlige annoncer baseret på din browsingaktivitet og præferencer.</p>
+    </section>
+
+    <section>
+      <h2>5. Ansvarsbegrænsning</h2>
+      <p>De genererede adgangskoder er kun vejledende. Selvom vi bestræber os på at generere sikre adgangskoder, kan vi ikke garantere deres absolutte sikkerhedsniveau.</p>
+      <p>Brugerne er eneansvarlige for brugen af de genererede adgangskoder.</p>
+    </section>
+
+    <section>
+      <h2>6. Kontakt</h2>
+      <p>Hvis du har spørgsmål vedrørende denne hjemmeside, kan du:</p>
+      <ul>
+        <li>Sende en e-mail til: contact@get-password.com</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Gældende lovgivning</h2>
+      <p>Denne juridiske meddelelse er underlagt fransk lovgivning.</p>
+      <p>I tilfælde af en tvist vil kun franske domstole have jurisdiktion.</p>
+    </section>
+
+    <div class='back-link'>
+      <a href='/da/'>Tilbage til forsiden</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  h1 {
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .back-link a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

@@ -1,0 +1,155 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title='Note Legali - Generatore di Password'>
+  <main class='legal-container'>
+    <h1>Note Legali</h1>
+
+    <section>
+      <h2>1. Informazioni legali</h2>
+      <p>Questo sito web è gestito a titolo personale.</p>
+      <p>Direttore della pubblicazione e tecnico: Nguyen Jean</p>
+    </section>
+
+    <section>
+      <h2>2. Hosting</h2>
+      <p>Questo sito web è ospitato da:</p>
+      <p>
+        Cloudflare, Inc.<br>
+        101 Townsend St, San Francisco, CA 94107<br>
+        USA
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Proprietà intellettuale</h2>
+      <p>
+        Tutti i contenuti di questo sito sono disponibili sotto licenza MIT.
+      </p>
+      <p>Il codice sorgente è liberamente disponibile su GitHub: <a href="https://github.com/jibenight/Get-password" target="_blank">https://github.com/jibenight/Get-password</a></p>
+      <p>Sei libero di:</p>
+      <ul>
+        <li>Utilizzare il generatore di password</li>
+        <li>Copiare e modificare il codice sorgente</li>
+        <li>Utilizzarlo per scopi commerciali</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Protezione dei dati personali</h2>
+      <p>Il sito utilizza cookie esclusivamente a fini pubblicitari. Questi cookie consentono di visualizzare annunci personalizzati in base alla tua navigazione e alle tue preferenze.</p>
+    </section>
+
+    <section>
+      <h2>5. Limitazione di responsabilità</h2>
+      <p>
+        Le password generate sono fornite a titolo indicativo. Sebbene ci
+        impegniamo a generare password sicure, non possiamo garantire il loro
+        livello di sicurezza assoluto.
+      </p>
+      <p>
+        Gli utenti sono i soli responsabili dell'uso che fanno delle password
+        generate.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Contatto</h2>
+      <p>Per qualsiasi domanda riguardante questo sito web, puoi:</p>
+      <ul>
+        <li>Inviare un'e-mail a: contact@get-password.com</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Legge applicabile</h2>
+      <p>Le presenti note legali sono soggette al diritto francese.</p>
+      <p>In caso di controversia, saranno competenti esclusivamente i tribunali francesi.</p>
+    </section>
+
+    <div class='back-link'>
+      <a href='/it/'>Torna alla pagina iniziale</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  h1 {
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .back-link a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

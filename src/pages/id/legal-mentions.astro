@@ -1,0 +1,146 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title='Pemberitahuan Hukum - Pembuat Kata Sandi'>
+  <main class='legal-container'>
+    <h1>Pemberitahuan Hukum</h1>
+
+    <section>
+      <h2>1. Informasi Hukum</h2>
+      <p>Situs web ini dikelola secara pribadi.</p>
+      <p>Direktur publikasi dan direktur teknis: Nguyen Jean</p>
+    </section>
+
+    <section>
+      <h2>2. Hosting</h2>
+      <p>Situs web ini dihosting oleh:</p>
+      <p>
+        Cloudflare, Inc.<br>
+        101 Townsend St, San Francisco, CA 94107<br>
+        USA
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Kekayaan Intelektual</h2>
+      <p>Semua konten di situs ini tersedia di bawah lisensi MIT.</p>
+      <p>Kode sumber tersedia secara gratis di GitHub: <a href="https://github.com/jibenight/Get-password" target="_blank">https://github.com/jibenight/Get-password</a></p>
+      <p>Anda bebas untuk:</p>
+      <ul>
+        <li>Menggunakan pembuat kata sandi</li>
+        <li>Menyalin dan memodifikasi kode sumber</li>
+        <li>Menggunakannya untuk tujuan komersial</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Perlindungan Data Pribadi</h2>
+      <p>Situs ini menggunakan cookie hanya untuk tujuan periklanan. Cookie ini membantu menampilkan iklan yang dipersonalisasi berdasarkan aktivitas penelusuran dan preferensi Anda.</p>
+    </section>
+
+    <section>
+      <h2>5. Batasan Tanggung Jawab</h2>
+      <p>Kata sandi yang dihasilkan hanya bersifat indikatif. Meskipun kami berusaha menghasilkan kata sandi yang aman, kami tidak dapat menjamin tingkat keamanan absolutnya.</p>
+      <p>Pengguna bertanggung jawab penuh atas penggunaan kata sandi yang dihasilkan.</p>
+    </section>
+
+    <section>
+      <h2>6. Kontak</h2>
+      <p>Jika Anda memiliki pertanyaan mengenai situs web ini, Anda dapat:</p>
+      <ul>
+        <li>Mengirim email ke: contact@get-password.com</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Hukum yang Berlaku</h2>
+      <p>Pemberitahuan hukum ini tunduk pada hukum Prancis.</p>
+      <p>Dalam hal terjadi perselisihan, hanya pengadilan Prancis yang memiliki yurisdiksi.</p>
+    </section>
+
+    <div class='back-link'>
+      <a href='/id/'>Kembali ke halaman utama</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  h1 {
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .back-link a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

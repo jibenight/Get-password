@@ -1,0 +1,146 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title='ข้อกำหนดทางกฎหมาย - เครื่องสร้างรหัสผ่าน'>
+  <main class='legal-container'>
+    <h1>ข้อกำหนดทางกฎหมาย</h1>
+
+    <section>
+      <h2>1. ข้อมูลทางกฎหมาย</h2>
+      <p>เว็บไซต์นี้ดำเนินการโดยบุคคลส่วนตัว</p>
+      <p>ผู้อำนวยการฝ่ายจัดพิมพ์และผู้อำนวยการฝ่ายเทคนิค: Nguyen Jean</p>
+    </section>
+
+    <section>
+      <h2>2. โฮสติ้ง</h2>
+      <p>เว็บไซต์นี้โฮสต์โดย:</p>
+      <p>
+        Cloudflare, Inc.<br>
+        101 Townsend St, San Francisco, CA 94107<br>
+        USA
+      </p>
+    </section>
+
+    <section>
+      <h2>3. ทรัพย์สินทางปัญญา</h2>
+      <p>เนื้อหาทั้งหมดบนเว็บไซต์นี้เผยแพร่ภายใต้สัญญาอนุญาต MIT</p>
+      <p>ซอร์สโค้ดเปิดให้ใช้งานฟรีบน GitHub: <a href="https://github.com/jibenight/Get-password" target="_blank">https://github.com/jibenight/Get-password</a></p>
+      <p>คุณมีอิสระที่จะ:</p>
+      <ul>
+        <li>ใช้เครื่องสร้างรหัสผ่าน</li>
+        <li>คัดลอกและแก้ไขซอร์สโค้ด</li>
+        <li>ใช้เพื่อวัตถุประสงค์ทางการค้า</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. การคุ้มครองข้อมูลส่วนบุคคล</h2>
+      <p>เว็บไซต์ใช้คุกกี้เพื่อวัตถุประสงค์ด้านการโฆษณาเท่านั้น คุกกี้เหล่านี้ช่วยแสดงโฆษณาที่ปรับแต่งตามกิจกรรมการเรียกดูและความชอบของคุณ</p>
+    </section>
+
+    <section>
+      <h2>5. การจำกัดความรับผิดชอบ</h2>
+      <p>รหัสผ่านที่สร้างขึ้นมีไว้เพื่อเป็นแนวทางเท่านั้น แม้ว่าเราจะพยายามสร้างรหัสผ่านที่ปลอดภัย แต่เราไม่สามารถรับประกันระดับความปลอดภัยที่สมบูรณ์ได้</p>
+      <p>ผู้ใช้เป็นผู้รับผิดชอบแต่เพียงผู้เดียวในการใช้รหัสผ่านที่สร้างขึ้น</p>
+    </section>
+
+    <section>
+      <h2>6. ติดต่อ</h2>
+      <p>หากคุณมีคำถามใดๆ เกี่ยวกับเว็บไซต์นี้ คุณสามารถ:</p>
+      <ul>
+        <li>ส่งอีเมลไปที่: contact@get-password.com</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. กฎหมายที่ใช้บังคับ</h2>
+      <p>ข้อกำหนดทางกฎหมายนี้อยู่ภายใต้กฎหมายฝรั่งเศส</p>
+      <p>ในกรณีที่มีข้อพิพาท ศาลฝรั่งเศสเท่านั้นที่จะมีเขตอำนาจศาล</p>
+    </section>
+
+    <div class='back-link'>
+      <a href='/th/'>กลับไปหน้าหลัก</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  h1 {
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .back-link a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

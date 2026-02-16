@@ -1,0 +1,154 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title='法的事項 - パスワードジェネレーター'>
+  <main class='legal-container'>
+    <h1>法的事項</h1>
+
+    <section>
+      <h2>1. 法的情報</h2>
+      <p>本ウェブサイトは個人によって運営されています。</p>
+      <p>発行責任者および技術責任者: Nguyen Jean</p>
+    </section>
+
+    <section>
+      <h2>2. ホスティング</h2>
+      <p>本ウェブサイトのホスティング事業者:</p>
+      <p>
+        Cloudflare, Inc.<br>
+        101 Townsend St, San Francisco, CA 94107<br>
+        USA
+      </p>
+    </section>
+
+    <section>
+      <h2>3. 知的財産権</h2>
+      <p>
+        本サイトのすべてのコンテンツはMITライセンスの下で提供されています。
+      </p>
+      <p>ソースコードはGitHubで自由に入手できます: <a href="https://github.com/jibenight/Get-password" target="_blank">https://github.com/jibenight/Get-password</a></p>
+      <p>以下のことを自由に行うことができます:</p>
+      <ul>
+        <li>パスワードジェネレーターを使用する</li>
+        <li>ソースコードをコピーおよび変更する</li>
+        <li>商用目的で使用する</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. 個人情報の保護</h2>
+      <p>本サイトでは広告目的でのみCookieを使用しています。これらのCookieにより、お客様の閲覧状況や設定に基づいてパーソナライズされた広告を表示することができます。</p>
+    </section>
+
+    <section>
+      <h2>5. 責任の制限</h2>
+      <p>
+        生成されたパスワードは参考としてのみ提供されます。安全なパスワードの
+        生成に努めていますが、絶対的なセキュリティレベルを保証することは
+        できません。
+      </p>
+      <p>
+        ユーザーは、生成されたパスワードの使用について単独で責任を負います。
+      </p>
+    </section>
+
+    <section>
+      <h2>6. お問い合わせ</h2>
+      <p>本ウェブサイトに関するご質問がある場合は、以下の方法でご連絡いただけます:</p>
+      <ul>
+        <li>メールを送信: contact@get-password.com</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. 準拠法</h2>
+      <p>本法的事項はフランス法に準拠します。</p>
+      <p>紛争が生じた場合、フランスの裁判所のみが管轄権を有します。</p>
+    </section>
+
+    <div class='back-link'>
+      <a href='/ja/'>ホームページに戻る</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  h1 {
+    color: var(--color-text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .back-link a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .back-link a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>
