@@ -130,4 +130,8 @@ main {
     padding-left: 10px;
     padding-right: 10px;
   }
+
+  .hero-content {
+    padding: 1rem;
+  }
 }

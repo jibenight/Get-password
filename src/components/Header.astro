@@ -281,9 +281,12 @@ const isHomepage =
 
 <script>
   function initHeader() {
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
     const header = document.querySelector('header');
+    if (!header || header.dataset.initialized) return;
+    header.dataset.initialized = 'true';
+
+    const hamburger = header.querySelector('.hamburger');
+    const navLinks = header.querySelector('.nav-links');
 
     if (hamburger && navLinks) {
       hamburger.addEventListener('click', () => {
@@ -294,26 +297,24 @@ const isHomepage =
       });
     }
 
-    if (header) {
-      let lastScrollY = window.scrollY;
-      let ticking = false;
+    let lastScrollY = window.scrollY;
+    let ticking = false;
 
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            const currentScrollY = window.scrollY;
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-              header.classList.add('header-hidden');
-            } else {
-              header.classList.remove('header-hidden');
-            }
-            lastScrollY = currentScrollY;
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }, { passive: true });
-    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            header.classList.add('header-hidden');
+          } else {
+            header.classList.remove('header-hidden');
+          }
+          lastScrollY = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
   }
 
   if (document.readyState === 'loading') {
