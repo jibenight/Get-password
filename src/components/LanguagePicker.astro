@@ -2,13 +2,8 @@
 import { languages } from '../i18n/ui';
 import { getLangFromUrl } from '../i18n/utils';
 
-// Convert the URL string to a URL object
 const currentUrl = new URL(Astro.request.url);
-
-// Extract the current language from the pathname (first segment)
 const currentLang = currentUrl.pathname.split('/')[1] || 'en';
-
-// Use the URL object to retrieve the language using the utility function
 const lang = getLangFromUrl(currentUrl);
 const langLabel = languages[lang] || languages['en'];
 ---
@@ -17,23 +12,35 @@ const langLabel = languages[lang] || languages['en'];
     <svg class="icon" viewBox="0 0 16 16">
       <path d="M8,0C3.6,0,0,3.6,0,8s3.6,8,8,8s8-3.6,8-8S12.4,0,8,0z M13.9,7H12c-0.1-1.5-0.4-2.9-0.8-4.1 C12.6,3.8,13.6,5.3,13.9,7z M8,14c-0.6,0-1.8-1.9-2-5H10C9.8,12.1,8.6,14,8,14z M6,7c0.2-3.1,1.3-5,2-5s1.8,1.9,2,5H6z M4.9,2.9 C4.4,4.1,4.1,5.5,4,7H2.1C2.4,5.3,3.4,3.8,4.9,2.9z M2.1,9H4c0.1,1.5,0.4,2.9,0.8,4.1C3.4,12.2,2.4,10.7,2.1,9z M11.1,13.1 c0.5-1.2,0.7-2.6,0.8-4.1h1.9C13.6,10.7,12.6,12.2,11.1,13.1z" />
     </svg>
-    {langLabel}
+    <span class="lang-label">{langLabel}</span>
+    <svg class="chevron" viewBox="0 0 10 6">
+      <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
   </button>
-  <ul id="language-list" class="language-list" role="listbox">
-    {Object.entries(languages).map(([langCode, label]) => (
-      <li
-        class="language-item"
-        data-lang={langCode}
-        role="option"
-        aria-selected={langCode === currentLang ? 'true' : 'false'}
-      >
-        <svg class="icon language-icon" viewBox="0 0 16 16">
-          <path d="M8,0C3.6,0,0,3.6,0,8s3.6,8,8,8s8-3.6,8-8S12.4,0,8,0z M13.9,7H12c-0.1-1.5-0.4-2.9-0.8-4.1 C12.6,3.8,13.6,5.3,13.9,7z M8,14c-0.6,0-1.8-1.9-2-5H10C9.8,12.1,8.6,14,8,14z M6,7c0.2-3.1,1.3-5,2-5s1.8,1.9,2,5H6z M4.9,2.9 C4.4,4.1,4.1,5.5,4,7H2.1C2.4,5.3,3.4,3.8,4.9,2.9z M2.1,9H4c0.1,1.5,0.4,2.9,0.8,4.1C3.4,12.2,2.4,10.7,2.1,9z M11.1,13.1 c0.5-1.2,0.7-2.6,0.8-4.1h1.9C13.6,10.7,12.6,12.2,11.1,13.1z" />
-        </svg>
-        {label}
-      </li>
-    ))}
-  </ul>
+  <div id="language-dropdown" class="language-dropdown">
+    <div class="search-wrapper">
+      <input
+        type="text"
+        class="language-search"
+        id="language-search"
+        placeholder="Search..."
+        autocomplete="off"
+      />
+    </div>
+    <ul id="language-list" class="language-list" role="listbox">
+      {Object.entries(languages).map(([langCode, label]) => (
+        <li
+          class:list={["language-item", { active: langCode === currentLang }]}
+          data-lang={langCode}
+          role="option"
+          aria-selected={langCode === currentLang ? 'true' : 'false'}
+        >
+          {label}
+          <span class="lang-code">{langCode.toUpperCase()}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
 </div>
 
 <script is:inline>
@@ -43,11 +50,39 @@ const langLabel = languages[lang] || languages['en'];
     languagePicker.dataset.initialized = 'true';
 
     const toggleButton = languagePicker.querySelector('#language-toggle');
+    const dropdown = languagePicker.querySelector('#language-dropdown');
     const languageList = languagePicker.querySelector('#language-list');
+    const searchInput = languagePicker.querySelector('#language-search');
+    const items = languageList.querySelectorAll('.language-item');
+
+    function open() {
+      dropdown.classList.add('visible');
+      toggleButton.setAttribute('aria-expanded', 'true');
+      searchInput.value = '';
+      items.forEach(item => item.style.display = '');
+      setTimeout(() => searchInput.focus(), 50);
+    }
+
+    function close() {
+      dropdown.classList.remove('visible');
+      toggleButton.setAttribute('aria-expanded', 'false');
+    }
 
     toggleButton.addEventListener('click', () => {
-      const isVisible = languageList.classList.toggle('visible');
-      toggleButton.setAttribute('aria-expanded', String(isVisible));
+      dropdown.classList.contains('visible') ? close() : open();
+    });
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      items.forEach(item => {
+        const label = item.textContent.toLowerCase();
+        const code = item.dataset.lang;
+        item.style.display = (label.includes(query) || code.includes(query)) ? '' : 'none';
+      });
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') close();
     });
 
     languageList.addEventListener('click', event => {
@@ -61,10 +96,7 @@ const langLabel = languages[lang] || languages['en'];
     });
 
     document.addEventListener('click', event => {
-      if (!languagePicker.contains(event.target)) {
-        languageList.classList.remove('visible');
-        toggleButton.setAttribute('aria-expanded', 'false');
-      }
+      if (!languagePicker.contains(event.target)) close();
     });
   }
 
@@ -91,6 +123,8 @@ const langLabel = languages[lang] || languages['en'];
     color: var(--color-text-primary);
     box-shadow: var(--shadow-soft);
     transition: all 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
   }
 
   .language-toggle:hover {
@@ -101,15 +135,25 @@ const langLabel = languages[lang] || languages['en'];
     box-shadow: var(--shadow-inset);
   }
 
-  .language-list {
+  .chevron {
+    width: 10px;
+    height: 10px;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .language-dropdown.visible ~ .language-toggle .chevron,
+  .language-picker:has(.language-dropdown.visible) .chevron {
+    transform: rotate(180deg);
+  }
+
+  .language-dropdown {
     position: absolute;
-    top: 110%;
-    left: 0;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 200px;
     background: var(--color-bg-primary);
     border-radius: 12px;
-    list-style: none;
-    margin: 0;
-    padding: 0.5rem 0;
     z-index: 10;
     opacity: 0;
     transform: translateY(-10px);
@@ -119,20 +163,65 @@ const langLabel = languages[lang] || languages['en'];
     overflow: hidden;
   }
 
-  .language-list.visible {
+  .language-dropdown.visible {
     opacity: 1;
     transform: translateY(0);
     visibility: visible;
   }
 
+  .search-wrapper {
+    padding: 8px 8px 4px;
+  }
+
+  .language-search {
+    width: 100%;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background: var(--color-bg-secondary, var(--color-bg-primary));
+    color: var(--color-text-primary);
+    box-shadow: var(--shadow-inset);
+    font-size: 0.85rem;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .language-search::placeholder {
+    color: var(--color-text-secondary);
+  }
+
+  .language-list {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    max-height: 280px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .language-list::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .language-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .language-list::-webkit-scrollbar-thumb {
+    background: var(--color-text-secondary);
+    border-radius: 3px;
+    opacity: 0.4;
+  }
+
   .language-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     color: var(--color-text-primary);
-    gap: 8px;
     padding: 8px 16px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background-color 0.2s;
+    font-size: 0.9rem;
   }
 
   .language-item:hover {
@@ -140,17 +229,45 @@ const langLabel = languages[lang] || languages['en'];
     color: #ffffff;
   }
 
-  .language-item:hover .icon {
-    fill: #ffffff;
+  .language-item:hover .lang-code {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .language-item.active {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .lang-code {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    margin-left: 12px;
   }
 
   .icon {
     width: 16px;
     height: 16px;
-    fill: var(--color-text-secondary);
+    fill: var(--color-text-primary);
+    flex-shrink: 0;
   }
 
-  .language-toggle .icon {
-    fill: var(--color-text-primary);
+  @media (max-width: 768px) {
+    .language-dropdown {
+      right: 50%;
+      transform: translateX(50%) translateY(-10px);
+    }
+
+    .language-dropdown.visible {
+      transform: translateX(50%) translateY(0);
+    }
+
+    .lang-label {
+      display: none;
+    }
+
+    .chevron {
+      display: none;
+    }
   }
 </style>
