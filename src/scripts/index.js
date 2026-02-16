@@ -23,6 +23,8 @@ function handleToggle() {
     button.textContent = button.dataset.labelClassic;
     button.setAttribute('aria-label', button.dataset.labelClassic);
   }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 export function init() {

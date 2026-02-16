@@ -83,6 +83,13 @@ const isHomepage =
     max-width: 1024px;
     margin: 0 auto;
     justify-content: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  header.header-hidden {
+    transform: translateY(calc(-100% - 30px));
+    opacity: 0;
+    pointer-events: none;
   }
 
   .logo {
@@ -276,6 +283,7 @@ const isHomepage =
   function initHeader() {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const header = document.querySelector('header');
 
     if (hamburger && navLinks) {
       hamburger.addEventListener('click', () => {
@@ -284,6 +292,27 @@ const isHomepage =
         hamburger.setAttribute('aria-expanded', String(isOpen));
         hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
       });
+    }
+
+    if (header) {
+      let lastScrollY = window.scrollY;
+      let ticking = false;
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+              header.classList.add('header-hidden');
+            } else {
+              header.classList.remove('header-hidden');
+            }
+            lastScrollY = currentScrollY;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
     }
   }
 
