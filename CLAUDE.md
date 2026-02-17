@@ -60,3 +60,15 @@ Defined in `astro.config.mjs`:
 3. Add markdown content in `src/contents/{lang}/`
 4. Add word list at `public/words/{lang}/words-compact.json` (for memorable generator)
 5. Add the locale to the `i18n.locales` array in `astro.config.mjs`
+
+## Réactiver AdSense
+
+Les ads sont désactivées en attendant l'approbation Google AdSense. Pour les réactiver, restaurer le contenu de ces 3 fichiers :
+
+1. **`src/components/AdSense.astro`** — Remettre le bloc `<ins class="adsbygoogle">` avec `data-ad-slot="3568179376"` + le script `adsbygoogle.push()`. Ce composant est utilisé 2 fois par page (entre generators et hero-section, entre hero-section et ContentTabs).
+
+2. **`src/components/AdsInFeed.astro`** — Remettre le bloc `<ins class="adsbygoogle">` avec `data-ad-slot="3718160833"` (format fluid). Utilisé dans `src/pages/index.astro`.
+
+3. **`src/layouts/Layout.astro`** — Décommenter le bloc `ads-google` (entre `<slot />` et `<Footer />`) et le preconnect dans `<head>` :
+   - `<link rel='preconnect' href='https://pagead2.googlesyndication.com' />`
+   - `<link rel='dns-prefetch' href='https://pagead2.googlesyndication.com' />`

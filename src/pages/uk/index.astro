@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/index.css';
+import heroImage from '../../assets/images/hero-password-manager.webp';
+
+//password generator
+import PasswordGenerator from '../../components/PasswordGenerator.astro';
+import MemorablePasswordGenerator from '../../components/MemorablePasswordGenerator.astro';
+
+//translate
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// content md
+import { Content as PasswordInfo } from '../../contents/uk/secure_passwords.md';
+import { Content as MemorizationTips } from '../../contents/uk/memorization_tips.md';
+import { Content as PasswordManagerGuide } from '../../contents/uk/password_manager_guide.md';
+
+// tabs
+import ContentTabs from '../../components/ContentTabs.astro';
+import AdSense from '../../components/AdSense.astro';
+---
+
+<Layout title={t('title.site')}>
+  <main>
+    <div class='generators-container'>
+      <div id='classicGenerator' class='generator-section'>
+        <PasswordGenerator />
+      </div>
+      <div id='memorableGenerator' class='generator-section active'>
+        <MemorablePasswordGenerator />
+      </div>
+    </div>
+    <AdSense />
+    <div class='hero-section'>
+      <div class='main-title'>
+        <h1>
+          {t('title.h1')}
+        </h1>
+        <p>
+          {t('title.h4')}
+        </p>
+      </div>
+      <div class='hero-content'>
+        <Image src={heroImage} alt={t('hero.why.alt')} class='hero-image' loading='lazy' />
+        <h2>{t('hero.why.title')}</h2>
+        <p>{t('hero.why.intro')}</p>
+        <p class='hero-exception'>{t('hero.why.but')}</p>
+        <p class='hero-highlight'>&#x1F449; {t('hero.why.master')}</p>
+        <p>{t('hero.why.master.desc')}</p>
+        <p class='hero-solution'>{t('hero.why.solution')}</p>
+        <p>{t('hero.why.creates')}</p>
+        <ul class='hero-checklist'>
+          <li>&#x2705; {t('hero.why.check1')}</li>
+          <li>&#x2705; {t('hero.why.check2')}</li>
+          <li>&#x2705; {t('hero.why.check3')}</li>
+          <li>&#x2705; {t('hero.why.check4')}</li>
+        </ul>
+        <p class='hero-outro'>{t('hero.why.outro')}</p>
+        <p class='hero-cta'>{t('hero.why.cta')}</p>
+      </div>
+    </div>
+    <AdSense />
+    <ContentTabs>
+      <PasswordInfo slot="security" />
+      <MemorizationTips slot="memorization" />
+      <PasswordManagerGuide slot="manager" />
+    </ContentTabs>
+  </main>
+</Layout>
+
+<script>
+  import { init } from '../../scripts/index.js';
+  init();
+</script>
