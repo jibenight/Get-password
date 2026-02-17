@@ -22,6 +22,7 @@ import { Content as PasswordManagerGuide } from '../contents/en/password_manager
 
 // tabs
 import ContentTabs from '../components/ContentTabs.astro';
+import AdSense from '../components/AdSense.astro';
 ---
 
 <Layout title={t('title.site')}>
@@ -34,6 +35,7 @@ import ContentTabs from '../components/ContentTabs.astro';
         <MemorablePasswordGenerator />
       </div>
     </div>
+    <AdSense />
     <AdsInFeed/>
     <div class='hero-section'>
       <div class='main-title'>
@@ -63,6 +65,7 @@ import ContentTabs from '../components/ContentTabs.astro';
         <p class='hero-cta'>{t('hero.why.cta')}</p>
       </div>
     </div>
+    <AdSense />
     <AdsInFeed/>
     <ContentTabs>
       <PasswordInfo slot="security" />
