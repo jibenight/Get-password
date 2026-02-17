@@ -51,9 +51,10 @@ const currentPath = Astro.url.pathname;
     <meta name='twitter:title' content={title} />
     <meta name='twitter:description' content={description || t('meta.content')} />
 
-    <!-- Preconnect for external resources -->
+    <!-- Preconnect for external resources (disabled – waiting for AdSense approval)
     <link rel='preconnect' href='https://pagead2.googlesyndication.com' crossorigin />
     <link rel='dns-prefetch' href='https://pagead2.googlesyndication.com' />
+    -->
 
     <!-- Font preload -->
     <link rel='preload' href='/fonts/VarelaRound-Regular.ttf' as='font' type='font/ttf' crossorigin />
@@ -64,6 +65,7 @@ const currentPath = Astro.url.pathname;
     <Header />
     <slot />
 
+    <!-- AdSense disabled – waiting for approval
     <div class="ads-google">
       <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3402470307945870"
       crossorigin="anonymous"></script>
@@ -77,6 +79,7 @@ const currentPath = Astro.url.pathname;
           (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
     </div>
+    -->
 
     <Footer />
 
